@@ -408,7 +408,7 @@ body{
    LIFE TIMELINE
 ═══════════════════════════════════════════════════════════════ */
 .life-timeline{position:relative;padding:8px 0 4px;}
-.lt-wrap{position:relative;height:80px;margin:0 0 24px;}
+.lt-wrap{position:relative;height:140px;margin:0 0 24px;}
 .lt-track{position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(255,255,255,0.15);transform:translateY(-50%);}
 .lt-progress{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transition:width 0.6s ease;}
 .lt-milestones{position:absolute;inset:0;pointer-events:none;}
@@ -428,24 +428,24 @@ body{
 .lt-dot.passed{background:currentColor;}
 .lt-milestone:hover .lt-dot{transform:scale(1.6);}
 .lt-ml-year{
-  position:absolute;top:4px;
+  position:absolute;top:54px;
   font-family:'Geist Mono',monospace;font-size:7px;
   color:var(--tx3);white-space:nowrap;letter-spacing:0.06em;
 }
 .lt-ml-label{
-  position:absolute;bottom:18px;
+  position:absolute;bottom:42px;
   font-family:'Geist Mono',monospace;font-size:7px;
   white-space:nowrap;font-weight:700;letter-spacing:0.04em;
 }
 .lt-ml-age{
-  position:absolute;bottom:4px;
+  position:absolute;bottom:24px;
   font-family:'Geist Mono',monospace;font-size:7px;
   color:var(--tx3);white-space:nowrap;
 }
-/* Stagger vertical — milestones pares (índice par) van arriba de la línea */
-.lt-milestone.even .lt-ml-year  { top: auto;    bottom: 4px; }
-.lt-milestone.even .lt-ml-label { bottom: auto; top: 18px; }
-.lt-milestone.even .lt-ml-age   { bottom: auto; top: 4px; }
+/* Stagger vertical agresivo — pares arriba de la línea, impares abajo */
+.lt-milestone.even .lt-ml-year  { top: auto;    bottom: 54px; }
+.lt-milestone.even .lt-ml-label { bottom: auto; top: 42px; }
+.lt-milestone.even .lt-ml-age   { bottom: auto; top: 24px; }
 /* Current position marker */
 .lt-now{
   position:absolute;transform:translateX(-50%);
@@ -467,6 +467,79 @@ body{
   position:absolute;top:0;bottom:0;left:50%;
   width:1px;background:rgba(212,175,55,0.25);
   transform:translateX(-50%);z-index:1;
+}
+
+/* Mobile vertical layout (Bug 1.3) — hide horizontal track, show stacked cards */
+.lt-mobile-list{display:none;}
+@media(max-width:768px){
+  .lt-wrap, .lt-age-labels{display:none;}
+  .lt-mobile-list{
+    display:flex; flex-direction:column; gap:8px;
+    margin-top:8px;
+  }
+  .lt-mobile-card{
+    display:grid; grid-template-columns:auto 1fr auto;
+    align-items:center; gap:12px;
+    padding:12px 14px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(22px) saturate(180%);
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:10px;
+  }
+  .lt-mobile-card.passed{border-color:rgba(212,175,55,0.3);}
+  .lt-mc-date{font-family:'Geist Mono',monospace; font-size:9px; color:var(--gold); letter-spacing:0.1em; min-width:48px;}
+  .lt-mc-label{font-family:'Fraunces',serif; font-size:13px; color:rgba(255,255,255,0.85); line-height:1.3;}
+  .lt-mobile-card.passed .lt-mc-label{color:var(--gold);}
+  .lt-mc-age{font-family:'Geist Mono',monospace; font-size:9px; color:var(--tx3);}
+  .lt-mc-hoy-divider{
+    display:flex; align-items:center; gap:10px;
+    padding:6px 0;
+    font-family:'Geist Mono',monospace; font-size:8px;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(212,175,55,0.7);
+  }
+  .lt-mc-hoy-divider::before, .lt-mc-hoy-divider::after{
+    content:''; flex:1; height:1px;
+    background:rgba(212,175,55,0.25);
+  }
+}
+
+/* Mobile mission selector pills (Bug 2) — visible solo ≤768px */
+.mission-mobile-pills{display:none;}
+@media(max-width:768px){
+  .mission-mobile-pills{
+    display:flex; gap:8px; padding:12px 16px;
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    background:rgba(10,12,17,0.6);
+    backdrop-filter:blur(22px) saturate(180%);
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    position:sticky; top:0; z-index:5;
+  }
+  .mission-mobile-pills::-webkit-scrollbar{display:none;}
+  .mm-pill{
+    flex-shrink:0;
+    display:inline-flex; align-items:center; gap:6px;
+    padding:8px 14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:999px;
+    color:var(--tx2);
+    font-family:'Geist Mono',monospace; font-size:11px; font-weight:500;
+    letter-spacing:0.08em; text-transform:uppercase;
+    cursor:pointer; transition:all 200ms ease;
+    white-space:nowrap;
+  }
+  .mm-pill .mm-dot{
+    width:8px; height:8px; border-radius:50%; flex-shrink:0;
+  }
+  .mm-pill.active{background:rgba(255,255,255,0.06);}
+  .mm-pill.active.m-actor{border-color:rgba(212,32,32,0.6); color:var(--actor);}
+  .mm-pill.active.m-fin  {border-color:rgba(34,168,90,0.6); color:var(--fin);}
+  .mm-pill.active.m-mav  {border-color:rgba(212,175,55,0.6); color:var(--mav);}
+  .mm-pill.active.m-play {border-color:rgba(136,68,204,0.6); color:var(--play);}
 }
 
 
@@ -1270,6 +1343,7 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
             </div>
           </div>
           <div class="lt-age-labels" id="lt-ages"></div>
+          <div class="lt-mobile-list" id="lt-mobile-list"></div>
         </div>
       </div>
     </div>
@@ -1702,6 +1776,22 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   <!-- CONTENT -->
 
   <!-- ═══════ ROW 1: PROGRESO + ESTRATEGIA ═══════ -->
+  <!-- MOBILE MISSION PILLS — visible solo ≤768px -->
+  <div class="mission-mobile-pills">
+    <button class="mm-pill m-actor active" onclick="swMission('actor')" data-mission="actor">
+      <span class="mm-dot" style="background:var(--actor)"></span>Actor Hollywood
+    </button>
+    <button class="mm-pill m-fin" onclick="swMission('fin')" data-mission="fin">
+      <span class="mm-dot" style="background:var(--fin)"></span>Billonario
+    </button>
+    <button class="mm-pill m-mav" onclick="swMission('mav')" data-mission="mav">
+      <span class="mm-dot" style="background:var(--mav)"></span>Maverick
+    </button>
+    <button class="mm-pill m-play" onclick="swMission('play')" data-mission="play">
+      <span class="mm-dot" style="background:var(--play)"></span>Play Boy
+    </button>
+  </div>
+
   <div class="mission-full-grid" style="padding-top:16px;">
 
     <!-- COL 1: PROGRESO GENERAL -->
@@ -1940,6 +2030,22 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   <!-- CONTENT -->
 
   <!-- ═══════ ROW 1: POSICIÓN FINANCIERA + ESTRATEGIA ═══════ -->
+  <!-- MOBILE MISSION PILLS — visible solo ≤768px -->
+  <div class="mission-mobile-pills">
+    <button class="mm-pill m-actor" onclick="swMission('actor')" data-mission="actor">
+      <span class="mm-dot" style="background:var(--actor)"></span>Actor Hollywood
+    </button>
+    <button class="mm-pill m-fin active" onclick="swMission('fin')" data-mission="fin">
+      <span class="mm-dot" style="background:var(--fin)"></span>Billonario
+    </button>
+    <button class="mm-pill m-mav" onclick="swMission('mav')" data-mission="mav">
+      <span class="mm-dot" style="background:var(--mav)"></span>Maverick
+    </button>
+    <button class="mm-pill m-play" onclick="swMission('play')" data-mission="play">
+      <span class="mm-dot" style="background:var(--play)"></span>Play Boy
+    </button>
+  </div>
+
   <div class="mission-full-grid" style="padding-top:16px;">
 
     <!-- COL 1: POSICIÓN FINANCIERA -->
@@ -2155,6 +2261,22 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   </div>
 
   <!-- CONTENT -->
+  <!-- MOBILE MISSION PILLS — visible solo ≤768px -->
+  <div class="mission-mobile-pills">
+    <button class="mm-pill m-actor" onclick="swMission('actor')" data-mission="actor">
+      <span class="mm-dot" style="background:var(--actor)"></span>Actor Hollywood
+    </button>
+    <button class="mm-pill m-fin" onclick="swMission('fin')" data-mission="fin">
+      <span class="mm-dot" style="background:var(--fin)"></span>Billonario
+    </button>
+    <button class="mm-pill m-mav active" onclick="swMission('mav')" data-mission="mav">
+      <span class="mm-dot" style="background:var(--mav)"></span>Maverick
+    </button>
+    <button class="mm-pill m-play" onclick="swMission('play')" data-mission="play">
+      <span class="mm-dot" style="background:var(--play)"></span>Play Boy
+    </button>
+  </div>
+
   <div class="mission-full-grid" style="padding-top:16px;">
     <div class="card" style="border-top:2px solid var(--mav);">
       <div class="card-inner">
@@ -2370,6 +2492,22 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
   </div>
 
   <!-- ═══════ ROW 1: MÉTRICAS + DIARIO PRIVADO ═══════ -->
+  <!-- MOBILE MISSION PILLS — visible solo ≤768px -->
+  <div class="mission-mobile-pills">
+    <button class="mm-pill m-actor" onclick="swMission('actor')" data-mission="actor">
+      <span class="mm-dot" style="background:var(--actor)"></span>Actor Hollywood
+    </button>
+    <button class="mm-pill m-fin" onclick="swMission('fin')" data-mission="fin">
+      <span class="mm-dot" style="background:var(--fin)"></span>Billonario
+    </button>
+    <button class="mm-pill m-mav" onclick="swMission('mav')" data-mission="mav">
+      <span class="mm-dot" style="background:var(--mav)"></span>Maverick
+    </button>
+    <button class="mm-pill m-play active" onclick="swMission('play')" data-mission="play">
+      <span class="mm-dot" style="background:var(--play)"></span>Play Boy
+    </button>
+  </div>
+
   <div class="mission-full-grid" style="padding-top:16px;">
 
     <!-- COL 1: MÉTRICAS + HITOS + ACCIÓN CLAVE -->
@@ -3408,6 +3546,12 @@ function swMission(id, subBtn) {
 
   // Load data for this mission page
   loadMissionPage(id);
+
+  // Bug 2.3: scroll el pill mobile activo a la vista (mobile only — sin efecto en desktop)
+  const activePill = document.querySelector(`#view-m-${id} .mm-pill.active`);
+  if(activePill && activePill.scrollIntoView){
+    activePill.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+  }
 }
 
 function loadMissionPage(id) {
@@ -3776,13 +3920,38 @@ function buildLifeTimeline(){
     // Frente D: stagger (pares arriba) + colors uniformes (pasado: gold, futuro: gold 60%)
     const labelCol=passed?'var(--gold)':'rgba(255,255,255,0.6)';
     const dotCol=passed?'var(--gold)':'rgba(212,175,55,0.6)';
+    // Bug 1.2: truncate desktop labels >14 chars; tooltip muestra texto completo
+    const labelTrunc=m.label.length>14?m.label.substring(0,13)+'…':m.label;
     ms.innerHTML+=`<div class="lt-milestone ${i%2===0?'even':''}" style="left:${pct}%;" title="${m.desc}">
       <div class="lt-ml-year">${mDate.getFullYear()}</div>
       <div class="lt-dot ${passed?'passed':''}" style="color:${dotCol};border-color:${dotCol};${passed?`background:${dotCol}`:''}"></div>
-      <div class="lt-ml-label" style="color:${labelCol}">${m.label}</div>
+      <div class="lt-ml-label" style="color:${labelCol}">${labelTrunc}</div>
       <div class="lt-ml-age">${age}a</div>
     </div>`;
   });
+
+  // Bug 1.3: mobile vertical list (CSS-hidden en desktop)
+  const ml=document.getElementById('lt-mobile-list');
+  if(ml){
+    ml.innerHTML='';
+    let hoyInserted=false;
+    MILESTONES.forEach((m)=>{
+      const mDate=new Date(m.date);
+      const passed=mDate<=TODAY;
+      const age=mDate.getFullYear()-1994;
+      const mes=String(mDate.getMonth()+1).padStart(2,'0');
+      if(!passed && !hoyInserted){
+        const curAge=TODAY.getFullYear()-1994;
+        ml.innerHTML+=`<div class="lt-mc-hoy-divider"><span>HOY · ${curAge}a</span></div>`;
+        hoyInserted=true;
+      }
+      ml.innerHTML+=`<div class="lt-mobile-card ${passed?'passed':''}">
+        <div class="lt-mc-date">${mes}/${mDate.getFullYear()}</div>
+        <div class="lt-mc-label">${m.label}</div>
+        <div class="lt-mc-age">${age}a</div>
+      </div>`;
+    });
+  }
 
   // Year/age scale
   ages.innerHTML='';
