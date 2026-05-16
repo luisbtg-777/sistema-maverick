@@ -1640,6 +1640,23 @@ table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
       <button class="btn gold sm" onclick="saveMissions()">GUARDAR</button>
     </div>
   </div>
+
+  <!-- MOBILE MISSION PILLS — visible solo ≤768px — desde overview navega a las 4 misiones -->
+  <div class="mission-mobile-pills">
+    <button class="mm-pill m-actor" onclick="swMission('actor')" data-mission="actor">
+      <span class="mm-dot" style="background:var(--actor)"></span>Actor Hollywood
+    </button>
+    <button class="mm-pill m-fin" onclick="swMission('fin')" data-mission="fin">
+      <span class="mm-dot" style="background:var(--fin)"></span>Billonario
+    </button>
+    <button class="mm-pill m-mav" onclick="swMission('mav')" data-mission="mav">
+      <span class="mm-dot" style="background:var(--mav)"></span>Maverick
+    </button>
+    <button class="mm-pill m-play" onclick="swMission('play')" data-mission="play">
+      <span class="mm-dot" style="background:var(--play)"></span>Play Boy
+    </button>
+  </div>
+
   <div class="grid g2">
 
     <!-- ACTOR -->
