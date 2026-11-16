@@ -6399,7 +6399,7 @@ const V6 = (() => {
       i++; const dw = b.day_workouts || {};
       const rows = [1, 2, 3, 4, 5, 6, 0].filter(d => dw[d]).map(d => { const W = P.workouts[dw[d]]; if (!W) return '';
         return `<button class="rowi" data-act="sheet" data-arg="v6wk:${esc(dw[d])}"><div class="ic">${['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'][d]}<\/div><div class="rt"><b>${esc(clean(wTitle(W).h1 || W.title))}<\/b><span class="wrap">${esc((W.structure || []).length ? W.structure.length + ' bloques' : '')}${W.duration_est_min ? ' · ~' + W.duration_est_min + ' min' : ''}<\/span><\/div><\/button>`; }).join('');
-      return `<details class="v6blk"${b.name.indexOf('GOD') >= 0 ? ' data-god' : ''}><summary><b>${esc(blkName(sid, b, i))}<\/b><span>sem ${b.weeks.join('–')}<\/span><\/summary>${b.rules ? `<div class="txt">${b.rules.map(esc).join(' · ')}<\/div>` : ''}<div class="list">${rows}<\/div><\/details>`;
+      return `<details class="v6blk"${b.name.indexOf('GOD') >= 0 ? ' data-god' : ''}><summary><b>${esc(blkName(sid, b, i))}<\/b><span>sem ${b.weeks.join('–')}<\/span><\/summary>${b.rules ? `<div class="txt">${b.rules.map(esc).join(' · ')}<\/div>` : ''}<div class="list">${rows}<\/div><button class="lnk v6go" data-act="exStage" data-arg="${sid}#${i}:entreno">Ver este bloque en Entreno ›<\/button><\/details>`;
     }).join('') + '<\/div>';
   }
   function installSheets() {
@@ -6421,8 +6421,8 @@ const V6 = (() => {
       (W.blocks || []).forEach((b, bi) => { try { body += rvCard(W, wid, b, bi, { fm: null, cur: null, variant: null }); }
         catch (e) { body += `<section class="rv-card"><div class="rv-title">${esc(clean(b.title || ''))}<\/div>${(b.exercises || []).map(x => `<div class="rv-row">${esc(x.name || '')}<\/div>`).join('')}<\/section>`; } });
       const st = (P.stages || []).find(x => (x.blocks || []).some(b => Object.values(b.day_workouts || {}).indexOf(wid) >= 0));
-      const bi = st ? st.blocks.filter(b => !b.deload).findIndex(b => Object.values(b.day_workouts || {}).indexOf(wid) >= 0) : -1;
-      return { eyebrow: 'Rutina · ' + (st ? (st.id === 'volumen' ? 'Volumen' : phName(st)) + (bi >= 0 ? ' · ' + blkName(st.id, st.blocks.filter(b => !b.deload)[bi], bi) : '') : ''), title: esc(clean(wTitle(W).h1 || W.title)), body };
+      const bi = st ? st.blocks.filter(b => b.day_workouts).findIndex(b => Object.values(b.day_workouts || {}).indexOf(wid) >= 0) : -1;
+      return { eyebrow: 'Rutina · ' + (st ? (st.id === 'volumen' ? 'Volumen' : phName(st)) + (bi >= 0 ? ' · ' + blkName(st.id, st.blocks.filter(b => b.day_workouts)[bi], bi) : '') : ''), title: esc(clean(wTitle(W).h1 || W.title)), body };
     };
   }
   /* lista "La vuelta ∞" (Camino): para qué sirve cada fase + nombre de Volumen */
@@ -6445,6 +6445,41 @@ const V6 = (() => {
       if (keep && e.ref) { nt++; if (getRef(pl.iso, e.ref)) nd++; } });
     const card = ag.closest('.card'); const c = card && [...card.querySelectorAll('*')].find(x => x.children.length === 0 && /^\d+ de \d+ · /.test(x.textContent));
     if (c) c.textContent = c.textContent.replace(/^\d+ de \d+/, nd + ' de ' + nt);
+  }
+
+
+  /* ══ explorador de fases (solo consulta): cualquier fase futura se abre en su fecha REAL del plan ══
+     Causa del bug "se queda en Corte final": exStage usa E.stageStartOffset, que para las fases del ciclo
+     (Reversa, Volumen, Mini-corte, Mini Peak…) cuenta como si no existiera el Corte final; con el Corte final
+     planeado esas fechas caen dentro de él. Aquí se busca el primer día real con stageAt (misma lógica que la
+     app usa para Corte final / Peak final) y, en Volumen, el inicio de cada bloque (A HYPER · B GOD MODE · C FORGE). */
+  const offCache = {};
+  function realOff(sid) {
+    const key = sid + '|' + today(); if (key in offCache) return offCache[key];
+    const S = est(today()); let r = null;
+    for (let i = 0; i < 1400; i += 7) { if (E.stageAt(addD(E.START, i), S).stage === sid) { let j = i; while (j > 0 && E.stageAt(addD(E.START, j - 1), S).stage === sid) j--; r = j; break; } }
+    if (r == null) for (let i = 0; i < 1400; i++) if (E.stageAt(addD(E.START, i), S).stage === sid) { r = i; break; }
+    return (offCache[key] = r);
+  }
+  function installExplorer() {
+    const PROTO = () => E.protocolStages().map(x => x.id || x);
+    const oEx = ACT.exStage;
+    ACT.exStage = a => {
+      const [sid0, scr] = String(a).split(':'), m = /^(\w+)#(\d)$/.exec(sid0), sid = m ? m[1] : sid0;
+      if (!m && PROTO().indexOf(sid) >= 0) return oEx(a);   // fases del protocolo: igual que siempre
+      let off = realOff(sid); if (Sheet.cur) Sheet.close(); if (off == null) { toast('Esta fase no está en tu plan actual'); return; }
+      if (m) { const bl = (STG[sid].blocks || []).filter(b => b.day_workouts)[+m[2]]; if (bl) off += (bl.weeks[0] - 1) * 7; }
+      const d0 = addD(E.START, off), cur = !m && resolve(today()).stage === sid ? today() : addD(d0, (plan(today()).dow + 6) % 7);
+      App.exDate = cur === today() ? null : cur; go(scr || 'entreno', { top: true });
+    };
+    ACT.pickStage = a => { Sheet.close(); ACT.exStage(a + ':' + (App.screen === 'comida' ? 'comida' : 'entreno')); };
+    const oPick = SHEETS.stagepick;
+    SHEETS.stagepick = function () {
+      const r = oPick.apply(this, arguments); const v = STG.volumen; if (!r || !v || !v.blocks) return r;
+      let i = -1; const rows = v.blocks.filter(b => b.day_workouts).map(b => { i++; return row('layers', esc('Volumen · ' + blkName('volumen', b, i)), esc('sem ' + b.weeks.join('–') + ' de Volumen'), { act: 'pickStage', arg: 'volumen#' + i, icStyle: `box-shadow:inset 0 0 0 1.5px ${v.color}` }); }).join('');
+      const k = r.body.indexOf('data-arg="volumen"'); if (k < 0) return r;
+      const end = r.body.indexOf('<\/button>', k) + 9; r.body = r.body.slice(0, end) + rows + r.body.slice(end); return r;
+    };
   }
 
   /* ══ HOY · reloj de 24 h con el cuerpo al centro y los pilares como medallones ══ */
@@ -6568,7 +6603,7 @@ const V6 = (() => {
   function afterSheet() { const h = document.getElementById('sheethost'); if (!h) return; const ph = setPhase(); cycleList(h); relabel(h); recolor(h, ph); }
 
   function install() {
-    wrapBody(); installSheets();
+    wrapBody(); installSheets(); installExplorer();
     const oPM = postMount;
     postMount = function (el) { fillBodies(el); const r = oPM.apply(this, arguments);   // eslint-disable-line no-global-assign
       if (el && el.classList && el.classList.contains('below')) { try { cycleList(el); relabel(el); recolor(el, phColor()); } catch (e) {} }   // lo de abajo del pliegue se pinta después (deferBelow)
