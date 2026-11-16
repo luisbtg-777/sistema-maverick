@@ -999,7 +999,7 @@ html.v6 .dd b{text-shadow:var(--v6sh)}
 /* pantallas bajas: la tarjeta viva no tapa el titular (como el v3: se recorta abajo, el contenido sigue en la hoja) */
 @media (max-height:620px){html.v6 .live{max-height:calc(100vh - 186px);overflow:hidden}html.v6 #s-hoy .live{max-height:none;overflow:visible}
  html.v6 .rail .orb{height:38px!important;width:44px!important}html.v6 .live{padding-bottom:calc(60px + var(--sab))!important}}
-html.v6 #s-hoy.v6tight .v6s{display:none}
+html.v6 #s-hoy.v6tight .v6l{display:none}
 html.v6 .sheet .foot .ghost{background:rgba(22,23,27,.98)!important;border:1px solid rgba(255,255,255,.22)!important;color:var(--v6t)!important}
 html.v6 #s-sesion .setrow .x2{white-space:nowrap}
 .v6nx{position:absolute;left:0;right:0;text-align:center;z-index:9;font:600 11px var(--font);color:var(--ph);pointer-events:none;text-shadow:0 1px 6px rgba(0,0,0,.9)}
@@ -1052,6 +1052,51 @@ html.v6 .live .lnk,html.v6 .card .lnk,html.v6 .sheet .lnk,html.v6 .g .lnk{text-s
  html.v6 #s-hoy .live .big.xl b{font-size:32px!important}html.v6 #s-hoy .live .big.xl b.sm{font-size:28px!important}
  html.v6 #s-hoy .live .acts.one{margin-top:8px!important}}
 @media (max-height:700px){html.v6 #s-hoy .head .h1{font-size:34px!important;line-height:1.05!important;margin:2px 0 0!important}html.v6 #s-hoy .head .h2{margin-top:0!important;font-size:15px!important}html.v6 #s-hoy .head .eyebrow{margin-bottom:2px!important}}
+
+/* ═════ v7 · estilo Hume (aprobado por Luis 16 nov 2026): bandejas de cristal, píldoras, dial físico ═════ */
+html.v6{--tray:linear-gradient(180deg,rgba(62,63,68,.55),rgba(22,23,26,.66));--trayb:1px solid rgba(255,255,255,.09);--trayh:inset 0 1px 0 rgba(255,255,255,.13),0 14px 32px rgba(0,0,0,.38);--knob:linear-gradient(180deg,rgba(92,94,100,.78),rgba(44,45,50,.82));--knobh:inset 0 1px 0 rgba(255,255,255,.24),0 4px 12px rgba(0,0,0,.35)}
+/* hoja viva = bandeja grande */
+html.v6 .live{background:linear-gradient(180deg,rgba(46,47,51,.93),rgba(16,17,19,.97))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 -22px 50px rgba(0,0,0,.45)!important}
+/* píldoras: días */
+html.v6 .days{padding:4px!important;border-radius:26px;background:rgba(18,19,22,.55);border:var(--trayb);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html.v6 .dd.on{background:var(--knob)!important;box-shadow:var(--knobh)!important}
+html.v6 .dd.on::after{bottom:4px}
+html.v6 .dd.today:not(.on){box-shadow:none!important}
+html.v6 .dd.today:not(.on)::after{content:"";position:absolute;left:50%;bottom:4px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--ph)}
+/* píldoras: pestañas (Viaje · Calendario · Tabla, Día · Súper …) */
+html.v6 .ttabs{gap:4px!important;margin:10px 16px 0!important;padding:4px;border-radius:24px;background:rgba(18,19,22,.55);border:var(--trayb);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+html.v6 .ttabs button{flex:1 1 0;height:38px!important;border-radius:19px!important;font-size:13.5px!important;text-shadow:none!important;min-width:0}
+html.v6 .ttabs button.on{background:var(--knob)!important;box-shadow:var(--knobh)!important}
+html.v6 .ttabs button.on::after,html.v6 .ttabs button.on::before{display:none!important}
+/* bandejas: grupos y tarjetas */
+html.v6 .card.g,html.v6 .below .card.g,html.v6 .g,html.v6 .below .card{background:var(--tray)!important;border:var(--trayb)!important;border-radius:24px!important;box-shadow:var(--trayh)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html.v6 .g{margin-left:14px!important;margin-right:14px!important}
+/* barras de macros = deslizadores */
+html.v6 .mac .bar{height:6px!important;border-radius:3px!important;background:rgba(255,255,255,.1)!important;position:relative;overflow:visible!important}
+html.v6 .mac .bar i{position:relative;display:block;height:100%;border-radius:3px;min-width:3px}
+html.v6 .mac .bar i::after{content:"";position:absolute;right:-7px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.55)}
+/* Hoy: los 4 pilares en una bandeja */
+html.v6 .pcol.v6med{left:14px!important;right:14px!important;justify-content:space-around!important;padding:8px 2px 6px;border-radius:26px;background:var(--tray);border:var(--trayb);box-shadow:var(--trayh);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+html.v6 .pcol.v6med .pl{width:25%!important;border-radius:18px!important;padding:4px 0 6px!important}
+html.v6 .pcol.v6med .pl.sel{background:rgba(255,255,255,.08)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)!important}
+html.v6 .pcol.v6med .pl i{width:40px!important;height:40px!important;background:var(--knob)!important;box-shadow:var(--knobh)!important}
+html.v6 .pcol.v6med .pl.sel i{box-shadow:0 0 0 1.5px var(--ph),0 0 18px -4px var(--ph),var(--knobh)!important}
+html.v6 .pcol.v6med .v6l,html.v6 .pcol.v6med .v6s{text-shadow:none!important}
+/* Hoy: centro del dial = disco hundido */
+.statue.v6body{background:radial-gradient(circle at 45% 32%,#26272b,#0a0b0d 72%)!important;box-shadow:inset 0 3px 10px rgba(0,0,0,.8),0 0 0 1.5px rgba(0,0,0,.6),0 0 0 2.5px rgba(255,255,255,.1)!important}
+/* Entreno: bloques en mosaico 2×2 */
+@media (min-width:360px){
+ html.v6 #s-entreno .live .erows{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px!important;margin:10px 0 12px!important}
+ html.v6 #s-entreno .live .erow{height:56px!important;gap:8px;padding:0 10px!important;border-radius:18px;background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)!important}
+ html.v6 #s-entreno .live .erow .emo{font-size:20px;width:24px}
+ html.v6 #s-entreno .live .erow .et b{font-size:14.5px}
+ html.v6 #s-entreno .live .erow .et small{font-size:12.5px}
+ html.v6 #s-entreno .live .erow .em{font-size:21px}}
+/* Cuerpo: anillo microperforado detrás del selector */
+html.v6 #s-cuerpo .hero{position:relative}
+@media (max-height:760px){html.v6 .pcol.v6med{padding:5px 2px 4px}html.v6 .pcol.v6med .pl{padding:2px 0 4px!important}html.v6 .pcol.v6med .pl i{width:32px!important;height:32px!important}html.v6 .pcol.v6med .pl i svg{width:16px;height:16px}
+ html.v6 #s-entreno .live .erow{height:48px!important}html.v6 #s-entreno .live .erows{margin:6px 0 8px!important}}
+@media (max-width:359px){html.v6 .days{padding:3px!important;gap:2px!important;margin-left:10px!important;margin-right:10px!important}html.v6 .dd{flex:1 1 0!important;width:auto!important;min-width:0!important;max-width:40px!important}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2732,7 +2777,10 @@ function radial(cx, cy, segs, o) {
     const q = _p(cx, cy, (R0 + R1) / 2 + (s.sel ? 3 : 0), (a0 + a1) / 2);
     html += `<div class="plabel${s.sel ? ' sel' : ''}" style="left:${q[0].toFixed(1)}px;top:${q[1].toFixed(1)}px${op}">${ic(s.icon)}${esc(s.label)}${s.sub ? `<small>${esc(s.sub)}<\/small>` : ''}${s.done ? '<span class="ok">✓<\/span>' : ''}<\/div>`;
   });
-  let out = `<svg width="${o.w}" height="${o.h}" class="rsvg"><filter id="psh${o.uid}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/><\/filter>${sh}<\/svg>`;
+  /* v7 · dial microperforado estilo Hume detrás de los pétalos */
+  const g1 = o.r1 + o.grow + 5, g2 = g1 + 20, gm = (g1 + g2) / 2;
+  const grill = `<defs><radialGradient id="gm${o.uid}" cx="42%" cy="30%" r="75%"><stop offset="0" stop-color="#55565c"/><stop offset=".55" stop-color="#2c2d31"/><stop offset="1" stop-color="#151619"/><\/radialGradient><pattern id="gp${o.uid}" width="5.5" height="5.5" patternUnits="userSpaceOnUse"><circle cx="2.75" cy="2.75" r="1.05" fill="#000" fill-opacity=".62"/><\/pattern><\/defs><circle cx="${cx}" cy="${cy + 10}" r="${g2 + 6}" fill="rgba(0,0,0,.35)" filter="url(#psh${o.uid})"/><circle cx="${cx}" cy="${cy}" r="${gm}" fill="none" stroke="url(#gm${o.uid})" stroke-width="${g2 - g1}"/><circle cx="${cx}" cy="${cy}" r="${gm}" fill="none" stroke="url(#gp${o.uid})" stroke-width="${g2 - g1 - 4}"/><circle cx="${cx}" cy="${cy}" r="${g2}" fill="none" stroke="#fff" stroke-opacity=".2"/><circle cx="${cx}" cy="${cy}" r="${g1}" fill="none" stroke="#000" stroke-opacity=".6" stroke-width="2"/>`;
+  let out = `<svg width="${o.w}" height="${o.h}" class="rsvg"><filter id="psh${o.uid}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/><\/filter>${grill}${sh}<\/svg>`;
   out += o.ring + html;
   out += `<svg width="${o.w}" height="${o.h}" class="rsvg"><defs><linearGradient id="rim${o.uid}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".8"/><stop offset=".45" stop-color="#fff" stop-opacity=".10"/><stop offset="1" stop-color="#fff" stop-opacity=".32"/><\/linearGradient><\/defs>${rims}<\/svg>`;
   return `<div class="radial">${out}${o.core}<\/div>`;
@@ -6325,7 +6373,7 @@ const V6 = (() => {
     return 'Próximo · ' + DOW[d.getDay()] + ' · ' + tcase(wTitle(nx.pl.W).h1 || nx.pl.W.title || '');
   }
 
-  window.MV_ENT_FIT = () => (window.innerHeight || 844) < 760 && (window.innerWidth || 390) >= 360 ? { live: 296, top: 230, min: 96 } : null;
+  window.MV_ENT_FIT = () => (window.innerWidth || 390) < 360 ? null : (window.innerHeight || 844) < 760 ? { live: 284, top: 230, min: 96 } : { live: 330, top: 248, min: 120 };   /* v7: mosaico 2×2 en todas las alturas */
   /* ── cuerpo: vista correcta (frente / espalda según lo encendido) + "Próximo" en descanso ── */
   function fillBodies(el) {
     $$('[data-body]', el).forEach(h => {
@@ -6525,7 +6573,7 @@ const V6 = (() => {
     return null;
   }
   function clockSVG(pl, nm, D, nx) {
-    const c = D / 2, sm = D < 290, RR = c - (sm ? 34 : 46), br = Math.round(RR * (sm ? .8 : .7)),   /* v6.2: en pantallas bajas el cuerpo y el círculo crecen */ P = (r, t) => { const a = t / 1440 * 2 * Math.PI; return [c + r * Math.sin(a), c - r * Math.cos(a)]; };
+    const c = D / 2, sm = D < 290, RR = c - (sm ? 34 : 46), br = Math.round(RR * (sm ? .86 : .7)),   /* v6.2: en pantallas bajas el cuerpo y el círculo crecen */ P = (r, t) => { const a = t / 1440 * 2 * Math.PI; return [c + r * Math.sin(a), c - r * Math.cos(a)]; };
     const f1 = v => v.toFixed(1);
     const arc = (r, t1, t2) => { let s = t2 - t1; if (s < 0) s += 1440; if (s <= 0) return ''; const [x1, y1] = P(r, t1), [x2, y2] = P(r, t1 + Math.min(s, 1439.5)); return `M${f1(x1)} ${f1(y1)}A${r} ${r} 0 ${s > 720 ? 1 : 0} 1 ${f1(x2)} ${f1(y2)}`; };
     const ph = phColor(pl.iso); let s = '';
@@ -6533,6 +6581,14 @@ const V6 = (() => {
 <radialGradient id="v6dk"><stop offset="0" stop-color="#050608" stop-opacity=".5"/><stop offset="1" stop-color="#050608" stop-opacity="0"/><\/radialGradient>
 <filter id="v6gl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/><\/feMerge><\/filter><\/defs>`;
     s += `<circle cx="${c}" cy="${c}" r="${c - 2}" fill="url(#v6dk)"/>`;
+    /* v7 · dial físico estilo Hume: base metálica + microperforado entre el cuerpo y el anillo */
+    { const r1 = br + 3, r2 = RR - 3, rm = (r1 + r2) / 2, w = r2 - r1;
+      s += `<defs><radialGradient id="v7m" cx="42%" cy="30%" r="75%"><stop offset="0" stop-color="#55565c"/><stop offset=".55" stop-color="#2c2d31"/><stop offset="1" stop-color="#151619"/><\/radialGradient>
+<pattern id="v7p" width="5.5" height="5.5" patternUnits="userSpaceOnUse"><circle cx="2.75" cy="2.75" r="1.05" fill="#000" fill-opacity=".62"/><\/pattern>
+<radialGradient id="v7s"><stop offset=".7" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/><\/radialGradient><\/defs>`;
+      s += `<circle cx="${c}" cy="${c + 10}" r="${RR + 8}" fill="url(#v7s)"/>`;
+      s += `<circle cx="${c}" cy="${c}" r="${rm}" fill="none" stroke="url(#v7m)" stroke-width="${w}"/><circle cx="${c}" cy="${c}" r="${rm}" fill="none" stroke="url(#v7p)" stroke-width="${w - 4}"/>`;
+      s += `<circle cx="${c}" cy="${c}" r="${r2}" fill="none" stroke="#fff" stroke-opacity=".2"/><circle cx="${c}" cy="${c}" r="${r1}" fill="none" stroke="#000" stroke-opacity=".7" stroke-width="2"/>`; }
     s += `<circle class="v6ring" cx="${c}" cy="${c}" r="${RR}" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1"/>`;
     [0, 6, 12, 18].forEach(h => { const [x1, y1] = P(RR - 6, h * 60), [x2, y2] = P(RR - 11, h * 60), [x, y] = P(RR - 20, h * 60);
       s += `<line x1="${f1(x1)}" y1="${f1(y1)}" x2="${f1(x2)}" y2="${f1(y2)}" stroke="#fff" stroke-opacity=".5"/><text class="v6tk" x="${f1(x)}" y="${f1(y + 3)}" text-anchor="middle">${h}<\/text>`; });
@@ -6573,7 +6629,7 @@ const V6 = (() => {
     if (!pl.W) { nx = nextTraining(pl.iso); if (nx) { st.dataset.body = JSON.stringify(sculptMuscles(nx.pl.W)); } }
     el.classList.add('v6hoy');
     el.classList.remove('v6tight');
-    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? 86 : 0, OV = H < 760 ? 34 : 26;   // los medallones se montan sobre el margen de emojis del reloj
+    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? (H < 760 ? 80 : 100) : 0, OV = H < 760 ? 16 : 8;   /* v7: bandeja de pilares bajo el dial (no tapa los emojis de abajo) */   // los medallones se montan sobre el margen de emojis del reloj
     const avail = H - liveH - headB - medH + OV - 12;
     const D = Math.round(Math.max(H < 760 ? 226 : 250, Math.min(W - 12, 344, avail)));
     const top = headB + 2, left = Math.round((W - D) / 2);
