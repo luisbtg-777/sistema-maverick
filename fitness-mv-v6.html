@@ -1158,6 +1158,26 @@ html.v6 #s-comida .fold .tl .n{flex-direction:row!important}
 html.v6 .g.macros{padding-top:8px!important}html.v6 .g.macros .mac .bar{margin:6px 0 7px!important}
 html.v6 .v7tring{position:absolute;inset:0;opacity:0;pointer-events:none}
 @media (max-width:359px){html.v6 .v7pill span{display:none}html.v6 .v7pill.sel span{display:inline}}
+/* v7.2 · Safari (pantalla baja): hoja viva compacta para que el dial, los cuerpos, el plato y el camino respiren */
+@media (max-height:760px){
+ html.v6 .live .big.xl{margin:2px 0 0!important}
+ html.v6 .live .big.xl b,html.v6 #s-hoy .live .big.xl b{font-size:34px!important;line-height:1!important}
+ html.v6 .live .big.xl b.sm,html.v6 #s-hoy .live .big.xl b.sm{font-size:28px!important}
+ html.v6 .live .in{padding-top:12px!important}
+ html.v6 .live .acts.one{margin-top:10px!important}
+ html.v6 .live .delta{margin-top:4px!important}
+ html.v6 #s-entreno .live .erow{height:42px!important}html.v6 #s-entreno .live .erow .et small{display:none}
+ html.v6 #s-comida.v7short .g.macros{padding:8px 12px!important}
+ html.v6 #s-comida.v7short .g.macros :has(>.mac){flex-direction:row!important;gap:14px!important}
+ html.v6 #s-comida.v7short .g.macros .mac{grid-template-columns:auto;flex:1 1 0!important;width:auto}
+ html.v6 #s-comida.v7short .g.macros .mac .l{grid-row:1;grid-column:1;font-size:12.5px!important}
+ html.v6 #s-comida.v7short .g.macros .mac .v{grid-row:2;grid-column:1}
+ html.v6 #s-comida.v7short .g.macros .mac .bar{grid-row:3;grid-column:1}
+ html.v6 #s-comida.v7short .g.macros .mac .v b{font-size:13px!important}
+ html.v6 #s-comida.v7short .v7plate{padding:10px 14px 10px 10px}html.v6 #s-comida.v7short .v7ring{flex-basis:72px;height:72px}
+ html.v6 #s-comida.v7short .v7fl{gap:3px}
+ html.v6 .ttabs button{height:34px!important}}
+@media (max-height:760px){html.v6 .pcol.v6med{padding:3px 2px 2px!important}html.v6 .pcol.v6med .pl i{height:22px!important}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -4689,7 +4709,7 @@ function renderComida(el) {
   const head = `<div class="head">${exEyebrow('Comida', pl, DOW_L[pl.dow])}<h1 class="h1 m" data-fit="42">${fmtN(tg.kcal)}<small>kcal${src}<\/small><\/h1><div class="h2">${esc(winTxt)}<\/div>${atg ? `<div class="h2" style="margin-top:2px"><button class="lnk inl" style="min-height:0;font-size:inherit;color:inherit;max-width:100%" data-adjtag data-act="go" data-arg="cuerpo" aria-label="Ajuste de carbos: ${esc(atg.t + (atg.sub ? ' · ' + atg.sub : ''))}"><span class="ctxt">${esc(atg.t)}<\/span><\/button><\/div>` : ''}<\/div>`;
   const seg = `<div class="ttabs" role="tablist">${[['dia', 'Día'], ['super', 'Súper'], ['supl', W_() < 360 ? 'Supl.' : 'Suplementos'], ['sust', 'Sustituir']].map(([k, t]) => `<button role="tab" aria-selected="${App.comidaSeg === k}" class="${App.comidaSeg === k ? 'on' : ''}" data-act="cseg" data-arg="${k}">${t}<\/button>`).join('')}<\/div>`;
   const mac = (l, v, g) => `<div class="mac"><div class="v"><b>${fmtN(v)}<\/b><span>/ ${fmtN(g)} g<\/span><\/div><div class="bar"><i style="width:${Math.min(100, g ? v / g * 100 : 0).toFixed(0)}%"><\/i><\/div><div class="l">${l}<\/div><\/div>`;
-  const roomy = H_() >= 760;   // a < 760 px de alto la cinta y los macros van abajo (diseño 5/10)
+  const roomy = H_() >= 760 || !!(window.MV_V7 && W_() >= 360);   // v7: el plato, las píldoras y los macros siempre arriba (días y pestañas bajan)   // a < 760 px de alto la cinta y los macros van abajo (diseño 5/10)
   const macros = `<section class="g macros card${(U().ui.closed || {})['com:macros'] ? ' closed' : ''}" data-card="com:macros" style="margin:10px 16px 0;padding:11px 18px 9px"><button class="ctitle" data-act="cardOpen" data-arg="com:macros" style="min-height:18px"><span class="lbl" style="font-size:10px">${(U().ui.closed || {})['com:macros'] ? 'Macros' : ''}<\/span><\/button><button class="x" style="top:8px;right:10px" data-act="cardClose" data-arg="com:macros" aria-label="Cerrar macros">✕<\/button><div class="cbody" style="display:flex;gap:18px;margin-top:4px">${mac('Proteína', sum('p'), tg.p)}${mac('Carbos', sum('c'), tg.c)}${mac('Grasa', sum('f'), tg.f)}<\/div><\/section>`;
   const nm = nowMin(); const curM = iso === today() ? (pl.meals.find(m => !(d.meals && d.meals[m.i]) && m.t <= nm + 45) || pl.meals.find(m => !(d.meals && d.meals[m.i]))) : pl.meals[0];
   const pend = pl.meals.find(m => !(d.meals && d.meals[m.i]) && !getRef(iso, { type: 'meal', i: m.i }));
@@ -6435,7 +6455,7 @@ const V6 = (() => {
     return 'Próximo · ' + DOW[d.getDay()] + ' · ' + tcase(wTitle(nx.pl.W).h1 || nx.pl.W.title || '');
   }
 
-  window.MV_ENT_FIT = () => (window.innerWidth || 390) < 360 ? null : (window.innerHeight || 844) < 760 ? { live: 284, top: 230, min: 96 } : { live: 330, top: 248, min: 120 };   /* v7: mosaico 2×2 en todas las alturas */
+  window.MV_ENT_FIT = () => (window.innerWidth || 390) < 360 ? null : (window.innerHeight || 844) < 760 ? { live: 270, top: 212, min: 96 } : { live: 330, top: 248, min: 120 };   /* v7: mosaico 2×2 en todas las alturas */
   /* ── cuerpo: vista correcta (frente / espalda según lo encendido) + "Próximo" en descanso ── */
   function fillBodies(el) {
     $$('[data-body]', el).forEach(h => {
@@ -6691,7 +6711,7 @@ const V6 = (() => {
     if (!pl.W) { nx = nextTraining(pl.iso); if (nx) { st.dataset.body = JSON.stringify(sculptMuscles(nx.pl.W)); } }
     el.classList.add('v6hoy');
     el.classList.remove('v6tight');
-    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? (H < 760 ? 80 : 100) : 0, OV = H < 760 ? 16 : 8;   /* v7: bandeja de pilares bajo el dial (no tapa los emojis de abajo) */   // los medallones se montan sobre el margen de emojis del reloj
+    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? (H < 760 ? 66 : 100) : 0, OV = H < 760 ? 12 : 8;   /* v7: bandeja de pilares bajo el dial (no tapa los emojis de abajo) */   // los medallones se montan sobre el margen de emojis del reloj
     const avail = H - liveH - headB - medH + OV - 12;
     const D = Math.round(Math.max(H < 760 ? 226 : 250, Math.min(W - 12, 344, avail)));
     const top = headB + 2, left = Math.round((W - D) / 2);
@@ -6739,6 +6759,7 @@ const V6 = (() => {
     if (ring) top.insertBefore(b, ring); else top.appendChild(b);
   }
 
+  window.MV_V7 = true;
   /* ═════ v7 · Hume ═════ */
   window.MV_V7G = (met, v, segs, pln, tfrac, goalTxt, ring) => {   // Cuerpo: medidor semicircular (lienzo 390×280, dentro de #rbox)
     let fr = tfrac; if (pln && v != null && pln[0] !== pln[1]) fr = (pln[0] - v) / (pln[0] - pln[1]);
@@ -6769,6 +6790,7 @@ const V6 = (() => {
       const fds = (m.foods.length ? m.foods.slice(0, 4).map(f => [String(f.label).split(/[(,]/)[0].trim(), f.g + ' g']) : m.items.slice(0, 4).map(x => [String(x).split(/[(,]/)[0].trim(), '']));
       const tot = pl.targets ? pl.targets.kcal : 0, pc = tot ? Math.min(100, m.kcal / tot * 100) : 0;
       el.classList.add('v7pl'); const tt = el.querySelector('.fold .ttabs'), bl = el.querySelector('.below'); if (tt && bl) bl.insertBefore(tt, bl.firstChild);
+      const dy = el.querySelector('.fold .days'); if (dy && bl && H_() < 760) { bl.insertBefore(dy, bl.firstChild); el.classList.add('v7short'); }
       tl.insertAdjacentHTML('afterend', `<button class="v7plate" data-act="meal" data-arg="${m.i}${exDate() !== today() ? ':' + exDate() : ''}" aria-label="Ver plato de ${esc(m.short)}"><span class="v7ring" style="--p:${pc.toFixed(0)}"><b>${fmtN(m.kcal)}<\/b><small>kcal<\/small><\/span><span class="v7fl">${fds.map(([a, b]) => `<span><em>${esc(a)}<\/em><i>${esc(b)}<\/i><\/span>`).join('')}<\/span><\/button>`);
     }
   }
