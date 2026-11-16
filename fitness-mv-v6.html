@@ -1036,6 +1036,21 @@ html.v6 .card .ctitle{font-size:10.5px!important;letter-spacing:.16em!important}
 @media (min-width:360px){html.v6 .rail .orb.on{width:auto!important;padding:0 18px 0 14px!important;display:flex!important;flex-direction:row!important;justify-content:center!important;align-items:center!important;gap:8px!important}
 html.v6 .rail .orb.on::after{content:attr(aria-label);font:500 15px Geist,system-ui,sans-serif;letter-spacing:.02em;color:#fff;position:static!important;transform:none!important;opacity:1!important;inset:auto!important;background:none!important;box-shadow:none!important;padding:0!important;white-space:nowrap}}
 html.v6 .live .lnk,html.v6 .card .lnk,html.v6 .sheet .lnk,html.v6 .g .lnk{text-shadow:none!important}
+/* v6.1 · pantallas bajas (Safari con barras, ~660 px): todo visible sin apretar */
+@media (max-height:760px){
+ html.v6 #s-hoy .live .lnk,html.v6 #s-entreno .live .lnk{display:none!important}
+ html.v6 #s-hoy .live .acts.one,html.v6 #s-entreno .live .acts.one{margin-bottom:12px!important}}
+@media (max-height:760px) and (min-width:360px){
+ html.v6 #s-entreno .live .erows{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:14px;margin:2px 0 8px!important}
+ html.v6 #s-entreno .live .erow{height:50px!important;gap:8px}
+ html.v6 #s-entreno .live .erow+.erow{box-shadow:none}
+ html.v6 #s-entreno .live .erow .emo{font-size:20px;width:24px}
+ html.v6 #s-entreno .live .erow .et b{font-size:15px}
+ html.v6 #s-entreno .live .erow .et small{font-size:12.5px}
+ html.v6 #s-entreno .live .erow .em{font-size:22px}}
+@media (max-height:760px){html.v6 #s-hoy .live .in{padding-top:8px!important}html.v6 #s-hoy .live .big.xl{margin-top:0!important}
+ html.v6 #s-hoy .live .big.xl b{font-size:32px!important}html.v6 #s-hoy .live .big.xl b.sm{font-size:28px!important}
+ html.v6 #s-hoy .live .acts.one{margin-top:8px!important}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -4351,8 +4366,9 @@ function renderEntreno(el) {
   const t = titleFor(pl); const mus = W ? sculptMuscles(W) : [];
   if (W && pl.optional) { t.h1 = capsWords(strip(W.title).replace(/\s*\(opcional\)/i, '')); }   // coach 8: en Entreno el titular es la sesión; "Opcional" va en el eyebrow
   const head = `<div class="head">${entEyebrow(pl)}<h1 class="h1 m" data-fit="42">${esc(W ? t.h1 : 'Descanso')}<\/h1>${(() => { const h2 = W ? (mus.map(m => MUSCLE_LABEL[m]).join(' · ') || t.h2) : 'Descanso real · pasos libres', al = segAlts(h2); return `<div class="h2"${al.length > 1 ? ` data-alts="${esc(JSON.stringify(al))}"` : ''}>${esc(h2)}<\/div>`; })()}<\/div>`;
-  const liveTop = H_() - LIVE_H(); const bodyTop = COMPACT() ? 262 : 290; const bh = Math.min(240, liveTop - bodyTop - 6);
-  const bodies = bh >= 140 ? `<div style="position:relative;height:${bh + 14}px;margin-top:8px;display:flex;justify-content:center;z-index:10"><button data-act="scrollBlocks" aria-label="Músculos: ${esc(mus.map(m => MUSCLE_LABEL[m]).join(', ') || 'ninguno')}" style="display:flex;gap:2px;justify-content:center;filter:drop-shadow(0 22px 30px rgba(0,0,0,.65))" data-body='${JSON.stringify(mus)}' data-h="${bh}" data-both="1"><\/button><div class="floor" style="left:50%;transform:translateX(-50%);bottom:0;width:270px;height:28px"><\/div><\/div>` : '';
+  const V6E = window.MV_ENT_FIT && window.MV_ENT_FIT();   /* v6.1: en pantallas bajas la sesión va en 2 columnas y deja ver el cuerpo */
+  const liveTop = H_() - (V6E ? V6E.live : LIVE_H()); const bodyTop = V6E ? V6E.top : (COMPACT() ? 262 : 290); const bh = Math.min(240, liveTop - bodyTop - 6);
+  const bodies = bh >= (V6E ? V6E.min : 140) ? `<div style="position:relative;height:${bh + 14}px;margin-top:8px;display:flex;justify-content:center;z-index:10"><button data-act="scrollBlocks" aria-label="Músculos: ${esc(mus.map(m => MUSCLE_LABEL[m]).join(', ') || 'ninguno')}" style="display:flex;gap:2px;justify-content:center;filter:drop-shadow(0 22px 30px rgba(0,0,0,.65))" data-body='${JSON.stringify(mus)}' data-h="${bh}" data-both="1"><\/button><div class="floor" style="left:50%;transform:translateX(-50%);bottom:0;width:270px;height:28px"><\/div><\/div>` : '';
   let liveH;
   if (W) {
     const exs = (W.blocks || []).reduce((a, b) => a + (b.exercises || []).length, 0);
@@ -6308,6 +6324,7 @@ const V6 = (() => {
     return 'Próximo · ' + DOW[d.getDay()] + ' · ' + tcase(wTitle(nx.pl.W).h1 || nx.pl.W.title || '');
   }
 
+  window.MV_ENT_FIT = () => (window.innerHeight || 844) < 760 && (window.innerWidth || 390) >= 360 ? { live: 296, top: 230, min: 96 } : null;
   /* ── cuerpo: vista correcta (frente / espalda según lo encendido) + "Próximo" en descanso ── */
   function fillBodies(el) {
     $$('[data-body]', el).forEach(h => {
@@ -6343,6 +6360,9 @@ const V6 = (() => {
     $$('.cta .ctxt', root).forEach(c => { if (c.textContent.trim() === 'Iniciar sesión') c.textContent = 'Empezar entreno'; });
     $$('.mapsvg g.node', root).forEach(g => { const t = g.querySelector('text'), a = (g.getAttribute('aria-label') || '').replace(/^F\d\s+/, '');
       if (t && /^F\d$/.test(t.textContent.trim()) && a) t.textContent = a; });
+    /* v6.1 · etapas cortas del Viaje también con nombre (antes quedaban sin texto) */
+    $$('.mapsvg g.node', root).forEach(g => { const t = g.querySelector('text'), a = (g.getAttribute('aria-label') || '');
+      if (t && !t.textContent.trim()) { const m = /DEF/i.test(a) ? 'DEF' : /CUT/i.test(a) ? 'CUT' : ''; if (m) { t.textContent = m; t.setAttribute('font-size', '10.5'); } } });
   }
   /* ── dorado → color de fase en gráficas (el dorado queda solo para la marca y el botón principal) ── */
   function recolor(root, ph) {
