@@ -1051,6 +1051,7 @@ html.v6 .live .lnk,html.v6 .card .lnk,html.v6 .sheet .lnk,html.v6 .g .lnk{text-s
 @media (max-height:760px){html.v6 #s-hoy .live .in{padding-top:8px!important}html.v6 #s-hoy .live .big.xl{margin-top:0!important}
  html.v6 #s-hoy .live .big.xl b{font-size:32px!important}html.v6 #s-hoy .live .big.xl b.sm{font-size:28px!important}
  html.v6 #s-hoy .live .acts.one{margin-top:8px!important}}
+@media (max-height:700px){html.v6 #s-hoy .head .h1{font-size:34px!important;line-height:1.05!important;margin:2px 0 0!important}html.v6 #s-hoy .head .h2{margin-top:0!important;font-size:15px!important}html.v6 #s-hoy .head .eyebrow{margin-bottom:2px!important}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -6524,7 +6525,7 @@ const V6 = (() => {
     return null;
   }
   function clockSVG(pl, nm, D, nx) {
-    const c = D / 2, RR = c - 46, br = Math.round(RR * .7), P = (r, t) => { const a = t / 1440 * 2 * Math.PI; return [c + r * Math.sin(a), c - r * Math.cos(a)]; };
+    const c = D / 2, sm = D < 290, RR = c - (sm ? 34 : 46), br = Math.round(RR * (sm ? .8 : .7)),   /* v6.2: en pantallas bajas el cuerpo y el círculo crecen */ P = (r, t) => { const a = t / 1440 * 2 * Math.PI; return [c + r * Math.sin(a), c - r * Math.cos(a)]; };
     const f1 = v => v.toFixed(1);
     const arc = (r, t1, t2) => { let s = t2 - t1; if (s < 0) s += 1440; if (s <= 0) return ''; const [x1, y1] = P(r, t1), [x2, y2] = P(r, t1 + Math.min(s, 1439.5)); return `M${f1(x1)} ${f1(y1)}A${r} ${r} 0 ${s > 720 ? 1 : 0} 1 ${f1(x2)} ${f1(y2)}`; };
     const ph = phColor(pl.iso); let s = '';
@@ -6542,7 +6543,7 @@ const V6 = (() => {
     if (pl.W && pl.gymAt != null && pl.gymDur) s += `<path d="${arc(RR, pl.gymAt, pl.gymAt + pl.gymDur)}" fill="none" stroke="${ph}" stroke-width="7" stroke-linecap="round" filter="url(#v6gl)"/>`;
     // emojis (como la app original), separados hacia afuera si coinciden en hora
     const placed = [], put = (t, g, fs, op, tip) => { let lv = 0; while (placed.some(p => p.lv === lv && Math.abs(p.t - t) < 44)) lv++; placed.push({ t, lv });
-      const [x, y] = P(RR + 18 + lv * 15, t); s += `<g class="v6em" data-tip="${esc(tip)}" role="button" aria-label="${esc(tip)}"><circle cx="${f1(x)}" cy="${f1(y)}" r="${Math.max(fs * .62, 22)}" fill="transparent"/><text x="${f1(x)}" y="${f1(y + fs * .36)}" font-size="${fs}" text-anchor="middle" opacity="${op}">${g}<\/text><\/g>`; };
+      const [x, y] = P(sm ? RR + 13 + lv * 11 : RR + 18 + lv * 15, t); s += `<g class="v6em" data-tip="${esc(tip)}" role="button" aria-label="${esc(tip)}"><circle cx="${f1(x)}" cy="${f1(y)}" r="${Math.max(fs * .62, 22)}" fill="transparent"/><text x="${f1(x)}" y="${f1(y + fs * .36)}" font-size="${fs}" text-anchor="middle" opacity="${op}">${g}<\/text><\/g>`; };
     const fs = D < 300 ? 13 : 15;
     if (pl.W && pl.gymAt != null) put(pl.gymAt + (pl.gymDur || 0) / 2, '🏋️', fs + 1, 1, 'Entreno · ' + hm(pl.gymAt) + '–' + hm(pl.gymAt + (pl.gymDur || 0)));
     if (pl.open != null) put(pl.open, '🔓', fs, 1, 'Abre la ventana · ' + hm(pl.open));
@@ -6572,9 +6573,9 @@ const V6 = (() => {
     if (!pl.W) { nx = nextTraining(pl.iso); if (nx) { st.dataset.body = JSON.stringify(sculptMuscles(nx.pl.W)); } }
     el.classList.add('v6hoy');
     el.classList.remove('v6tight');
-    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? 86 : 0, OV = 26;   // los medallones se montan sobre el margen de emojis del reloj
+    const headB = head.offsetTop + head.offsetHeight, liveH = lv ? lv.offsetHeight : 0, medH = pc ? 86 : 0, OV = H < 760 ? 34 : 26;   // los medallones se montan sobre el margen de emojis del reloj
     const avail = H - liveH - headB - medH + OV - 12;
-    const D = Math.round(Math.max(H < 760 ? 206 : 250, Math.min(W - 12, 344, avail)));
+    const D = Math.round(Math.max(H < 760 ? 226 : 250, Math.min(W - 12, 344, avail)));
     const top = headB + 2, left = Math.round((W - D) / 2);
     if (avail < D) el.classList.add('v6tight');
     const k = clockSVG(pl, nm, D, nx);
