@@ -1178,6 +1178,13 @@ html.v6 .v7tring{position:absolute;inset:0;opacity:0;pointer-events:none}
  html.v6 #s-comida.v7short .v7fl{gap:3px}
  html.v6 .ttabs button{height:34px!important}}
 @media (max-height:760px){html.v6 .pcol.v6med{padding:3px 2px 2px!important}html.v6 .pcol.v6med .pl i{height:22px!important}}
+html.v6 #s-comida.v7short .g.macros{padding:8px 12px!important}
+html.v6 #s-comida.v7short .g.macros :has(>.mac){flex-direction:row!important;gap:14px!important}
+html.v6 #s-comida.v7short .g.macros .mac{grid-template-columns:auto;flex:1 1 0!important;width:auto}
+html.v6 #s-comida.v7short .g.macros .mac .l{grid-row:1;grid-column:1;font-size:12.5px!important}
+html.v6 #s-comida.v7short .g.macros .mac .v{grid-row:2;grid-column:1}
+html.v6 #s-comida.v7short .g.macros .mac .bar{grid-row:3;grid-column:1}
+html.v6 #s-comida.v7short .g.macros .mac .v b{font-size:13px!important}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -6790,7 +6797,7 @@ const V6 = (() => {
       const fds = (m.foods.length ? m.foods.slice(0, 4).map(f => [String(f.label).split(/[(,]/)[0].trim(), f.g + ' g']) : m.items.slice(0, 4).map(x => [String(x).split(/[(,]/)[0].trim(), '']));
       const tot = pl.targets ? pl.targets.kcal : 0, pc = tot ? Math.min(100, m.kcal / tot * 100) : 0;
       el.classList.add('v7pl'); const tt = el.querySelector('.fold .ttabs'), bl = el.querySelector('.below'); if (tt && bl) bl.insertBefore(tt, bl.firstChild);
-      const dy = el.querySelector('.fold .days'); if (dy && bl && H_() < 760) { bl.insertBefore(dy, bl.firstChild); el.classList.add('v7short'); }
+      const dy = el.querySelector('.fold .days'); if (dy && bl && H_() < 830) { bl.insertBefore(dy, bl.firstChild); el.classList.add('v7short'); }
       tl.insertAdjacentHTML('afterend', `<button class="v7plate" data-act="meal" data-arg="${m.i}${exDate() !== today() ? ':' + exDate() : ''}" aria-label="Ver plato de ${esc(m.short)}"><span class="v7ring" style="--p:${pc.toFixed(0)}"><b>${fmtN(m.kcal)}<\/b><small>kcal<\/small><\/span><span class="v7fl">${fds.map(([a, b]) => `<span><em>${esc(a)}<\/em><i>${esc(b)}<\/i><\/span>`).join('')}<\/span><\/button>`);
     }
   }
