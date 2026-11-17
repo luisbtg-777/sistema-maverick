@@ -1,0 +1,38 @@
+{
+ "fecha": "2027-09-19",
+ "dia": "dom 19 sep",
+ "fase": "CORTE FINAL",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1039,
+   "p": 91
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1102,
+   "p": 91
+  }
+ ],
+ "kcal": 2149,
+ "p": 185,
+ "c": 206,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "CORTE FINAL · DOM 19 sep",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "2,149 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

@@ -1,0 +1,50 @@
+{
+ "fecha": "2027-08-09",
+ "dia": "lun 9 ago",
+ "fase": "PEAK WEEK",
+ "semana": 38,
+ "rutina": "🏆 Pump 20-30' · 30-60' antes de las fotos · 7:00–7:25",
+ "cafe": "6:15",
+ "pre": null,
+ "ventana": {
+  "abre": "6:00",
+  "cierra": "18:00",
+  "tipo": "12 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "6:00",
+   "kcal": 328,
+   "p": 30
+  },
+  {
+   "nombre": "C2",
+   "hora": "9:30",
+   "kcal": 506,
+   "p": 62
+  },
+  {
+   "nombre": "C3",
+   "hora": "13:00",
+   "kcal": 376,
+   "p": 41
+  },
+  {
+   "nombre": "C4",
+   "hora": "16:30",
+   "kcal": 361,
+   "p": 51
+  }
+ ],
+ "kcal": 1560,
+ "p": 185,
+ "c": 115,
+ "g": 40,
+ "agua_l": 3,
+ "linea1": "PEAK WEEK · S38 · LUN 9 ago",
+ "linea2": "🏆 Pump 20-30' · 30-60' antes de las fotos · 7:00–7:25",
+ "linea3": "☕ 6:15 · 🍳 6:00 · 🍖 9:30 · 🐟 13:00 · 🍽️ 16:30 · 🔒 18:00",
+ "linea4": "1,560 kcal · P 185 · 💧 3 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

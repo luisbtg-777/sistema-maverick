@@ -1,0 +1,25 @@
+{
+ "fecha": "2026-12-17",
+ "dia": "jue 17 dic",
+ "fase": "FORGE",
+ "semana": 5,
+ "rutina": "✈️ Blindaje · 🥥 foco hombro · 7:00–7:45",
+ "cafe": "6:15",
+ "pre": null,
+ "ventana": {
+  "abre": "8:45",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [],
+ "kcal": 1900,
+ "p": 190,
+ "c": 150,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S5 · JUE 17 dic",
+ "linea2": "✈️ Blindaje · 🥥 foco hombro · 7:00–7:45",
+ "linea3": "☕ 6:15 · 🔒 16:00",
+ "linea4": "1,900 kcal · P 190 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

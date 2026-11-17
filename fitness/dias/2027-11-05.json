@@ -1,0 +1,62 @@
+{
+ "fecha": "2027-11-05",
+ "dia": "vie 5 nov",
+ "fase": "PEAK2",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "7:00",
+  "cierra": "19:00",
+  "tipo": "12 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "7:00",
+   "kcal": 550,
+   "p": 33
+  },
+  {
+   "nombre": "C2",
+   "hora": "9:15",
+   "kcal": 723,
+   "p": 44
+  },
+  {
+   "nombre": "C3",
+   "hora": "11:45",
+   "kcal": 751,
+   "p": 44
+  },
+  {
+   "nombre": "C4",
+   "hora": "14:15",
+   "kcal": 578,
+   "p": 39
+  },
+  {
+   "nombre": "C5",
+   "hora": "16:45",
+   "kcal": 699,
+   "p": 35
+  },
+  {
+   "nombre": "C6",
+   "hora": "18:45",
+   "kcal": 317,
+   "p": 5
+  }
+ ],
+ "kcal": 3575,
+ "p": 185,
+ "c": 630,
+ "g": 35,
+ "agua_l": 3.8,
+ "linea1": "PEAK2 · VIE 5 nov",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 7:00 · 🍖 9:15 · 🐟 11:45 · 🍽️ 14:15 · 🍽️ 16:45 · 🍽️ 18:45 · 🔒 19:00",
+ "linea4": "3,575 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

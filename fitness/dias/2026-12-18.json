@@ -1,0 +1,25 @@
+{
+ "fecha": "2026-12-18",
+ "dia": "vie 18 dic",
+ "fase": "FORGE",
+ "semana": 5,
+ "rutina": "✈️ Viaje",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "8:45",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [],
+ "kcal": 1900,
+ "p": 190,
+ "c": 150,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S5 · VIE 18 dic",
+ "linea2": "✈️ Viaje",
+ "linea3": "🔒 16:00",
+ "linea4": "1,900 kcal · P 190 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

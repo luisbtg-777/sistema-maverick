@@ -1,0 +1,44 @@
+{
+ "fecha": "2027-08-11",
+ "dia": "mié 11 ago",
+ "fase": "PUENTE",
+ "semana": null,
+ "rutina": "Full-body ligera (opcional) · 7:00–7:40 (opcional)",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "8:30",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 599,
+   "p": 62
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 645,
+   "p": 61
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 682,
+   "p": 64
+  }
+ ],
+ "kcal": 1960,
+ "p": 185,
+ "c": 170,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "PUENTE · MIÉ 11 ago",
+ "linea2": "Full-body ligera (opcional) · 7:00–7:40 (opcional)",
+ "linea3": "🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "1,960 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

@@ -1,0 +1,38 @@
+{
+ "fecha": "2028-07-16",
+ "dia": "dom 16 jul",
+ "fase": "REVERSA",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1405,
+   "p": 104
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1298,
+   "p": 85
+  }
+ ],
+ "kcal": 2700,
+ "p": 185,
+ "c": 355,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "REVERSA · DOM 16 jul",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "2,700 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

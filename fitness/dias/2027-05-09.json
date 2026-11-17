@@ -1,0 +1,38 @@
+{
+ "fecha": "2027-05-09",
+ "dia": "dom 9 may",
+ "fase": "HYPER",
+ "semana": 25,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 890,
+   "p": 92
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 955,
+   "p": 92
+  }
+ ],
+ "kcal": 1845,
+ "p": 185,
+ "c": 130,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "HYPER · S25 · DOM 9 may",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "1,845 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

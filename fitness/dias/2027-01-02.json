@@ -1,0 +1,44 @@
+{
+ "fecha": "2027-01-02",
+ "dia": "sáb 2 ene",
+ "fase": "FORGE",
+ "semana": 7,
+ "rutina": "🏠 Re-entrada · full-body ligera · 10:00–11:00 (opcional)",
+ "cafe": "9:15",
+ "pre": "9:30",
+ "ventana": {
+  "abre": "9:30",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "9:30",
+   "kcal": 105,
+   "p": 23
+  },
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1197,
+   "p": 81
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1141,
+   "p": 81
+  }
+ ],
+ "kcal": 2449,
+ "p": 185,
+ "c": 281,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S7 · SÁB 2 ene",
+ "linea2": "🏠 Re-entrada · full-body ligera · 10:00–11:00 (opcional)",
+ "linea3": "☕ 9:15 · 🥤 9:30 · 🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "2,449 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

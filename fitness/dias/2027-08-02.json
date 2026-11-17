@@ -1,0 +1,44 @@
+{
+ "fecha": "2027-08-02",
+ "dia": "lun 2 ago",
+ "fase": "PEAK WEEK",
+ "semana": 38,
+ "rutina": "CHEST · 100 Chest ligero · 6:45–7:45",
+ "cafe": "6:00",
+ "pre": null,
+ "ventana": {
+  "abre": "8:30",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 549,
+   "p": 61
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 613,
+   "p": 61
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 664,
+   "p": 64
+  }
+ ],
+ "kcal": 1815,
+ "p": 185,
+ "c": 145,
+ "g": 55,
+ "agua_l": 4,
+ "linea1": "PEAK WEEK · S38 · LUN 2 ago",
+ "linea2": "CHEST · 100 Chest ligero · 6:45–7:45",
+ "linea3": "☕ 6:00 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "1,815 kcal · P 185 · 💧 4 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

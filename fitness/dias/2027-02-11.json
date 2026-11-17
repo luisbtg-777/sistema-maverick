@@ -1,0 +1,44 @@
+{
+ "fecha": "2027-02-11",
+ "dia": "jue 11 feb",
+ "fase": "FORGE",
+ "semana": 13,
+ "rutina": "🥥 SHOULDER + 🗻 TRAPS · 6:00–8:00",
+ "cafe": "5:15",
+ "pre": null,
+ "ventana": {
+  "abre": "8:45",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:45",
+   "kcal": 616,
+   "p": 61
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 642,
+   "p": 63
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 661,
+   "p": 66
+  }
+ ],
+ "kcal": 1900,
+ "p": 190,
+ "c": 150,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S13 · JUE 11 feb",
+ "linea2": "🥥 SHOULDER + 🗻 TRAPS · 6:00–8:00",
+ "linea3": "☕ 5:15 · 🍳 8:45 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "1,900 kcal · P 190 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

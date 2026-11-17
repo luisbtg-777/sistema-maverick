@@ -1,0 +1,62 @@
+{
+ "fecha": "2027-08-06",
+ "dia": "vie 6 ago",
+ "fase": "PEAK WEEK",
+ "semana": 38,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "7:00",
+  "cierra": "19:00",
+  "tipo": "12 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "7:00",
+   "kcal": 482,
+   "p": 32
+  },
+  {
+   "nombre": "C2",
+   "hora": "9:15",
+   "kcal": 641,
+   "p": 42
+  },
+  {
+   "nombre": "C3",
+   "hora": "11:45",
+   "kcal": 645,
+   "p": 42
+  },
+  {
+   "nombre": "C4",
+   "hora": "14:15",
+   "kcal": 511,
+   "p": 38
+  },
+  {
+   "nombre": "C5",
+   "hora": "16:45",
+   "kcal": 600,
+   "p": 33
+  },
+  {
+   "nombre": "C6",
+   "hora": "18:45",
+   "kcal": 257,
+   "p": 4
+  }
+ ],
+ "kcal": 3135,
+ "p": 185,
+ "c": 520,
+ "g": 35,
+ "agua_l": 3.8,
+ "linea1": "PEAK WEEK · S38 · VIE 6 ago",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 7:00 · 🍖 9:15 · 🐟 11:45 · 🍽️ 14:15 · 🍽️ 16:45 · 🍽️ 18:45 · 🔒 19:00",
+ "linea4": "3,135 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

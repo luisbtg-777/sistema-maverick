@@ -1,0 +1,38 @@
+{
+ "fecha": "2028-05-07",
+ "dia": "dom 7 may",
+ "fase": "MINI-CORTE",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1111,
+   "p": 89
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1238,
+   "p": 97
+  }
+ ],
+ "kcal": 2345,
+ "p": 185,
+ "c": 255,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "MINI-CORTE · DOM 7 may",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "2,345 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

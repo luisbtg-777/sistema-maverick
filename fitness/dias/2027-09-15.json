@@ -1,0 +1,50 @@
+{
+ "fecha": "2027-09-15",
+ "dia": "mié 15 sep",
+ "fase": "CORTE FINAL",
+ "semana": null,
+ "rutina": "🦵🏼 LEG + 🍑 GLUTE · 6:00–7:45",
+ "cafe": "5:15",
+ "pre": "5:30",
+ "ventana": {
+  "abre": "5:30",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "5:30",
+   "kcal": 123,
+   "p": 27
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 558,
+   "p": 36
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 770,
+   "p": 59
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 690,
+   "p": 60
+  }
+ ],
+ "kcal": 2149,
+ "p": 185,
+ "c": 206,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "CORTE FINAL · MIÉ 15 sep",
+ "linea2": "🦵🏼 LEG + 🍑 GLUTE · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🥤 5:30 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,149 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

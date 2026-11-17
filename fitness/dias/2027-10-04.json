@@ -1,0 +1,44 @@
+{
+ "fecha": "2027-10-04",
+ "dia": "lun 4 oct",
+ "fase": "CORTE FINAL",
+ "semana": null,
+ "rutina": "🛡️ CHEST · 6:00–7:45",
+ "cafe": "5:15",
+ "pre": null,
+ "ventana": {
+  "abre": "8:30",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 782,
+   "p": 65
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 767,
+   "p": 60
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 695,
+   "p": 60
+  }
+ ],
+ "kcal": 2235,
+ "p": 185,
+ "c": 250,
+ "g": 55,
+ "agua_l": 3.8,
+ "linea1": "CORTE FINAL · LUN 4 oct",
+ "linea2": "🛡️ CHEST · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,235 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

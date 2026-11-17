@@ -1,0 +1,50 @@
+{
+ "fecha": "2027-03-25",
+ "dia": "jue 25 mar",
+ "fase": "HYPER",
+ "semana": 19,
+ "rutina": "🛡️ CHEST 2 + 🧲 TRICEP 2 · 6:00–7:45",
+ "cafe": "5:15",
+ "pre": "5:30",
+ "ventana": {
+  "abre": "5:30",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "5:30",
+   "kcal": 241,
+   "p": 28
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 388,
+   "p": 33
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 633,
+   "p": 60
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 650,
+   "p": 63
+  }
+ ],
+ "kcal": 1900,
+ "p": 185,
+ "c": 155,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "HYPER · S19 · JUE 25 mar",
+ "linea2": "🛡️ CHEST 2 + 🧲 TRICEP 2 · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🥤 5:30 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "1,900 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

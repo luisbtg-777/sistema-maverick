@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-03-24",
+ "dia": "vie 24 mar",
+ "fase": "VOLUMEN",
+ "semana": null,
+ "rutina": "🤸 SKILLS + 💥 BOMBEO · 7:00–7:45 (opcional)",
+ "cafe": "6:00",
+ "pre": "6:30",
+ "ventana": {
+  "abre": "6:30",
+  "cierra": "16:00",
+  "tipo": "14.5:9.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "6:30",
+   "kcal": 241,
+   "p": 28
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:45",
+   "kcal": 1249,
+   "p": 55
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 837,
+   "p": 33
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 726,
+   "p": 34
+  }
+ ],
+ "kcal": 3035,
+ "p": 150,
+ "c": 440,
+ "g": 75,
+ "agua_l": 3.8,
+ "linea1": "VOLUMEN · VIE 24 mar",
+ "linea2": "🤸 SKILLS + 💥 BOMBEO · 7:00–7:45 (opcional)",
+ "linea3": "☕ 6:00 · 🥤 6:30 · 🍳 8:45 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "3,035 kcal · P 150 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

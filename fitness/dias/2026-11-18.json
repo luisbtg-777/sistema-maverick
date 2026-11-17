@@ -1,0 +1,50 @@
+{
+ "fecha": "2026-11-18",
+ "dia": "mié 18 nov",
+ "fase": "BASICS",
+ "semana": 1,
+ "rutina": "🦵🏼 PIERNA · 6:00–7:45",
+ "cafe": "5:15",
+ "pre": "5:30",
+ "ventana": {
+  "abre": "5:30",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "5:30",
+   "kcal": 123,
+   "p": 27
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 584,
+   "p": 37
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 691,
+   "p": 63
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 685,
+   "p": 66
+  }
+ ],
+ "kcal": 2060,
+ "p": 190,
+ "c": 190,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "BASICS · S1 · MIÉ 18 nov",
+ "linea2": "🦵🏼 PIERNA · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🥤 5:30 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,060 kcal · P 190 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

@@ -1,0 +1,38 @@
+{
+ "fecha": "2027-07-24",
+ "dia": "sáb 24 jul",
+ "fase": "CUTTING",
+ "semana": 36,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 960,
+   "p": 105
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 849,
+   "p": 81
+  }
+ ],
+ "kcal": 1815,
+ "p": 185,
+ "c": 145,
+ "g": 55,
+ "agua_l": 3.8,
+ "linea1": "CUTTING · S36 · SÁB 24 jul",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "1,815 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

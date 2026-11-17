@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-06-18",
+ "dia": "dom 18 jun",
+ "fase": "MINI PEAK",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "8:30",
+  "cierra": "19:00",
+  "tipo": "10.5 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 553,
+   "p": 51
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 786,
+   "p": 56
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:00",
+   "kcal": 571,
+   "p": 46
+  },
+  {
+   "nombre": "C4",
+   "hora": "18:30",
+   "kcal": 552,
+   "p": 41
+  }
+ ],
+ "kcal": 2402,
+ "p": 185,
+ "c": 303,
+ "g": 50,
+ "agua_l": 4,
+ "linea1": "MINI PEAK · DOM 18 jun",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 8:30 · 🍖 12:00 · 🐟 15:00 · 🍽️ 18:30 · 🔒 19:00",
+ "linea4": "2,402 kcal · P 185 · 💧 4 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

@@ -1,0 +1,38 @@
+{
+ "fecha": "2027-08-15",
+ "dia": "dom 15 ago",
+ "fase": "PUENTE",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 963,
+   "p": 94
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1000,
+   "p": 96
+  }
+ ],
+ "kcal": 1960,
+ "p": 185,
+ "c": 170,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "PUENTE · DOM 15 ago",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "1,960 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

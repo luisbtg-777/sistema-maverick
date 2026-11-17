@@ -1,0 +1,25 @@
+name: Fitness MV · hoy.json para Widgy
+on:
+  schedule:
+    - cron: '5 6 * * *'   # 00:05 en CDMX (UTC-6)
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  hoy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copiar el día de hoy
+        run: |
+          HOY=$(TZ=America/Mexico_City date +%F)
+          MAN=$(TZ=America/Mexico_City date -d tomorrow +%F)
+          cp "fitness/dias/$HOY.json" fitness/hoy.json
+          if [ -f "fitness/dias/$MAN.json" ]; then cp "fitness/dias/$MAN.json" fitness/manana.json; fi
+      - name: Guardar
+        run: |
+          git config user.name "fitness-mv-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add fitness/hoy.json fitness/manana.json
+          git diff --cached --quiet || git commit -m "Fitness MV: hoy.json $(TZ=America/Mexico_City date +%F)"
+          git push

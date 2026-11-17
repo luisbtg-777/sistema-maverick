@@ -1,0 +1,44 @@
+{
+ "fecha": "2026-12-24",
+ "dia": "jue 24 dic",
+ "fase": "FORGE",
+ "semana": 6,
+ "rutina": "✈️ Blindaje · full-body",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "8:30",
+  "cierra": "16:00",
+  "tipo": "16:8"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 929,
+   "p": 72
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 714,
+   "p": 55
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 792,
+   "p": 58
+  }
+ ],
+ "kcal": 2449,
+ "p": 185,
+ "c": 281,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S6 · JUE 24 dic",
+ "linea2": "✈️ Blindaje · full-body",
+ "linea3": "🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,449 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

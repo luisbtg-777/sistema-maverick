@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-06-19",
+ "dia": "lun 19 jun",
+ "fase": "MINI PEAK",
+ "semana": null,
+ "rutina": "🏆 Pump 20-30' · 30-60' antes de las fotos · 7:00–7:25",
+ "cafe": "6:15",
+ "pre": null,
+ "ventana": {
+  "abre": "6:00",
+  "cierra": "18:00",
+  "tipo": "12 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "6:00",
+   "kcal": 380,
+   "p": 31
+  },
+  {
+   "nombre": "C2",
+   "hora": "9:30",
+   "kcal": 537,
+   "p": 63
+  },
+  {
+   "nombre": "C3",
+   "hora": "13:00",
+   "kcal": 402,
+   "p": 42
+  },
+  {
+   "nombre": "C4",
+   "hora": "16:30",
+   "kcal": 361,
+   "p": 51
+  }
+ ],
+ "kcal": 1656,
+ "p": 185,
+ "c": 139,
+ "g": 40,
+ "agua_l": 3,
+ "linea1": "MINI PEAK · LUN 19 jun",
+ "linea2": "🏆 Pump 20-30' · 30-60' antes de las fotos · 7:00–7:25",
+ "linea3": "☕ 6:15 · 🍳 6:00 · 🍖 9:30 · 🐟 13:00 · 🍽️ 16:30 · 🔒 18:00",
+ "linea4": "1,656 kcal · P 185 · 💧 3 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

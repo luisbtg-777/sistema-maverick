@@ -1,0 +1,44 @@
+{
+ "fecha": "2028-04-16",
+ "dia": "dom 16 abr",
+ "fase": "VOLUMEN",
+ "semana": null,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1069,
+   "p": 50
+  },
+  {
+   "nombre": "Batido",
+   "hora": "13:30",
+   "kcal": 794,
+   "p": 50
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 1134,
+   "p": 50
+  }
+ ],
+ "kcal": 2980,
+ "p": 150,
+ "c": 415,
+ "g": 80,
+ "agua_l": 3.8,
+ "linea1": "VOLUMEN · DOM 16 abr",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍽️ 13:30 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "2,980 kcal · P 150 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

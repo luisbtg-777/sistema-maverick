@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-04-06",
+ "dia": "jue 6 abr",
+ "fase": "VOLUMEN",
+ "semana": null,
+ "rutina": "🥥 SHOULDER + 🗻 TRAPS · 6:00–8:00",
+ "cafe": "5:15",
+ "pre": "5:30",
+ "ventana": {
+  "abre": "5:30",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "5:30",
+   "kcal": 241,
+   "p": 28
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:45",
+   "kcal": 1249,
+   "p": 55
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 837,
+   "p": 33
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 726,
+   "p": 34
+  }
+ ],
+ "kcal": 3035,
+ "p": 150,
+ "c": 440,
+ "g": 75,
+ "agua_l": 3.8,
+ "linea1": "VOLUMEN · JUE 6 abr",
+ "linea2": "🥥 SHOULDER + 🗻 TRAPS · 6:00–8:00",
+ "linea3": "☕ 5:15 · 🥤 5:30 · 🍳 8:45 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "3,035 kcal · P 150 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

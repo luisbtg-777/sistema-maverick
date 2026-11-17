@@ -1,0 +1,50 @@
+{
+ "fecha": "2027-11-04",
+ "dia": "jue 4 nov",
+ "fase": "PEAK2",
+ "semana": null,
+ "rutina": "SHOULDERS ligero + flex suave · 6:45–7:30",
+ "cafe": "6:00",
+ "pre": null,
+ "ventana": {
+  "abre": "6:15",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "6:15",
+   "kcal": 123,
+   "p": 27
+  },
+  {
+   "nombre": "C2",
+   "hora": "8:30",
+   "kcal": 481,
+   "p": 42
+  },
+  {
+   "nombre": "C3",
+   "hora": "12:00",
+   "kcal": 648,
+   "p": 67
+  },
+  {
+   "nombre": "C4",
+   "hora": "15:30",
+   "kcal": 671,
+   "p": 49
+  }
+ ],
+ "kcal": 1899,
+ "p": 185,
+ "c": 121,
+ "g": 75,
+ "agua_l": 3.8,
+ "linea1": "PEAK2 · JUE 4 nov",
+ "linea2": "SHOULDERS ligero + flex suave · 6:45–7:30",
+ "linea3": "☕ 6:00 · 🍳 6:15 · 🍖 8:30 · 🐟 12:00 · 🍽️ 15:30 · 🔒 16:00",
+ "linea4": "1,899 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

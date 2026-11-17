@@ -1,0 +1,62 @@
+{
+ "fecha": "2027-11-06",
+ "dia": "sáb 6 nov",
+ "fase": "PEAK2",
+ "semana": null,
+ "rutina": "Pump opcional 15' · sin pesas · 9:00–9:15",
+ "cafe": "8:15",
+ "pre": null,
+ "ventana": {
+  "abre": "8:00",
+  "cierra": "19:00",
+  "tipo": "11 h"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "8:00",
+   "kcal": 550,
+   "p": 33
+  },
+  {
+   "nombre": "C2",
+   "hora": "10:15",
+   "kcal": 723,
+   "p": 44
+  },
+  {
+   "nombre": "C3",
+   "hora": "12:30",
+   "kcal": 751,
+   "p": 44
+  },
+  {
+   "nombre": "C4",
+   "hora": "14:45",
+   "kcal": 578,
+   "p": 39
+  },
+  {
+   "nombre": "C5",
+   "hora": "16:45",
+   "kcal": 699,
+   "p": 35
+  },
+  {
+   "nombre": "C6",
+   "hora": "18:45",
+   "kcal": 317,
+   "p": 5
+  }
+ ],
+ "kcal": 3575,
+ "p": 185,
+ "c": 630,
+ "g": 35,
+ "agua_l": 3.8,
+ "linea1": "PEAK2 · SÁB 6 nov",
+ "linea2": "Pump opcional 15' · sin pesas · 9:00–9:15",
+ "linea3": "☕ 8:15 · 🍳 8:00 · 🍖 10:15 · 🐟 12:30 · 🍽️ 14:45 · 🍽️ 16:45 · 🍽️ 18:45 · 🔒 19:00",
+ "linea4": "3,575 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-01-22",
+ "dia": "sáb 22 ene",
+ "fase": "VOLUMEN",
+ "semana": null,
+ "rutina": "🦵🏼 LEG 2 + 🥥 SHOULDER 2 · 9:15–11:00",
+ "cafe": "8:30",
+ "pre": "8:45",
+ "ventana": {
+  "abre": "8:45",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "8:45",
+   "kcal": 241,
+   "p": 28
+  },
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 1036,
+   "p": 36
+  },
+  {
+   "nombre": "Batido",
+   "hora": "13:30",
+   "kcal": 794,
+   "p": 50
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 965,
+   "p": 37
+  }
+ ],
+ "kcal": 3035,
+ "p": 150,
+ "c": 440,
+ "g": 75,
+ "agua_l": 3.8,
+ "linea1": "VOLUMEN · SÁB 22 ene",
+ "linea2": "🦵🏼 LEG 2 + 🥥 SHOULDER 2 · 9:15–11:00",
+ "linea3": "☕ 8:30 · 🥤 8:45 · 🍳 12:00 · 🍽️ 13:30 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "3,035 kcal · P 150 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

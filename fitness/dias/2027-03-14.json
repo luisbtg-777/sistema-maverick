@@ -1,0 +1,38 @@
+{
+ "fecha": "2027-03-14",
+ "dia": "dom 14 mar",
+ "fase": "FORGE",
+ "semana": 17,
+ "rutina": "🛋️ Descanso",
+ "cafe": null,
+ "pre": null,
+ "ventana": {
+  "abre": "12:00",
+  "cierra": "16:00",
+  "tipo": "2 comidas"
+ },
+ "comidas": [
+  {
+   "nombre": "C1",
+   "hora": "12:00",
+   "kcal": 886,
+   "p": 95
+  },
+  {
+   "nombre": "C2",
+   "hora": "15:30",
+   "kcal": 958,
+   "p": 95
+  }
+ ],
+ "kcal": 1845,
+ "p": 190,
+ "c": 125,
+ "g": 65,
+ "agua_l": 3.8,
+ "linea1": "FORGE · S17 · DOM 14 mar",
+ "linea2": "🛋️ Descanso",
+ "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
+ "linea4": "1,845 kcal · P 190 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}

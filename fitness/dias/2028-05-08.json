@@ -1,0 +1,50 @@
+{
+ "fecha": "2028-05-08",
+ "dia": "lun 8 may",
+ "fase": "MINI-CORTE",
+ "semana": null,
+ "rutina": "🛡️ CHEST · 6:00–7:45",
+ "cafe": "5:15",
+ "pre": "5:30",
+ "ventana": {
+  "abre": "5:30",
+  "cierra": "16:00",
+  "tipo": "13.5:10.5"
+ },
+ "comidas": [
+  {
+   "nombre": "Pre",
+   "hora": "5:30",
+   "kcal": 123,
+   "p": 27
+  },
+  {
+   "nombre": "C1",
+   "hora": "8:30",
+   "kcal": 788,
+   "p": 44
+  },
+  {
+   "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 659,
+   "p": 52
+  },
+  {
+   "nombre": "C3",
+   "hora": "15:30",
+   "kcal": 815,
+   "p": 63
+  }
+ ],
+ "kcal": 2400,
+ "p": 185,
+ "c": 280,
+ "g": 60,
+ "agua_l": 3.8,
+ "linea1": "MINI-CORTE · LUN 8 may",
+ "linea2": "🛡️ CHEST · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🥤 5:30 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,400 kcal · P 185 · 💧 3.8 L",
+ "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
+}
