@@ -1,0 +1,528 @@
+{
+ "version": 1,
+ "inicio": "2026-11-30",
+ "colores": {
+  "base": "#D6C2A1",
+  "onix": "#0E0C0A",
+  "F1": "#8A6A4F",
+  "F2": "#B87561",
+  "F3": "#EADFC8",
+  "VIDA": "#D6C2A1"
+ },
+ "fases": [
+  {
+   "id": "F1",
+   "nombre": "Cimiento",
+   "lema": "Obedecer",
+   "dias": 28,
+   "min": 0.8,
+   "invivo": 0,
+   "seisEmociones": false,
+   "noDobleCero": true,
+   "libro": "Meditaciones · Marco Aurelio"
+  },
+  {
+   "id": "F2",
+   "nombre": "Filo",
+   "lema": "Incomodar",
+   "dias": 28,
+   "min": 0.8,
+   "invivo": 6,
+   "seisEmociones": false,
+   "noDobleCero": false,
+   "libro": "El libro de los cinco anillos · Musashi"
+  },
+  {
+   "id": "F3",
+   "nombre": "Maestría",
+   "lema": "Dictar tu orden",
+   "dias": 28,
+   "min": 0.85,
+   "invivo": 8,
+   "seisEmociones": true,
+   "noDobleCero": false,
+   "libro": "Maestría · Robert Greene"
+  }
+ ],
+ "vida": {
+  "id": "VIDA",
+  "nombre": "Vida",
+  "lema": "Mantener el filo para siempre",
+  "libro": "El que te llame"
+ },
+ "extensionDias": 7,
+ "maxExtensiones": 4,
+ "viaje": {
+  "desde": "2026-12-16",
+  "hasta": "2027-01-01",
+  "nombre": "Medellín",
+  "traslado": [
+   "2026-12-16",
+   "2026-12-21",
+   "2026-12-24",
+   "2026-12-28",
+   "2026-12-31"
+  ]
+ },
+ "horario": {
+  "m": {
+   "1": "05:30",
+   "2": "05:30",
+   "3": "05:30",
+   "4": "05:30",
+   "5": "05:30",
+   "6": "08:00",
+   "0": "10:30",
+   "desdeEne": {
+    "5": "06:15",
+    "6": "10:30"
+   }
+  },
+  "i": {
+   "1": "13:30",
+   "2": "13:30",
+   "3": "13:30",
+   "4": "13:30",
+   "5": "14:00",
+   "6": "14:30",
+   "0": "15:00"
+  },
+  "n": {
+   "1": "21:30",
+   "2": "21:30",
+   "3": "21:30",
+   "4": "21:30",
+   "5": "23:00",
+   "6": "23:00",
+   "0": "21:30"
+  },
+  "gym": {
+   "1": [
+    "06:00",
+    "08:00"
+   ],
+   "2": [
+    "06:00",
+    "08:00"
+   ],
+   "3": [
+    "06:00",
+    "08:00"
+   ],
+   "4": [
+    "06:00",
+    "08:00"
+   ],
+   "5": [
+    "06:00",
+    "08:00"
+   ],
+   "6": [
+    "09:00",
+    "11:00"
+   ]
+  }
+ },
+ "manana": {
+  "nombre": "Conciencia",
+  "emoji": "🧘",
+  "cal": "MIND · dentro de ☕",
+  "pasos": [
+   {
+    "k": "aterrizar",
+    "t": "Aterrizar",
+    "d": "3 respiraciones · «Memento mori: hoy puede ser el último»"
+   },
+   {
+    "k": "yo",
+    "t": "Yo · interna",
+    "d": "Pensamientos como nubes: nómbralos (planear, recordar) y suéltalos"
+   },
+   {
+    "k": "mundo",
+    "t": "Mundo · externa",
+    "d": "Sonidos, temperatura, el cuarto. Sin juzgar"
+   },
+   {
+    "k": "total",
+    "t": "Totalidad · dual",
+    "d": "Presencia Crística / Conexión: sostén yo y mundo a la vez"
+   },
+   {
+    "k": "sello",
+    "t": "Sello",
+    "d": "Elige el valor que manda hoy"
+   }
+  ],
+  "min": {
+   "F1": [
+    1,
+    5,
+    4,
+    4,
+    1
+   ],
+   "F2": [
+    1,
+    6,
+    6,
+    6,
+    1
+   ],
+   "F3": [
+    1,
+    8,
+    7,
+    8,
+    1
+   ],
+   "VIDA": [
+    1,
+    5,
+    4,
+    4,
+    1
+   ],
+   "VIAJE": [
+    1,
+    2,
+    2,
+    2,
+    0
+   ]
+  },
+  "nivel": {
+   "F1": "Ojos cerrados, sentado",
+   "F2": "Sin guía; cada distracción baja el slider",
+   "F3": "Ojos entreabiertos, cero movimiento (si te mueves, reinicias)",
+   "VIDA": "Tu forma, 15 min",
+   "VIAJE": "7 min a cualquier hora"
+  },
+  "shoshin": {
+   "F1": "«Primera vez» 1× hoy: una acción rutinaria 30 s como si nunca la hubieras hecho",
+   "F2": "«Primera vez» 3× hoy",
+   "F3": "«Primera vez» en cada transición (gym, junta, Uber)",
+   "VIDA": "«Primera vez» 1× hoy",
+   "VIAJE": "«Primera vez» 1× hoy"
+  },
+  "finDeSemana": {
+   "6": "💀 Memento Mori del sábado también cuenta",
+   "0": "🌱 Memento Vivere del domingo también cuenta"
+  }
+ },
+ "intelecto": {
+  "nombre": "Intelecto",
+  "emoji": "📖",
+  "cal": "MIND",
+  "lema": "Orden dada, orden cumplida.",
+  "pasos": [
+   {
+    "k": "orden",
+    "t": "⚔️ Orden del día",
+    "d": "Se acepta en 1 toque. Sin negociar"
+   },
+   {
+    "k": "quietud",
+    "t": "🪨 Quietud",
+    "d": "Sentado, sin teléfono. Si divagas, reinicia"
+   },
+   {
+    "k": "lectura",
+    "t": "📖 Lectura libre",
+    "d": "Lo que te interese. Sin meta de páginas"
+   },
+   {
+    "k": "dicotomia",
+    "t": "🏛️ Dicotomía + ♟",
+    "d": "¿Qué controlo hoy / qué suelto? · ¿Qué movimiento es inteligente aquí? No en mi fantasía."
+   }
+  ],
+  "min": {
+   "F1": [
+    2,
+    3,
+    8,
+    2
+   ],
+   "F2": [
+    2,
+    5,
+    10,
+    3
+   ],
+   "F3": [
+    2,
+    7,
+    13,
+    3
+   ],
+   "VIDA": [
+    2,
+    3,
+    8,
+    2
+   ],
+   "VIAJE": [
+    0,
+    0,
+    5,
+    0
+   ]
+  },
+  "deber": {
+   "F3": "Diario de deber (Marco Aurelio): 1 línea"
+  },
+  "ordenes": {
+   "F1": [
+    "5 min de quietud sin moverte",
+    "Levántate a la 1ª alarma en menos de 3 s",
+    "Come sin pantalla",
+    "Cama hecha en 60 s",
+    "Termina la tarea que estás evitando",
+    "Lee 10 min sin el celular cerca"
+   ],
+   "F2": [
+    "10 min de quietud",
+    "Sin snooze + agua fría al rostro",
+    "Come en silencio total",
+    "Ducha fría 30 s",
+    "Haz primero la tarea más temida",
+    "Postura erguida toda la junta"
+   ],
+   "F3": [
+    "15 min de quietud",
+    "Despierta sin alarma a la hora fijada",
+    "Sin redes hasta las 18:00",
+    "Ducha fría 2 min",
+    "Cumple la orden que te dictaste anoche",
+    "Ten 1 conversación incómoda pendiente"
+   ],
+   "VIDA": [
+    "5 min de quietud sin moverte",
+    "Levántate a la 1ª alarma en menos de 3 s",
+    "Come sin pantalla",
+    "Ducha fría 30 s",
+    "Haz primero la tarea más temida",
+    "Sin redes hasta las 18:00"
+   ],
+   "VIAJE": [
+    "Levántate en menos de 3 s",
+    "1 comida sin pantalla"
+   ]
+  },
+  "sukushin": "Ejecuta en ≤3 s. Si dudas o negocias: repites la orden completa, una vez. Sin culpa, sin acumular."
+ },
+ "noche": {
+  "nombre": "Afectivo",
+  "emoji": "🌙",
+  "cal": "HART · antes de 🦅",
+  "trataka": {
+   "F1": 3,
+   "F2": 5,
+   "F3": 7,
+   "VIDA": 5,
+   "VIAJE": 2
+  },
+  "tratakaGuia": "Vela a la altura de los ojos, a un brazo. Mira la flama sin parpadear; al final cierra los ojos y sostén la imagen.",
+  "min": {
+   "F1": 8,
+   "F2": 10,
+   "F3": 12,
+   "VIDA": 8,
+   "VIAJE": 3
+  },
+  "lunas": [
+   {
+    "e": "🌑",
+    "t": "La emoción me manejó: reaccioné y escapé"
+   },
+   {
+    "e": "🌒",
+    "t": "La noté tarde, después de reaccionar"
+   },
+   {
+    "e": "🌓",
+    "t": "La noté a tiempo, pero actué desde ella"
+   },
+   {
+    "e": "🌔",
+    "t": "La noté, hice la pausa de 3 s y elegí"
+   },
+   {
+    "e": "🌕",
+    "t": "La observé en el cuerpo y actué desde mis valores"
+   }
+  ],
+  "cuerpo": [
+   "Cabeza",
+   "Garganta",
+   "Pecho",
+   "Estómago",
+   "Hombros",
+   "Manos"
+  ],
+  "sombra": "¿Qué parte de mí estoy negando?",
+  "sen": [
+   "📵 Celular fuera del cuarto",
+   "🎒 Ropa de gym y libro a la vista",
+   "⚔️ Orden de mañana revisada",
+   "🚫 1 tentación eliminada"
+  ],
+  "senViaje": [
+   "📵 Celular lejos de la cama"
+  ]
+ },
+ "emociones": [
+  {
+   "k": "miedo",
+   "e": "😨",
+   "t": "Miedo"
+  },
+  {
+   "k": "ansiedad",
+   "e": "😰",
+   "t": "Ansiedad"
+  },
+  {
+   "k": "rechazo",
+   "e": "🚫",
+   "t": "Rechazo"
+  },
+  {
+   "k": "verguenza",
+   "e": "😳",
+   "t": "Vergüenza"
+  },
+  {
+   "k": "ira",
+   "e": "😡",
+   "t": "Ira"
+  },
+  {
+   "k": "culpa",
+   "e": "😔",
+   "t": "Culpa"
+  }
+ ],
+ "invivo": {
+  "dias": {
+   "F1": [
+    3
+   ],
+   "F2": [
+    3,
+    5
+   ],
+   "F3": [
+    3,
+    5
+   ],
+   "VIDA": [
+    3
+   ],
+   "VIAJE": []
+  },
+  "regla": "El éxito es hacerla, no que salga bien. Acepta un «no» a la primera.",
+  "escalera": {
+   "miedo": [
+    "Pide en el gym que te enseñen un ejercicio que no dominas",
+    "Habla primero en una junta con un cliente grande",
+    "Monólogo de 1 min en un open mic"
+   ],
+   "ansiedad": [
+    "Deja el celular en otro cuarto 2 h por la noche",
+    "Llega a una reunión social sin plan ni hora de salida",
+    "Graba un self-tape y súbelo sin editar"
+   ],
+   "rechazo": [
+    "Pide un descuento o un upgrade en una tienda o restaurante",
+    "Invita a salir por mensaje a alguien que te gusta",
+    "Hazlo en persona con alguien desconocido en un bar o café"
+   ],
+   "verguenza": [
+    "Usa una prenda llamativa en la oficina",
+    "Canta o baila en público (karaoke, fiesta)",
+    "Pide feedback honesto de tu actuación a 3 personas"
+   ],
+   "ira": [
+    "Ante una crítica: pausa de 3 s y responde «cuéntame más»",
+    "Pídele algo pendiente a alguien que te incomoda",
+    "Sostén un desacuerdo con tu jefa o un cliente sin subir el tono"
+   ],
+   "culpa": [
+    "Di «no» a un plan sin justificarte",
+    "Pide una disculpa limpia sobre algo pendiente, sin excusas",
+    "Cobra o pide lo que vales (aumento, tarifa, límite)"
+   ]
+  }
+ },
+ "valores": [
+  {
+   "e": "🛡️",
+   "t": "Responsabilidad",
+   "r": "El deber va primero"
+  },
+  {
+   "e": "❤️",
+   "t": "Amor",
+   "r": "Los tuyos"
+  },
+  {
+   "e": "🤝",
+   "t": "Lealtad",
+   "r": "Palabra dada"
+  },
+  {
+   "e": "🔥",
+   "t": "Osadía",
+   "r": "Actuar con miedo"
+  },
+  {
+   "e": "🧭",
+   "t": "Aventura",
+   "r": "Expandirse"
+  },
+  {
+   "e": "👑",
+   "t": "Poder",
+   "r": "Capacidad de influir"
+  },
+  {
+   "e": "🏆",
+   "t": "Gloria",
+   "r": "Consecuencia, nunca motivo"
+  }
+ ],
+ "filtro": "¿Esto honra mi valor más alto en juego, o solo mi comodidad?",
+ "revision": [
+  "¿Qué bloque fallé más y qué vía de escape lo permitió?",
+  "¿Qué emoción me manejó y qué valor debió mandar?",
+  "¿Qué pequeña victoria subo la próxima semana?"
+ ],
+ "limites": "Esto es entrenamiento, no terapia. Baja a la fase anterior con 3+ 🌑 seguidas, insomnio o malestar intenso >24 h tras una exposición. Si aparece pánico, tristeza persistente de 2+ semanas o pensamientos de hacerte daño, busca a un profesional.",
+ "filosofos": [
+  {
+   "k": "jung",
+   "e": "🌑",
+   "t": "Jung",
+   "q": "¿Qué parte de mí estoy negando?"
+  },
+  {
+   "k": "maq",
+   "e": "♟",
+   "t": "Maquiavelo",
+   "q": "¿Qué movimiento es inteligente aquí? No en mi fantasía."
+  },
+  {
+   "k": "niet",
+   "e": "⚡",
+   "t": "Nietzsche",
+   "q": "¿Lo voy a hacer aunque me tiemble la voz?"
+  }
+ ],
+ "credo": {
+  "t": "Nada es verdad. Todo está permitido.",
+  "s": "Somos los arquitectos de nuestras acciones y vivimos con sus consecuencias, gloriosas o trágicas.",
+  "a": "Ezio Auditore"
+ }
+}

@@ -1,0 +1,36 @@
+const fs=require('fs'),assert=require('assert');
+const P=JSON.parse(fs.readFileSync('../../mente/protocolo.json','utf8'));
+eval(fs.readFileSync('../../mente/src/engine.js','utf8'));
+const MM=globalThis.MM; MM.setProtocolo(P);
+let n=0; const t=(name,fn)=>{fn();n++;console.log('✓',name)};
+const full=(s)=>({m:{done:true},i:{done:true},n:{done:true}});
+function fill(state,ini,dias,fn){for(let k=0;k<dias;k++){const s=MM.add(ini,k);const d=fn(s,k);if(d)state.dias[s]=d;}return state}
+
+t('fechas',()=>{assert.equal(MM.add('2026-12-31',1),'2027-01-01');assert.equal(MM.diff('2026-11-30','2026-12-28'),28);assert.equal(MM.dow('2026-11-30'),1)});
+t('hoyLocal cambia a las 4am',()=>{const d=new Date(2026,11,2,3,30);assert.equal(MM.hoyLocal(d.getTime()),'2026-12-01');const e=new Date(2026,11,2,4,1);assert.equal(MM.hoyLocal(e.getTime()),'2026-12-02')});
+t('PRE antes del 30 nov',()=>{const f=MM.fase(MM.migrar({}),'2026-11-18');assert.equal(f.modo,'PRE');assert.equal(f.faltan,12)});
+t('F1 día 1',()=>{const f=MM.fase(MM.migrar({}),'2026-11-30');assert.equal(f.key,'F1');assert.equal(f.dia,1);assert.equal(f.semana,1)});
+t('viaje: dosis VIAJE y traslado',()=>{const f=MM.fase(MM.migrar({}),'2026-12-20');assert.equal(f.dosis,'VIAJE');assert.ok(MM.esTraslado('2026-12-24'));assert.ok(!MM.esTraslado('2026-12-20'))});
+t('viaje: 🧘+🌙 = completo',()=>{const s=MM.migrar({dias:{'2026-12-20':{m:{done:true},n:{done:true}}}});assert.ok(MM.completo(s,'2026-12-20'));const s2=MM.migrar({dias:{'2026-12-10':{m:{done:true},n:{done:true}}}});assert.ok(!MM.completo(s2,'2026-12-10'))});
+t('F1 sin logro se extiende +7 (sin castigo)',()=>{const f=MM.fase(MM.migrar({}),'2026-12-30');assert.equal(f.key,'F1');assert.equal(f.ext,1);assert.equal(f.fin,'2027-01-04')});
+t('F1 perfecta → F2 el 28 dic',()=>{const s=fill(MM.migrar({}),'2026-11-30',28,(d)=>MM.enViaje(d)?{m:{done:true},n:{done:true}}:full());const f=MM.fase(s,'2026-12-28');assert.equal(f.key,'F2');assert.equal(f.inicio,'2026-12-28');assert.equal(f.sellos[0].sellada,true)});
+t('traslados no cuentan en el %',()=>{const s=fill(MM.migrar({}),'2026-11-30',28,(d)=>MM.esTraslado(d)?null:(MM.enViaje(d)?{m:{done:true},n:{done:true}}:full()));const ev=MM.evalFase(s,0,'2026-11-30','2026-12-28');assert.equal(ev.pct,1);assert.equal(ev.elegibles,28-3)});
+t('F1: 2 días seguidos en 0 impide sellar',()=>{const s=fill(MM.migrar({}),'2026-11-30',28,(d,k)=>(k===3||k===4)?null:(MM.enViaje(d)?{m:{done:true},n:{done:true}}:full()));const ev=MM.evalFase(s,0,'2026-11-30','2026-12-28');assert.ok(ev.pct>=0.8);assert.equal(ev.dobleCero,true);assert.equal(ev.cumple,false)});
+t('80 % exacto sella',()=>{const s=MM.migrar({});let ok=0;fill(s,'2026-11-30',28,(d,k)=>{if(MM.esTraslado(d))return null;return null});const el=[];for(let k=0;k<28;k++){const d=MM.add('2026-11-30',k);if(!MM.esTraslado(d))el.push(d)}const need=Math.ceil(el.length*0.8);el.forEach((d,i)=>{s.dias[d]=i<need?(MM.enViaje(d)?{m:{done:true},n:{done:true}}:full()):{m:{done:true}}});const ev=MM.evalFase(s,0,'2026-11-30','2026-12-28');assert.ok(ev.cumple,JSON.stringify(ev))});
+t('F2 exige 6 In Vivo',()=>{const s=fill(MM.migrar({}),'2026-11-30',56,(d)=>MM.enViaje(d)?{m:{done:true},n:{done:true}}:full());let f=MM.fase(s,'2027-01-25');assert.equal(f.key,'F2');assert.equal(f.ext,1);
+ for(let k=0;k<6;k++){s.dias[MM.add('2026-12-28',k*4)].v={done:true,emo:'miedo'}}f=MM.fase(s,'2027-01-25');assert.equal(f.key,'F3')});
+t('F3 exige las 6 emociones',()=>{const s=fill(MM.migrar({}),'2026-11-30',84,(d)=>MM.enViaje(d)?{m:{done:true},n:{done:true}}:full());const emos=['miedo','ansiedad','rechazo','verguenza','ira','culpa'];for(let k=0;k<6;k++)s.dias[MM.add('2026-12-28',k*4)].v={done:true,emo:'miedo'};
+ for(let k=0;k<8;k++)s.dias[MM.add('2027-01-25',k*3)].v={done:true,emo:'miedo'};let f=MM.fase(s,'2027-02-22');assert.equal(f.key,'F3');assert.equal(f.ext,1);
+ for(let k=0;k<8;k++)s.dias[MM.add('2027-01-25',k*3)].v={done:true,emo:emos[k%6]};f=MM.fase(s,'2027-02-22');assert.equal(f.modo,'VIDA')});
+t('máx. 4 extensiones y luego avanza',()=>{const f=MM.fase(MM.migrar({}),'2027-06-01');assert.ok(f.sellos.length>=1);assert.equal(f.sellos[0].ext,4);assert.equal(f.sellos[0].sellada,false)});
+t('horario: viernes ene 06:15, sábado dic 08:00',()=>{assert.equal(MM.hora('m','2027-01-08'),'06:15');assert.equal(MM.hora('m','2026-12-05'),'08:00');assert.equal(MM.hora('i','2026-12-04'),'14:00');assert.equal(MM.hora('n','2026-12-05'),'23:00')});
+t('orden propia en F3',()=>{const s=MM.migrar({dias:{'2027-02-01':{ordenPropia:'Llamar a mi manager'}}});assert.equal(MM.ordenDel(s,'2027-02-01','F3').t,'Llamar a mi manager');assert.equal(MM.ordenDel(s,'2027-02-01','F1').propia,false)});
+t('In Vivo: F1 solo miércoles; F2 mié y vie; viaje ninguno',()=>{const s=MM.migrar({});let f=MM.fase(s,'2026-12-02');assert.ok(MM.invivoDel('2026-12-02',f));assert.ok(!MM.invivoDel('2026-12-04',f));
+ f=MM.fase(s,'2026-12-23');assert.equal(MM.invivoDel('2026-12-23',f),null);
+ const s2=fill(MM.migrar({}),'2026-11-30',28,(d)=>MM.enViaje(d)?{m:{done:true},n:{done:true}}:full());f=MM.fase(s2,'2027-01-08');assert.equal(f.key,'F2');assert.ok(MM.invivoDel('2027-01-08',f));assert.equal(MM.invivoDel('2027-01-08',f).nivel,1)});
+t('In Vivo rota las 6 emociones en 3 semanas',()=>{const s=MM.migrar({});const seen=new Set();const f={key:'F2',dosis:'F2'};for(let w=0;w<3;w++){[3,5].forEach(dw=>{let d=MM.add('2026-11-30',w*7+(dw-1));seen.add(MM.invivoDel(d,f).emo.k)})}assert.equal(seen.size,6)});
+t('racha',()=>{const s=fill(MM.migrar({}),'2026-11-30',5,()=>full());assert.equal(MM.racha(s,'2026-12-04'),5);assert.equal(MM.racha(s,'2026-12-05'),5);assert.equal(MM.racha(s,'2026-12-06'),0)});
+t('corazonadas',()=>{const s=MM.migrar({dias:{a:{n:{corazonRes:'ok'}},b:{n:{corazonRes:'no'}},c:{n:{corazonRes:'ok'}}}});assert.equal(Math.round(MM.corazonadas(s).pct*100),67)});
+t('migrar no pierde datos',()=>{const raw={dias:{'2026-12-01':{m:{done:true,pres:4}}},extra:1};const s=MM.migrar(JSON.parse(JSON.stringify(raw)));assert.equal(s.dias['2026-12-01'].m.pres,4);assert.equal(s.extra,1);assert.deepEqual(MM.migrar(null).dias,{})});
+t('protocolo coherente',()=>{['F1','F2','F3','VIDA','VIAJE'].forEach(k=>{assert.equal(P.manana.min[k].length,5);assert.equal(P.intelecto.min[k].length,4);assert.ok(P.noche.trataka[k]);assert.ok(P.intelecto.ordenes[k].length)});P.emociones.forEach(e=>assert.equal(P.invivo.escalera[e.k].length,3));assert.equal(P.valores.length,7);assert.equal(P.manana.min.F1.reduce((a,b)=>a+b),15)});
+console.log(`\n${n} pruebas de motor OK`);

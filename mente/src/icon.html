@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><body style="margin:0;background:transparent">
+<svg id="ic" width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <radialGradient id="bg" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#3a2e1e"/><stop offset=".55" stop-color="#16120d"/><stop offset="1" stop-color="#0b0a08"/></radialGradient>
+ <radialGradient id="fl" cx="50%" cy="72%" r="60%"><stop offset="0" stop-color="#fffaf0"/><stop offset=".3" stop-color="#F3E3B8"/><stop offset=".7" stop-color="#D6C2A1"/><stop offset="1" stop-color="#8A6A4F"/></radialGradient>
+ <radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="rgba(240,220,170,.35)"/><stop offset="1" stop-color="rgba(240,220,170,0)"/></radialGradient>
+</defs>
+<rect width="1024" height="1024" fill="url(#bg)"/>
+<g id="dots"></g>
+<circle cx="512" cy="512" r="250" fill="url(#halo)"/>
+<path d="M512 330 C 590 430, 640 500, 600 600 C 580 650, 545 675, 512 678 C 479 675, 444 650, 424 600 C 384 500, 434 430, 512 330 Z" fill="url(#fl)"/>
+<path d="M512 470 C 545 525, 560 570, 540 615 C 530 637, 520 645, 512 646 C 504 645, 494 637, 484 615 C 464 570, 479 525, 512 470 Z" fill="#fffaf0" opacity=".85"/>
+</svg>
+<script>
+const g=document.getElementById('dots'),c=512;let s='';
+for(let r=0;r<3;r++){const R=400-r*36,n=Math.round(R*0.42);
+ for(let i=0;i<n;i++){const a=i/n*Math.PI*2-Math.PI/2;const lit=(i/n)<0.62-r*0.12;
+  s+=`<circle cx="${(c+R*Math.cos(a)).toFixed(1)}" cy="${(c+R*Math.sin(a)).toFixed(1)}" r="7.5" fill="${lit?'#D6C2A1':'rgba(255,255,255,.10)'}" opacity="${lit?0.9-r*0.2:1}"/>`}}
+g.innerHTML=s;
+</script></body></html>
