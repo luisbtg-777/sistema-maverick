@@ -1813,6 +1813,31 @@ html.v6 #s-entreno .live.v8tlbarlive .hd{flex-wrap:nowrap;white-space:nowrap;pad
 @keyframes v8tlp{0%,100%{opacity:1}50%{opacity:.62}}
 #s-entreno .v8tls.pulse .v8bmf i.lc,#s-entreno .v8tls.pulse .v8bmf i.ls,#s-entreno .v8tls.pulse .v8bmf .lh{animation:v8tlp 2.8s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){#s-entreno .v8tls.pulse .v8bmf i.lc,#s-entreno .v8tls.pulse .v8bmf i.ls,#s-entreno .v8tls.pulse .v8bmf .lh{animation:none}}
+/* ══ v8.9 · Camino op1 ══ */
+#s-camino .mapwrap.v8cam{margin:8px 8px 0!important;border-radius:28px;background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.12),inset 0 0 0 1px rgba(255,255,255,.07),0 14px 30px rgba(0,0,0,.35);overflow:visible}
+#s-camino .mapwrap.v8cam.v7tray{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015))!important;padding:0!important}
+#s-camino .v8camsvg{display:block;overflow:visible}
+#s-camino .v8camsvg g.node{cursor:pointer}
+#s-camino .v8camch{display:flex;gap:5px;margin:10px 12px 0;position:relative;z-index:10}
+#s-camino .v8camc{min-width:0;height:48px;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 8px;cursor:pointer;
+ background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);color:#8d939b;font-family:var(--v8f);text-align:left;overflow:hidden}
+#s-camino .v8camc b{font:600 10.5px var(--v8f);letter-spacing:.1em;color:var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#s-camino .v8camc small{font:500 12.5px var(--v8f);color:#8d939b;white-space:nowrap}
+#s-camino .v8camc.on{background:#151a21;border-color:transparent;box-shadow:-3px -3px 8px rgba(255,255,255,.05),4px 5px 10px rgba(0,0,0,.7),inset 0 0 0 1.5px var(--c)}
+#s-camino .v8camc.on small{color:#fff}
+html.v6 #s-camino .live.v8camlive{border-radius:26px!important}
+html.v6 #s-camino .live.v8camlive .glow{display:none!important}
+html.v6 #s-camino .live.v8camlive .hd{flex-wrap:nowrap;white-space:nowrap;padding-right:40px}
+#s-camino .v8camk{display:inline-flex;align-items:center;gap:8px;margin-left:10px;font:600 12.5px var(--v8f);letter-spacing:.08em;text-transform:uppercase;color:#fff}
+#s-camino .v8camk i{width:7px;height:7px;border-radius:50%;background:var(--ph);box-shadow:0 0 8px var(--ph)}
+#s-camino .v8camrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+#s-camino .v8camnx{font:500 12.5px var(--v8f);color:#a3a9b1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#s-camino .v8camnx b{font-weight:600}
+html.v6 #s-camino .v8camrow .lnk{width:auto!important;margin:0!important;height:36px!important;min-height:36px;padding:0 2px!important;flex:none}
+@media (max-width:359px){#s-camino .v8camc{padding:0 5px}#s-camino .v8camc b{letter-spacing:.04em}#s-camino .v8camk{margin-left:6px;letter-spacing:.08em}}
+@media (max-width:359px){#s-camino .v8camch{gap:4px;margin:8px 8px 0}#s-camino .v8camc{height:44px}#s-camino .v8camc b{font-size:10px}#s-camino .v8camc small{font-size:12.5px}}
+#s-camino .v8camc{min-width:66px;flex-basis:0!important}
+@media (max-width:359px){#s-camino .v8camc{min-width:54px}#s-camino .v8camc b{letter-spacing:.02em}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -8840,6 +8865,63 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
         svg += `<path d="M${sx.toFixed(1)} ${sy.toFixed(1)}L${mx.toFixed(1)} ${sy.toFixed(1)}L${px.toFixed(1)} ${py.toFixed(1)}" fill="none" stroke="${ph}" stroke-width="1" stroke-opacity=".75" stroke-dasharray="2 3" data-m="${m}" data-v="${v}"/><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3" fill="${ph}" class="v8tld" data-m="${m}"/>`; }); });
     const sl = st.querySelector('.v8tll'); sl.setAttribute('width', Wd); sl.setAttribute('height', stH); sl.setAttribute('viewBox', `0 0 ${Wd} ${stH}`); sl.innerHTML = svg; st.dataset.lines = pend ? 'wait' : 'ok';
   }
+  /* ══ v8.9 · CAMINO = boceto r6 · camino_op1: curva héroe grande (cada tramo en el color de su fase, HOY en color de fase, 🏆 Peak y
+     🏆 Corte final con su puerta), las 5 fases como fichas de color (tocar = la ficha de esa fase, como antes los nodos) y la tarjeta corta
+     «BASICS · 1 DE 4 ● 2,060 KCAL ✕ / sigue FORGE · lun 14 dic · Ver la fase ›». Mismos datos (kcal base por semana del motor) y mismas acciones. ══ */
+  const camName = st => { const l = String(st.label || st.short || '').toUpperCase().replace(/^F\d\s+/, ''); return /^DEF/.test(l) ? 'DEF' : /^CUT/.test(l) ? 'CUT' : l.split(/[\s·(/]+/)[0]; };
+  function camBuild() {
+    const sc = document.getElementById('s-camino'); if (!sc || App.caminoSeg !== 'viaje') return;
+    const mw = sc.querySelector('.mapwrap[data-map]'); if (!mw || mw.dataset.v8 === '1') return; mw.dataset.v8 = '1';
+    const iso = today(), S = est(iso), ps = E.protocolStages(), cur = resolve(iso).stage, node = App.caminoNode || cur || 'basics';
+    mw.classList.add('v8cam'); mw.innerHTML = '<svg class="mapsvg v8camsvg" aria-label="Viaje: kcal base por semana"><\/svg>';
+    if (CAMC.html && CAMC.k.split('|').slice(2, 4).join('|') === today() + '|' + (App.caminoNode || '')) { const sv = mw.firstChild; mw.style.height = CAMC.H + 'px'; sv.setAttribute('viewBox', `0 0 ${CAMC.W} ${CAMC.H}`); sv.setAttribute('width', CAMC.W); sv.setAttribute('height', CAMC.H); sv.innerHTML = CAMC.html; }   /* al redibujar: la última curva al instante (sin cuadro vacío); se re-mide en el siguiente cuadro */
+    // fichas de fase (antes: nodos del eje)
+    const chips = document.createElement('div'); chips.className = 'v8camch'; chips.setAttribute('role', 'tablist');
+    chips.innerHTML = ps.filter(st => st.kind !== 'peak' && st.id !== 'peak').map(st => { const n = st.week_span[1] - st.week_span[0] + 1, nm = camName(st), on = node === st.id;
+      return `<button class="v8camc${on ? ' on' : ''}${st.id === cur ? ' cur' : ''}" role="tab" aria-selected="${on}" data-act="node" data-arg="${st.id}" style="--c:${st.color};flex:${Math.max(n, 4)}" aria-label="${esc(st.label)} · ${n} semanas"><b>${esc(nm)}<\/b><small>${n} sem<\/small><\/button>`; }).join('');
+    mw.after(chips);
+    // tarjeta corta: kcal al encabezado, «sigue …» y «Ver la fase ›» en una fila
+    const lv = sc.querySelector('.live[data-live=camino]'), col = lv && lv.querySelector('.col'), bg = col && col.querySelector('.big'), dl = col && col.querySelector('.delta'), lk = col && col.querySelector('.lnk');
+    if (lv && bg && dl && lk && !col.querySelector('.kpis')) {
+      const hd = lv.querySelector('.hd'), v = (bg.querySelector('b') || {}).textContent || '', u = (bg.querySelector('span') || {}).textContent || '';
+      hd.insertAdjacentHTML('beforeend', `<span class="v8camk"><i><\/i>${esc(v)} ${esc(u)}<\/span>`);
+      const nb = dl.querySelector('b'); if (nb) { const t = nb.textContent.trim().toUpperCase(), nx = ps.find(x => String(x.label || '').toUpperCase().replace(/^F\d\s+/, '') === t.replace(/^F\d\s+/, '') || camName(x) === t); if (nx) nb.style.color = nx.color; }
+      const row = document.createElement('div'); row.className = 'v8camrow'; row.innerHTML = `<span class="v8camnx">${dl.querySelector('span') ? dl.querySelector('span').innerHTML : dl.innerHTML}<\/span>`; row.appendChild(lk);
+      col.innerHTML = ''; col.appendChild(row); lv.classList.add('v8camlive');
+    }
+    if (!mw.querySelector('svg').childNodes.length) { try { camLayout(true); } catch (e) {} }   /* la curva se dibuja ya con un tamaño estimado SIN medir (los nodos 🏆 existen al terminar el render); se mide en el siguiente cuadro */
+  }
+  const CAMC = { k: '', html: '', W: 0, H: 0 }, CAMKC = { iso: '', at: 0, v: {} };
+  function camLayout(guess) {
+    const sc = document.getElementById('s-camino'), mw = sc && sc.querySelector('.mapwrap.v8cam'); if (!mw || App.screen !== 'camino') return;
+    const svg = mw.querySelector('svg.v8camsvg'), lv = sc.querySelector('.live[data-live=camino]'), ch = sc.querySelector('.v8camch'), rail = document.querySelector('.rail');
+    let Wd, H;
+    if (guess) { Wd = Math.min(430, W_()) - 16; H = Math.max(140, Math.min(520, H_() - (H_() < 740 ? 470 : 520))); }   /* estimado sin leer el layout */
+    else { Wd = Math.round(mw.clientWidth || (W_() - 16)); const top = mw.getBoundingClientRect().top, rr = rail ? rail.getBoundingClientRect().top : H_() - 90;
+      H = Math.max(140, Math.min(520, Math.floor(rr - 10 - (lv ? lv.offsetHeight : 90) - 10 - (ch ? ch.offsetHeight + 10 : 0) - top))); }
+    const key = [Wd, H, today(), App.caminoNode || '', JSON.stringify(U().fase2 || {}).length].join('|'); if (mw.dataset.k === key) return; mw.dataset.k = key;
+    mw.style.height = H + 'px';
+    const iso = today(), S = est(iso), wk = E.effectiveWeeks(S), tot = E.protocolWeeks(), ps = E.protocolStages(), F2 = f2Window(iso);
+    const KC = CAMKC.iso === iso && performance.now() - CAMKC.at < 400 ? CAMKC.v : {};   /* las kcal por semana que el mapa original acaba de calcular en este mismo render */
+    const kc = []; for (let n = 1; n <= tot; n++) kc.push(wk[n].diet_break ? null : KC[n] != null ? KC[n] : weekBaseKcal(n, S));
+    const vals = kc.filter(v => v); for (let i = 0; i < kc.length; i++) if (kc[i] == null) kc[i] = kc[i - 1] || vals[0];
+    const lo = Math.min(...vals), hi = Math.max(...vals), x0 = 26, x1 = Wd - (F2.show ? 74 : 44), yT = F2.show ? 96 : 52, yB = H - 66;
+    const X = w => x0 + (w - 1) / (tot - 1) * (x1 - x0), Y = v => yT + (hi - v) / Math.max(1, hi - lo) * (yB - yT);
+    const colOf = w => (ps.find(st => w >= st.week_span[0] && w <= st.week_span[1]) || {}).color || '#BFC3C9';
+    let s = '';
+    for (let i = 1; i < tot; i++) { const a = [X(i), Y(kc[i - 1])], b = [X(i + 1), Y(kc[i])], mx = ((a[0] + b[0]) / 2).toFixed(1), c = colOf(i);
+      s += `<path d="M${a[0].toFixed(1)} ${a[1].toFixed(1)}C${mx} ${a[1].toFixed(1)} ${mx} ${b[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}" fill="none" stroke="${c}" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 0 6px ${c}99)"/>`; }
+    const st = E.stageAt(iso, S), ph = phc();
+    if (st.kind === 'protocolo') { const nx = X(st.week), ny = Y(kc[st.week - 1]);
+      s += `<line x1="${nx.toFixed(1)}" x2="${nx.toFixed(1)}" y1="${(ny + 12).toFixed(1)}" y2="${H - 30}" stroke="${ph}" stroke-opacity=".35" stroke-dasharray="2 3"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="11" fill="${ph}" fill-opacity=".25"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="6.5" fill="${ph}" style="filter:drop-shadow(0 0 8px ${ph})"/><text x="${(nx + 14).toFixed(1)}" y="${(ny + 24).toFixed(1)}" fill="${ph}" font-size="12.5" font-weight="600" letter-spacing="1.5">HOY<\/text>`; }
+    const px = X(tot), py = Y(kc[tot - 1]), GD = '#e8dcc0';
+    const tro = (x, y, dash) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="19" fill="#0e1217" stroke="${GD}" stroke-width="1.5"${dash ? ' stroke-dasharray="3 3"' : ''}/><text x="${x.toFixed(1)}" y="${(y + 6).toFixed(1)}" font-size="17" text-anchor="middle">🏆<\/text>`;
+    if (F2.show) { const fx = Wd - 34, fy = 40, I2 = f2Info(iso);
+      s += `<line x1="${px.toFixed(1)}" y1="${(py - 20).toFixed(1)}" x2="${fx}" y2="${fy + 20}" stroke="${GD}" stroke-opacity=".5" stroke-dasharray="2 4"/>`;
+      s += `<g class="node" data-f2node="${F2.locked ? 'locked' : 'solid'}" data-act="sheet" data-arg="puerta" role="button" aria-label="${esc(CF())} · ${esc(PF())} ${esc(dLabel(f2Peak2Date()))}${F2.locked ? ' · ' + esc(gateLockTxt()) : ''}"><rect x="${fx - 150}" y="${fy - 26}" width="180" height="56" fill="transparent"/>${tro(fx, fy, F2.locked)}<text x="${fx - 28}" y="${fy - 4}" fill="rgba(246,244,238,.8)" font-size="12.5" text-anchor="end">${esc(CF())} · ${I2.weeks} sem<\/text><text x="${fx - 28}" y="${fy + 14}" fill="rgba(246,244,238,.55)" font-size="12.5" text-anchor="end">${F2.locked ? '🔒 puerta S' + ((f2Gate().ask_on || {}).week || 37) : esc(PF()) + ' · ' + esc(dLabel(f2Peak2Date(), { dow: false }))}<\/text><\/g>`; }
+    s += `<g class="node" data-act="sheet" data-arg="peak" role="button" aria-label="Peak Week"><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="30" fill="transparent"/>${tro(px, py)}<text x="${px.toFixed(1)}" y="${(py + 40).toFixed(1)}" fill="rgba(246,244,238,.75)" font-size="12.5" text-anchor="middle" pointer-events="none">Peak · ${esc(dLabel(E.peakDate(), { dow: false }))}<\/text><\/g>`;
+    svg.setAttribute('viewBox', `0 0 ${Wd} ${H}`); svg.setAttribute('width', Wd); svg.setAttribute('height', H); svg.innerHTML = s; Object.assign(CAMC, { k: key, html: s, W: Wd, H });
+  }
   function bmFig(v, mus, w, h, ps) { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.dataset.v = v; sp.style.width = w + 'px'; sp.style.height = h + 'px'; sp.style.setProperty('--ps', ps);   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
     const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
     const ms = mus.filter(m => AS['m_' + v + '_' + m]);
@@ -8849,6 +8931,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     return sp; }
   function bodyMap() {
     try { tlLayout(); } catch (e) { console.error('v8 tl', e); }
+    try { camLayout(); } catch (e) { console.error('v8 cam', e); }
     document.querySelectorAll('#s-entreno button[data-act=scrollBlocks][data-body]').forEach(b => {
       try { bodyFit(b); } catch (e) {}
       let mus = []; try { mus = JSON.parse(b.dataset.body || '[]'); } catch (e) {}
@@ -8867,7 +8950,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     SCREENS.hoy = renderHoy;
     const oR = render;
     render = function (s) { try { if (!s || s === App.screen) syncBody(); } catch (e) {}   /* v8.4 · perf: la clase del body antes de medir (cambiarla después invalidaba el estilo de toda la página) */
-      const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} try { if (App.screen === 'entreno') tlBuild(); } catch (e) { console.error('v8 tl', e); } bodyMapSoon();
+      const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} try { if (App.screen === 'entreno') tlBuild(); if (App.screen === 'camino') camBuild(); } catch (e) { console.error('v8 tl/cam', e); } bodyMapSoon();
       if (!INTRO.done && App.screen !== 'hoy') INTRO.done = true;   /* fix9: la intro es solo si la app arranca en Hoy (no después del onboarding) */
       if (!LG.mq) { LG.mq = true; Promise.resolve().then(() => { LG.mq = false; lgCheck(); }); }   /* fix8: logros, fuera del tiempo de render */ return r; };   // eslint-disable-line no-global-assign
     if (window.MV) { MV.render = render; MV.V8 = { open, close, turn: () => turn(), snap: setSnap, state: S, tab: k => ACT.v8tab(k), geo: () => S.geo, video: VID, intro: INTRO, logro: { LG, check: lgCheck, file: lgFile, map: LG_PH, state: () => lgState(plan(today())), spot: lgSpot } }; }
@@ -8878,6 +8961,9 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     window.addEventListener('resize', reGap); window.addEventListener('orientationchange', () => setTimeout(reGap, 300)); window.addEventListener('pageshow', reGap);
     /* fix7: la hoja de Entreno / Comida plegada con ✕ vuelve a abrirse al cambiar de día en el explorador (antes se veía vacía en otro día) */
     ['exDay', 'exToday', 'exDayGo'].forEach(k => { const o = ACT[k]; if (typeof o !== 'function') return; ACT[k] = function () { try { const c = U().ui.closed || {}; ['entreno', 'comida'].forEach(x => { delete c['live:' + x]; }); } catch (e) {} return o.apply(this, arguments); }; });
+    { const oVM = viajeMap, oWB = weekBaseKcal; let REC = null;   /* v8.9: se guardan las kcal por semana que calcula el mapa original (la curva nueva las reutiliza) */
+      weekBaseKcal = function (n) { const v = oWB.apply(this, arguments); if (REC) REC[n] = v; return v; };   // eslint-disable-line no-global-assign
+      viajeMap = function (iso) { REC = {}; try { return oVM.apply(this, arguments); } finally { Object.assign(CAMKC, { iso, at: performance.now(), v: REC }); REC = null; } }; }   // eslint-disable-line no-global-assign
     ACT.v8open = () => open();
     ACT.v8close = () => close();
     ACT.v8turn = () => turn();
