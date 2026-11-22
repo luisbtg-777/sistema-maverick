@@ -1687,6 +1687,13 @@ html.v6 .sheet h2{font-size:15px!important;letter-spacing:.12em!important}
 /* hoja: bordes laterales como luz interior (el pie sigue a sangre) */
 html.v6 .sheet{border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 1px 0 0 rgba(255,255,255,.09),inset -1px 0 0 rgba(255,255,255,.09),0 -20px 50px rgba(0,0,0,.45)!important}
 html.v6 .sheet .lnk.danger,html.v6 .lnk.danger{color:#ff9b90!important}
+/* v8.4 · encabezado: el contador del día (y la campana) idénticos a Hoy en Entreno, Comida, Cuerpo y Camino (antes el anillo de 34 px recortaba "2/4" → "2/") */
+html.v6 body:not(.v8hoy) .top .v6bell,html.v6 body:not(.v8hoy) .top .dayring{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.v6 body:not(.v8hoy) .top .v6bell svg{width:17px!important;height:17px!important;stroke:#d7dbe0!important}
+html.v6 body:not(.v8hoy) .top .dayring svg{display:none!important}
+html.v6 body:not(.v8hoy) .top .dayring i{font:600 13px/1 var(--v8f)!important;color:#eef2f6!important;letter-spacing:.01em;text-shadow:none!important}
+html.v6 body:not(.v8hoy) .top .dayring i small{font:600 13px/1 var(--v8f)!important;color:#eef2f6!important}
+html.v6 body:not(.v8hoy) .top .v6bell{margin-right:10px!important}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -3352,7 +3359,8 @@ const I = {
 };
 const ic = (n, cls, size) => `<svg viewBox="0 0 24 24" class="${cls || ''}"${size ? ` style="width:${size}px;height:${size}px"` : ''} aria-hidden="true">${I[n] || I.circle}<\/svg>`;
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const fmtN = (n, d) => n == null || !isFinite(n) ? '—' : Number(n).toLocaleString('es-MX', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+const _fmtNF = {};   // v8.4 · perf: un formateador por número de decimales (toLocaleString creaba uno en cada llamada); mismo resultado
+const fmtN = (n, d) => n == null || !isFinite(n) ? '—' : (_fmtNF[d || 0] || (_fmtNF[d || 0] = new Intl.NumberFormat('es-MX', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }))).format(Number(n));
 const RAYS = Array.from({ length: 16 }, (_, i) => { const a = i * Math.PI / 8; return `<line x1="${(12 + 4.4 * Math.cos(a)).toFixed(2)}" y1="${(12 + 4.4 * Math.sin(a)).toFixed(2)}" x2="${(12 + 9.2 * Math.cos(a)).toFixed(2)}" y2="${(12 + 9.2 * Math.sin(a)).toFixed(2)}"/>`; }).join('');
 const MARK = s => `<svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.15" stroke-linecap="round"${s ? ` style="width:${s}px;height:${s}px"` : ''}>${RAYS}<circle cx="12" cy="12" r="2.3" fill="#F4D85A" stroke="none"/><\/svg>`;
 
@@ -3612,7 +3620,9 @@ function est(iso) { const u = U(); return { program: progState(), trips: Array.i
   dexa: u.body.dexa || [], labs: u.body.labs || [], measures: u.body.measures || [], symptom_checks: u.symptom_checks || [], height_cm: (u.profile || {}).height_cm || P.profile_seed.height_cm }; }   // v3.3 · ADAPTER §12.4 + §12.6
 // puerta EFECTIVA de hoy (v3.2): sin evaluar al 16 ago = semana de espera; sin evaluar al 23 ago = Reversa. Es una lectura: no se guarda.
 function f2Eff() { const f = f2State(); const eff = E.gateEffective({ fase2: f }, today()); if (eff && eff !== f.gate) f.gate = eff; return f; }
-const resolve = iso => { const s = est(iso); return E.noSessionFast(E.resolveDay(iso, s), s); };   /* v3.3c · F3: L-V sin sesión = ayunas */
+let GOMEMO = null;   // v8.4 · perf: memoria que vive SOLO durante un go() (el estado no cambia a mitad de un render); save()/invalidatePlans() la vacían
+const resolve = iso => { const c = GOMEMO && GOMEMO['r|' + iso]; if (c) return Object.assign({}, c);   // copia: plan() reasigna campos de primer nivel
+  const s = est(iso), R = E.noSessionFast(E.resolveDay(iso, s), s); if (GOMEMO) GOMEMO['r|' + iso] = Object.assign({}, R); return R; };   /* v3.3c · F3: L-V sin sesión = ayunas */
 
 /* ── nutrición: tipo de día → platos (escalados SOLO en carbos si cambian las kcal) ── */
 function dayTypeOf(R) {
@@ -3920,7 +3930,7 @@ function blocksSummary(W, variant) {
   const t = (W.blocks || []).filter(b => b.type !== 'warmup').map(b => strip(b.title).split('·')[0].trim()).slice(0, 3).join(' · ');
   return (exs ? exs + ' ejercicios · ' : '') + t + (variant === 'deload' ? ' · deload' : variant === 'deload_training' ? ' · deload de entreno' : '');
 }
-const invalidatePlans = () => { for (const k in _planCache) delete _planCache[k]; };
+const invalidatePlans = () => { for (const k in _planCache) delete _planCache[k]; if (GOMEMO) GOMEMO = {}; };
 
 /* ── checks: la AGENDA es la única fuente; AHORA, Cierre y Día leen y escriben aquí ── */
 const dayRec = iso => (U().days[iso] = U().days[iso] || {});
@@ -4046,10 +4056,12 @@ function fastingMinutes(iso, nm) { // minutos desde el cierre de la ventana ante
 }
 
 /* ── alertas del día (1 visible + "+N"; ✕ vuelve mañana) ── */
+let _tzC = null, _tzT = 0;   // v8.4 · perf: la zona horaria se lee a lo más 1 vez por minuto (crear Intl.DateTimeFormat en cada render era caro)
+function curTZ() { const t = Date.now(); if (_tzC === null || Math.abs(t - _tzT) > 60000) { _tzT = t; try { _tzC = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { _tzC = ''; } } return _tzC || null; }
 function alertsFor(iso) {
   const pl = plan(iso), R = pl.R, out = [], fl = R.flags || {}, st = pl.st, t = today();
   const add = (id, pri, text, o) => { if ((U().ui.dismissed || {})[id] === iso) return; out.push(Object.assign({ id, pri, text, kind: 'warn' }, o || {})); };
-  let tz = null; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+  const tz = curTZ();
   if (tz && U().profile.tz_home && tz !== U().profile.tz_home && U().ui.dismissed.tz !== tz) add('tz', 1, 'Otra zona horaria · ' + tz.split('/').pop().replace(/_/g, ' '), { act: 'sheet', arg: 'alertas', tz: tz });
   if (U().session && U().session.iso === iso && !pillarDone(iso, 'entreno')) add('session', 1, 'Sesión en curso · retomar', { act: 'session', icon: 'play', kind: '' });
   if (R.kind !== 'pre') {
@@ -4165,7 +4177,8 @@ function variantChip(variant) {
 }
 
 /* ── ajuste de kcal con topes y pisos (ARQ 5.10). El motor decide; aquí solo se LEE lo que el motor aplicó ── */
-function adjInfo(iso) {
+function adjInfo(iso) { const k = 'a|' + iso; if (GOMEMO && GOMEMO[k]) return GOMEMO[k]; const r = adjInfo0(iso); if (GOMEMO) GOMEMO[k] = r; return r; }
+function adjInfo0(iso) {
   const AD = P.adjust_default || {}, cap = AD.cap_kcal || [-300, 300], step = AD.step_kcal || 100;
   const total = kcalAdjAt(iso), R = resolve(iso);
   // ¿está en pausa? se pregunta al motor con un ajuste de prueba (+paso): si no lo aplica, está en pausa
@@ -4617,7 +4630,10 @@ function go(s, o) {
   App.screen = s; if (s !== 'sesion' && s !== 'onb') U().ui.last_screen = s;
   $$('.scr').forEach(e => { e.hidden = e.id !== 's-' + s; });
   document.body.classList.toggle('hide-rail', s === 'sesion' || s === 'onb'); document.body.classList.toggle('sesion', s === 'sesion');
-  render(s, Object.assign({ _go: true }, o));
+  /* v8.4 · perf: los ajustes que MIDEN (titular, subtítulo, etiquetas) esperan a que terminen TODAS las capas del render
+     (v6 · v7 · v8 escriben en el DOM después): así se calcula el layout una vez y no dos o tres. */
+  const outer = !FITQ; if (outer) { FITQ = []; GOMEMO = {}; }
+  try { render(s, Object.assign({ _go: true }, o)); } finally { if (outer) { GOMEMO = null; fitFlush(); } }
   const el = $('#s-' + s); if (el) el.scrollTop = o.top ? 0 : (U().ui.scroll[s] || 0);
   onScroll();
 }
@@ -4632,6 +4648,14 @@ function render(s, o) {
   postMount(el);
 }
 function refresh() { if (!App.booted) return; render(App.screen); if (Sheet.cur && Sheet.cur.live) Sheet.refresh(); }
+let FITQ = null;   // cola de medidas durante go() (ver go)
+function fitFlush() { const q = FITQ; FITQ = null; if (q) q.forEach(f => { try { f(); } catch (e) { console.error('fit', e); } }); }
+function fitPass(el) {
+  $$('[data-fit]', el).forEach(fitText);
+  $$('[data-alts]', el).forEach(fitAlts);
+  $$('[data-fitdrop]', el).forEach(fitDrop);   /* diseño v3.3 · 1: se quita "Viendo", luego el mes; nunca "…" */
+  $$('.acts .ctxt', el).forEach(fitBtn);
+}
 function postMount(el) {
   $$('[data-body]', el).forEach(h => {
     if (h.firstChild) return;
@@ -4640,10 +4664,7 @@ function postMount(el) {
     const svgs = t.querySelectorAll('svg');
     if (both) svgs.forEach(x => h.appendChild(x)); else { svgs[0].setAttribute('preserveAspectRatio', 'xMidYMid meet'); h.appendChild(svgs[0]); }
   });
-  $$('[data-fit]', el).forEach(fitText);
-  $$('[data-alts]', el).forEach(fitAlts);
-  $$('[data-fitdrop]', el).forEach(fitDrop);   /* diseño v3.3 · 1: se quita "Viendo", luego el mes; nunca "…" */
-  $$('.acts .ctxt', el).forEach(fitBtn);
+  if (FITQ) FITQ.push(() => fitPass(el)); else fitPass(el);
 }
 // render en 2 tiempos: primer viewport síncrono, lo de abajo en el siguiente idle (arq 4)
 function deferBelow(el, sel, fn) {
@@ -4808,7 +4829,7 @@ function petalSubs(pl, nm) {
   o.agua = fmtL(drank) + ' / ' + fmtL(wt);
   return o;
 }
-const fmtL = v => (Math.round(v * 100) / 100).toLocaleString('es-MX', { maximumFractionDigits: 2 });
+let _fmtLF = null; const fmtL = v => (_fmtLF || (_fmtLF = new Intl.NumberFormat('es-MX', { maximumFractionDigits: 2 }))).format(Math.round(v * 100) / 100);
 const nBlocks = W => W ? (W.blocks || []).length : 0;
 const durOf = pl => pl.gymDur;
 
@@ -4996,8 +5017,9 @@ function renderHoy(el) {
 <div class="below" id="hoy-below">${hoyBelow(pl, nm)}<\/div>`;
   // la columna de pilares nunca pisa el titular ni la píldora de Seguridad (arranca ≥ 10 px bajo el encabezado) ni se mete bajo la tarjeta viva.
   // Si los 4 pilares no caben en columna con ≥ 44 px táctiles cada uno (pantallas bajas, o compacto con Seguridad), se acomodan en fila.
+  // v8.4 · perf: en v8 esta columna vive dentro del Hoy anterior, oculto (v8legacy): medirla forzaba un layout completo sin efecto visible.
   const pc = $('.pcol', el), hd = $('.head', el);
-  if (pc && hd) { const base = el.getBoundingClientRect().top - el.scrollTop, need = Math.round(hd.getBoundingClientRect().bottom - base + 10), liveTop = H_() - LIVE_H(), n = pc.children.length;
+  if (pc && hd && !window.MV_V8) { const base = el.getBoundingClientRect().top - el.scrollTop, need = Math.round(hd.getBoundingClientRect().bottom - base + 10), liveTop = H_() - LIVE_H(), n = pc.children.length;
     if (pc.offsetTop < need) pc.style.top = need + 'px';
     const top = Math.max(pc.offsetTop, need), avail = liveTop - 8 - top;
     if (avail < n * 44) { pc.classList.add('row'); pc.style.top = Math.max(need, Math.min(top, liveTop - 8 - 48)) + 'px';
@@ -5676,8 +5698,7 @@ function renderCamino(el) {
   const tot = E.protocolWeeks(), left = diffD(E.peakDate(), iso);
   const h1 = st.kind === 'protocolo' ? 'Semana ' + st.week + '<small>de ' + tot + '<\/small>' : st.kind === 'pre' ? 'Faltan ' + st.days_to_start + '<small>días<\/small>' : st.kind === 'ciclo' ? 'Vuelta ' + st.loop + '<small>' + esc(stageLabel(st.stage)) + '<\/small>' : st.kind === 'opcional' ? (st.maintenance ? 'Mantenimiento<small>antes del ' + esc(CF()) + '<\/small>' : 'Semana ' + st.cycle_week + '<small>de ' + (st.f2_weeks || f2Info(iso).weeks) + '<\/small>') : esc(pl.peak ? peakName(pl.R) : 'Días puente');
   const g2d = f2Info(iso).active ? f2Peak2Date() : null, left2 = g2d ? diffD(g2d, iso) : 0;
-  const s28 = adherence(28);
-  void s28;
+  /* v8.4 · perf: aquí se calculaba adherence(28) y se descartaba (28 resoluciones del motor sin uso); la tarjeta de Adherencia la sigue calculando */
   // Opción 3: "36 semanas al Peak · lun 9 ago" (una cuenta + una fecha)
   const wkTo = n => { const w = Math.ceil(n / 7); return w > 1 ? w + ' semanas al ' : n > 1 ? n + ' días al ' : n === 1 ? 'mañana es el ' : 'hoy es el '; };
   const h2 = left < 0 && g2d && left2 >= 0 ? wkTo(left2) + PF() + ' · ' + dLabel(g2d) : left >= 0 ? wkTo(left) + 'Peak · ' + dLabel(E.peakDate()) : 'Peak ' + dLabel(E.peakDate(), { year: true }) + ' · hecho';
@@ -7521,7 +7542,7 @@ const V6 = (() => {
       const m = el.querySelector('.mapsvg'); if (m && m.parentElement && !m.parentElement.classList.contains('v7tray')) m.parentElement.classList.add('v7tray');
       /* v7 · D14: la Tabla muestra filas COMPLETAS hasta la tarjeta viva (antes la 4.ª quedaba cortada y tapada a 646) */
       const g = el.querySelector('#gantt'), lv = el.querySelector('.live');
-      if (g && lv) { const room = lv.getBoundingClientRect().top - g.getBoundingClientRect().top - 10; let h = 0;
+      if (g && lv) { fitFlush(); const room = lv.getBoundingClientRect().top - g.getBoundingClientRect().top - 10; let h = 0;
         for (const r of g.querySelectorAll('tr')) { const rh = r.getBoundingClientRect().height; if (h + rh > room) break; h += rh; }
         g.style.maxHeight = Math.max(h, 64) + 'px'; } }
     if (s === 'comida') {
@@ -7550,7 +7571,7 @@ const V6 = (() => {
   function after(s) {
     const ph = setPhase(); phDefs(ph); particles(); watermark();
     const el = document.getElementById('s-' + (s || App.screen));
-    cycleList(el); if ((s || App.screen) === 'hoy') agenda(el); relabel(el); recolor(el, ph); try { el && el.querySelectorAll('[data-fitdrop]').forEach(fitDrop); } catch (e) {} try { v7(s || App.screen, el); } catch (e) { console.error('v7', e); } requestAnimationFrame(() => { smoothPaths(el); headerBell(); });
+    cycleList(el); if ((s || App.screen) === 'hoy') agenda(el); relabel(el); recolor(el, ph); try { const fd = () => el && el.querySelectorAll('[data-fitdrop]').forEach(fitDrop); if (FITQ) FITQ.push(fd); else fd(); } catch (e) {} try { v7(s || App.screen, el); } catch (e) { console.error('v7', e); } requestAnimationFrame(() => { smoothPaths(el); headerBell(); });
     requestAnimationFrame(() => { const lv = el && el.querySelector('.live:not(.collapsed)'); document.documentElement.style.setProperty('--live-h', (lv ? lv.offsetHeight : 344) + 'px'); });   // lectura de layout fuera del render (solo la usa el toast)
   }
   function afterSheet() { const h = document.getElementById('sheethost'); if (!h) return; const ph = setPhase(); cycleList(h); relabel(h); recolor(h, ph); }
@@ -7606,6 +7627,14 @@ V6.install();
 window.MV_V8 = true;
 const V8 = (() => {
   const AS = window.__V8A || {};
+  /* v8.4 · perf: cada máscara (PNG en base64, ~100 KB) se declara UNA vez como clase en una hoja propia; antes iba en línea en cada <i>
+     (4-6 copias por músculo por render) y el analizador de CSS la releía cada vez. Mismo aspecto: misma imagen, mismo mask-size. */
+  const mkName = k => 'v8k_' + k.replace(/[^\w-]/g, '_');
+  let mkOn = false;   // la hoja se arma de una sola vez (insertar reglas una por una invalidaría el estilo de todo el documento cada vez)
+  const mkAll = () => { if (mkOn) return; mkOn = true; try { const st = document.createElement('style'); st.id = 'v8mk';
+    st.textContent = Object.keys(AS).filter(k => /^(m_|rim_)/.test(k)).map(k => `.${mkName(k)}{-webkit-mask-image:url("${AS[k]}");mask-image:url("${AS[k]}")}`).join('\n');
+    document.head.appendChild(st); } catch (e) {} };
+  const mkc = k => { if (!AS[k]) return ''; mkAll(); return mkName(k); };
   const reduce = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const hm = t => { t = Math.floor(Number(t) || 0); t = ((t % 1440) + 1440) % 1440; return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
   const hm2m = x => { const m = /^(\d{1,2}):(\d{2})/.exec(String(x || '')); return m ? +m[1] * 60 + +m[2] : 0; };
@@ -7905,10 +7934,9 @@ const V8 = (() => {
     if (VID.gl) { try { glMask(musOf(pl).filter(m => inView(m, 'f')), 'f'); glMask(musOf(pl).filter(m => inView(m, 'b')), 'b'); } catch (e) {} VID.dirty = true; }
     if (f.dataset.lux !== key) {
       f.dataset.lux = key;
-      const mk = k => `-webkit-mask-image:url(${AS[k]});mask-image:url(${AS[k]})`;
       f.querySelector('.v8lux').className = 'v8lux' + (!done && !reduce() && mus.length ? ' pulse' : '');
-      f.querySelector('.v8lux').innerHTML = mus.map(m => `<i class="mc" data-m="${m}" style="${mk('m_' + view + '_' + m)}"><\/i><i class="mh" style="${mk('m_' + view + '_' + m)}"><\/i><i class="ms" style="${mk('m_' + view + '_' + m)}"><\/i>`).join('') +
-        (AS['rim_' + view] ? `<i class="rim" style="${mk('rim_' + view)}"><\/i>` : '');
+      f.querySelector('.v8lux').innerHTML = mus.map(m => { const c = mkc('m_' + view + '_' + m); return `<i class="mc ${c}" data-m="${m}"><\/i><i class="mh ${c}"><\/i><i class="ms ${c}"><\/i>`; }).join('') +
+        (AS['rim_' + view] ? `<i class="rim ${mkc('rim_' + view)}"><\/i>` : '');
     }
     f.classList.toggle('back', view === 'b');
   }
@@ -8330,19 +8358,24 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     document.querySelectorAll('#s-entreno button[data-act=scrollBlocks][data-body]').forEach(b => {
       let mus = []; try { mus = JSON.parse(b.dataset.body || '[]'); } catch (e) {}
       const key = mus.join(',') + '|' + phc(); if (b.dataset.v8bm === key) return; b.dataset.v8bm = key; b.classList.add('v8bm');
-      const h = +b.dataset.h || 220, w = Math.round(h * 1080 / 1916), mk = k => `-webkit-mask-image:url(${AS[k]});mask-image:url(${AS[k]})`;
-      const fig = v => `<span class="v8bmf" style="width:${w}px;height:${h}px"><img alt="" src="${AS['av_' + v]}" draggable="false">${mus.filter(m => AS['m_' + v + '_' + m]).map(m => `<i class="a" style="${mk('m_' + v + '_' + m)}"><\/i><i class="b" style="${mk('m_' + v + '_' + m)}"><\/i>`).join('')}<\/span>`;
+      const h = +b.dataset.h || 220, w = Math.round(h * 1080 / 1916);
+      const fig = v => { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.style.width = w + 'px'; sp.style.height = h + 'px';   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
+        const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
+        mus.filter(m => AS['m_' + v + '_' + m]).forEach(m => { const c = mkc('m_' + v + '_' + m); ['a', 'b'].forEach(x => { const i = document.createElement('i'); i.className = x + ' ' + c; sp.appendChild(i); }); });
+        return sp; };
       let box = b.querySelector('.v8bmw'); if (!box) { box = document.createElement('span'); box.className = 'v8bmw'; b.appendChild(box); }
-      box.innerHTML = fig('f') + fig('b');
+      box.textContent = ''; box.appendChild(fig('f')); box.appendChild(fig('b'));
     });
   }
   function install() {
     if (!document.getElementById('s-hoy')) return;
+    mkAll();
     const oHoy = renderHoy;
     renderHoy = function (el) { const r = oHoy.apply(this, arguments); try { build(el); } catch (e) { console.error('v8 hoy', e); } return r; };   // eslint-disable-line no-global-assign
     SCREENS.hoy = renderHoy;
     const oR = render;
-    render = function (s) { const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} try { bodyMap(); } catch (e) {} return r; };   // eslint-disable-line no-global-assign
+    render = function (s) { try { if (!s || s === App.screen) syncBody(); } catch (e) {}   /* v8.4 · perf: la clase del body antes de medir (cambiarla después invalidaba el estilo de toda la página) */
+      const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} try { bodyMap(); } catch (e) {} return r; };   // eslint-disable-line no-global-assign
     if (window.MV) { MV.render = render; MV.V8 = { open, close, turn: () => turn(), snap: setSnap, state: S, tab: k => ACT.v8tab(k), geo: () => S.geo, video: VID }; }
     const oH = header;
     header = function () { const r = oH.apply(this, arguments); try { hdr(); } catch (e) {} return r; };   // eslint-disable-line no-global-assign
