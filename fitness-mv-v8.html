@@ -1732,6 +1732,56 @@ html.v6 body:not(.v8hoy) .top .dayring svg{display:none!important}
 html.v6 body:not(.v8hoy) .top .dayring i{font:600 13px/1 var(--v8f)!important;color:#eef2f6!important;letter-spacing:.01em;text-shadow:none!important}
 html.v6 body:not(.v8hoy) .top .dayring i small{font:600 13px/1 var(--v8f)!important;color:#eef2f6!important}
 html.v6 body:not(.v8hoy) .top .v6bell{margin-right:10px!important}
+
+/* ═════ fix7 (v8.6) · iPhone de Luis 22 nov ═════
+   1 · barra y hojas más abajo: LO (--v8lo, lo pone app_v8.js) = 4 px normal; en app de inicio con el hueco de iOS (el viewport termina
+       ~47 px antes del borde físico y el DOM no lo alcanza) la barra queda a 8 px del borde del viewport. Traslado puro: el personaje no cambia. */
+:root{--v8lo:4px;--v8railb:calc(max(14px,calc(var(--sab) - 12px)) - var(--v8lo));--v8railh:60px}
+html.v6 .rail{bottom:var(--v8railb)!important}
+.v8 .v8sheet{bottom:calc(max(calc(var(--sab) + 56px),82px) - var(--v8lo))}
+/* 3 · hoja viva de Entreno · Comida · Cuerpo · Camino = la hoja de Hoy: tarjeta de vidrio flotante del tamaño de su contenido, redondeada
+       también abajo y 10 px sobre la barra (antes llegaba al borde con 72 px + zona segura de relleno: área vacía y corte duro).
+       Tinte casi opaco detrás del texto (el cuerpo ya no se transparenta); el vidrio queda en los bordes (luz interior). */
+html.v6 #app .scr:not(#s-hoy) .live{position:sticky!important;bottom:calc(var(--v8railb) + var(--v8railh) + 10px)!important;margin-left:8px!important;margin-right:8px!important;width:calc(100% - 16px)!important;
+ padding-bottom:6px!important;height:auto!important;min-height:0!important;border-radius:34px!important;
+ background:linear-gradient(180deg,rgba(44,50,59,.97),rgba(22,26,32,.985) 46%,rgba(15,18,23,.99))!important;
+ border:0!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 1px 0 0 rgba(255,255,255,.1),inset -1px 0 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(255,255,255,.07),0 18px 40px rgba(0,0,0,.5),0 -14px 40px rgba(0,0,0,.3)!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.v6 #app .scr:not(#s-hoy) .live .col,html.v6 #app .scr:not(#s-hoy) .live .acts{width:calc(100vw - 64px)!important;max-width:calc(var(--appw,100vw) - 64px)!important}
+html.v6 #app .scr:not(#s-hoy) .live .col.fade{animation:none}   /* el contenido nunca arranca invisible */
+html.v6 #app .scr:not(#s-hoy) .live svg.curve{bottom:0!important}
+/* plegada (✕): solo la barra del título, compacta (antes: título + 100 px vacíos) · tocar el título la abre */
+html.v6 #app .scr:not(#s-hoy) .live.collapsed{padding-bottom:0!important}
+html.v6 #app .scr:not(#s-hoy) .live.collapsed .in{padding-bottom:14px!important}
+html.v6 #app .scr:not(#s-hoy) .live.collapsed .hd .lbl.lg::after{content:"  ⌃";letter-spacing:0;color:#8d939b}
+/* lo que pasa por debajo de la hoja y de la barra se desvanece (sin corte duro contra la barra) */
+html.v6 #app .scr:not(#s-hoy){-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - var(--v8railb) - var(--v8railh) - 12px),rgba(0,0,0,.25) calc(100% - var(--v8railb) - var(--v8railh) * .5),transparent calc(100% - var(--v8railb)));
+ mask-image:linear-gradient(180deg,#000 calc(100% - var(--v8railb) - var(--v8railh) - 12px),rgba(0,0,0,.25) calc(100% - var(--v8railb) - var(--v8railh) * .5),transparent calc(100% - var(--v8railb)))}
+html.v6 #app .scr.scrolled:not(#s-hoy){-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent calc(58px + var(--sat)),#000 calc(98px + var(--sat)),#000 calc(100% - var(--v8railb) - var(--v8railh) - 12px),rgba(0,0,0,.25) calc(100% - var(--v8railb) - var(--v8railh) * .5),transparent calc(100% - var(--v8railb)));
+ mask-image:linear-gradient(180deg,transparent 0,transparent calc(58px + var(--sat)),#000 calc(98px + var(--sat)),#000 calc(100% - var(--v8railb) - var(--v8railh) - 12px),rgba(0,0,0,.25) calc(100% - var(--v8railb) - var(--v8railh) * .5),transparent calc(100% - var(--v8railb)))}
+/* 2 · Comida · macros: sin ✕ (pedido de Luis, la única excepción) y sin estado plegado; el título no se encima con «Proteína» */
+html.v6 .g.macros.v8nox{padding-right:18px!important}
+html.v6 .g.macros.v8nox .ctitle{pointer-events:none}
+html.v6 #s-comida.v7short .g.macros.v8nox{padding-right:14px!important}
+/* 4 · luz del mapa de Entreno = la «fuerte» de Hoy (color de fase saturado: color 75 % + brillo 42 % + halo recortado a la silueta) */
+.v8bmf i.lc,.v8bmf i.ls,.v8bmf .lh,.v8bmf .lhb,.v8bmf .lhb i{position:absolute;inset:0;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.v8bmf i.lc{background:var(--ps,var(--ph));mix-blend-mode:color;opacity:.78}
+.v8bmf i.ls{background:var(--ps,var(--ph));mix-blend-mode:screen;opacity:.34}
+.v8bmf .lh{mix-blend-mode:screen;opacity:.45}
+.v8bmf .lhb i{background:var(--ps,var(--ph))}
+/* hoja viva compacta: menos aire entre la cuadrícula, el botón y el enlace (mismo contenido, misma acción) */
+html.v6 #app .scr:not(#s-hoy) .live .acts.one{margin-top:8px!important;margin-bottom:0!important}
+html.v6 #app .scr:not(#s-hoy) .live .acts.one+.lnk{margin-top:2px!important;min-height:40px;height:40px!important}
+html.v6 #s-entreno .live .erows{margin-bottom:4px!important}
+/* grabación 22 nov · al girar, el botón «↻» se rearmaba en top:-60 y bajaba volando desde arriba (top con transición): ahora solo se desvanece */
+.v8 .v8turn{transition:opacity .3s!important}
+/* grabación 22 nov · al cerrar la hoja, el título y «Abrir mi día» aparecían encima de la hoja que aún bajaba: entran cuando ya salió */
+.v8[data-state=rest] .v8ttl,.v8[data-state=rest] .v8abrir,.v8[data-state=rest] .v8prog{transition:opacity .25s .3s}
+/* borde inferior continuo: la viñeta de las esquinas se apaga en los últimos ~260 px, así el degradado llega a #0b0e12 (fondo del documento,
+   theme-color y color con que iOS pinta el hueco de abajo) sin franja más clara ni más oscura */
+html.v6 #bg::after{-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 300px),transparent calc(100% - 30px));mask-image:linear-gradient(180deg,#000 calc(100% - 300px),transparent calc(100% - 30px))}
+html.v6 #app::after{height:220px!important}
+html.v6 #s-entreno .v8bm .v6next{bottom:-28px!important;z-index:2}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -5399,7 +5449,7 @@ function renderComida(el) {
   const seg = `<div class="ttabs" role="tablist">${[['dia', 'Día'], ['super', 'Súper'], ['supl', W_() < 360 ? 'Supl.' : 'Suplementos'], ['sust', 'Sustituir']].map(([k, t]) => `<button role="tab" aria-selected="${App.comidaSeg === k}" class="${App.comidaSeg === k ? 'on' : ''}" data-act="cseg" data-arg="${k}">${t}<\/button>`).join('')}<\/div>`;
   const mac = (l, v, g) => `<div class="mac"><div class="v"><b>${fmtN(v)}<\/b><span>/ ${fmtN(g)} g<\/span><\/div><div class="bar"><i style="width:${Math.min(100, g ? v / g * 100 : 0).toFixed(0)}%"><\/i><\/div><div class="l">${l}<\/div><\/div>`;
   const roomy = H_() >= 760 || !!window.MV_V7;   /* v7 · D3/P19: también a 320 px (antes la tarjeta vieja sin plato) */   // v7: el plato, las píldoras y los macros siempre arriba (días y pestañas bajan)   // a < 760 px de alto la cinta y los macros van abajo (diseño 5/10)
-  const macros = `<section class="g macros card${(U().ui.closed || {})['com:macros'] ? ' closed' : ''}" data-card="com:macros" style="margin:10px 16px 0;padding:11px 18px 9px"><button class="ctitle" data-act="cardOpen" data-arg="com:macros" style="min-height:18px"><span class="lbl" style="font-size:10px">${(U().ui.closed || {})['com:macros'] ? 'Macros' : ''}<\/span><\/button><button class="x" style="top:8px;right:10px" data-act="cardClose" data-arg="com:macros" aria-label="Cerrar macros">✕<\/button><div class="cbody" style="display:flex;gap:18px;margin-top:4px">${mac('Proteína', sum('p'), tg.p)}${mac('Carbos', sum('c'), tg.c)}${mac('Grasa', sum('f'), tg.f)}<\/div><\/section>`;
+  const macros = `<section class="g macros card v8nox" data-card="com:macros" style="margin:10px 16px 0;padding:11px 18px 9px"><span class="ctitle" style="min-height:18px"><span class="lbl" style="font-size:10px"><\/span><\/span><div class="cbody" style="display:flex;gap:18px;margin-top:4px">${mac('Proteína', sum('p'), tg.p)}${mac('Carbos', sum('c'), tg.c)}${mac('Grasa', sum('f'), tg.f)}<\/div><\/section>`;
   const nm = nowMin(); const curM = iso === today() ? mealNow(pl, nm) : pl.meals[0];   /* v7 · D8: la misma comida que Hoy */
   const pend = pl.meals.find(m => !(d.meals && d.meals[m.i]) && !getRef(iso, { type: 'meal', i: m.i }));
   const sel = pl.meals.find(m => m.i === App.mealSel) || curM || pend || pl.meals[pl.meals.length - 1];
@@ -7670,7 +7720,7 @@ const V8 = (() => {
   const mkName = k => 'v8k_' + k.replace(/[^\w-]/g, '_');
   let mkOn = false;   // la hoja se arma de una sola vez (insertar reglas una por una invalidaría el estilo de todo el documento cada vez)
   const mkAll = () => { if (mkOn) return; mkOn = true; try { const st = document.createElement('style'); st.id = 'v8mk';
-    st.textContent = Object.keys(AS).filter(k => /^(m_|rim_)/.test(k)).map(k => `.${mkName(k)}{-webkit-mask-image:url("${AS[k]}");mask-image:url("${AS[k]}")}`).join('\n');
+    st.textContent = Object.keys(AS).filter(k => /^(m_|rim_|av_)/.test(k)).map(k => `.${mkName(k)}{-webkit-mask-image:url("${AS[k]}");mask-image:url("${AS[k]}")}`).join('\n');
     document.head.appendChild(st); } catch (e) {} };
   const mkc = k => { if (!AS[k]) return ''; mkAll(); return mkName(k); };
   const reduce = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -8311,7 +8361,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const rx = Math.round(Math.max(104, Math.min(figH * .40, W / 2 - 44))), ry = Math.round(rx * .26 * 10) / 10;   /* plato ≈ 0.80 × alto del avatar */
     const figTop = Math.round(platY + ry * .15 - figH), figLeft = Math.round((W - figW) / 2);
     S.geo = { W, H, cx: Math.round(W / 2), cy: platY, rx, ry, figTop, figLeft, figW, figH, T0, sab: sf.sab, sat: sf.sat };
-    root.style.setProperty('--v8btn', btnTop + 'px'); root.style.setProperty('--v8ttl', ttlTop + 'px'); root.style.setProperty('--v8floor', platY + 'px');
+    root.style.setProperty('--v8btn', (btnTop + LO()) + 'px');   /* fix7: el botón baja con la barra (LO); personaje y plataforma no se mueven */ root.style.setProperty('--v8ttl', ttlTop + 'px'); root.style.setProperty('--v8floor', platY + 'px');
     const f = S.fig; if (!S.open) { f.style.left = figLeft + 'px'; f.style.top = figTop + 'px'; f.style.width = figW + 'px'; f.style.height = figH + 'px'; f.style.transform = ''; sizeCanvas(); }
     const hit = root.querySelector('.v8hit'); hit.style.cssText = `left:${Math.max(0, W / 2 - rx - 46)}px;width:${Math.min(W, rx * 2 + 92)}px;top:${Math.round(platY - ry - 34)}px;height:${Math.round(ry * 2 + 80)}px`;
     const tip = root.querySelector('.v8tip'); tip.style.top = Math.round(ttlTop - 24) + 'px';   /* la tarjetita ocupa el lugar del título (que se oculta al girar) */
@@ -8324,6 +8374,16 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
   const compact = () => (S.geo ? S.geo.H : (window.innerHeight || 844)) < 740;
   /* fix6 (hoy_abierto_abajo): la barra baja a 8 px de la barra de inicio → la hoja abre más abajo (40 % en vez de 46 %, +59 px de personaje).
      Sin zona segura la barra se queda a 14 px del borde, así que la hoja conserva su distancia de antes (82). */
+  /* fix7 · barra y hojas más abajo. LO = cuánto bajan (traslado puro): 4 px normal; en app de inicio con el hueco de iOS
+     (WebKit 301994: innerHeight termina ~47 px antes del borde y ese hueco no lo alcanza el DOM) la barra queda a 8 px del borde del
+     viewport, porque la barra de inicio ya está fuera de él. */
+  const LO = () => S.lo == null ? 4 : S.lo;
+  function gapCheck() {
+    try { const de = document.documentElement, st = navigator.standalone === true || !!(window.matchMedia && (matchMedia('(display-mode: standalone)').matches || matchMedia('(display-mode: fullscreen)').matches));
+      const ih = window.innerHeight || 0, iw = window.innerWidth || 0, sc = window.screen || {}, sh = ih >= iw ? Math.max(sc.width || 0, sc.height || 0) : Math.min(sc.width || 0, sc.height || 0);
+      const gap = st && sh ? sh - ih : 0, on = gap >= 20 && gap <= 140, sab = probe().sab, lo = on ? Math.max(14, sab - 12) - 8 : 4;
+      de.classList.toggle('v8gap', on); de.style.setProperty('--v8lo', lo + 'px'); de.dataset.v8gap = on ? String(Math.round(gap)) : '';
+      const ch = S.lo !== lo; S.lo = lo; return ch; } catch (e) { return false; } }
   const navH = () => Math.max(56, 82 - ((S.geo && S.geo.sab) || 0));
   function sheetSizes() { const g = S.geo, avail = g.H - g.sab - navH(), full = Math.max(300, avail - (g.H < 740 ? 196 : 250));
     return { full, half: Math.min(full, Math.max(300, Math.round(avail * .40))) }; }
@@ -8334,7 +8394,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
   }
   function setSnap(k) {
     const root = document.querySelector('#s-hoy .v8'); if (!root || !S.open) return; S.snap = k === 'full' ? 'full' : 'half';
-    const h = applySnap(root), top = S.geo.H - S.geo.sab - navH() - h; root.style.setProperty('--v8st', Math.round(top + 14) + 'px');
+    const h = applySnap(root), top = S.geo.H - S.geo.sab - navH() - h + LO(); root.style.setProperty('--v8st', Math.round(top + 14) + 'px');
   }
   function setRect(f, r) { f.style.left = r.l.toFixed(1) + 'px'; f.style.top = r.t.toFixed(1) + 'px'; f.style.width = r.w.toFixed(1) + 'px'; f.style.height = r.h.toFixed(1) + 'px'; }
   function frame(root, pl, instant) {
@@ -8356,7 +8416,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     if (!instant && !reduce() && f.animate) f.animate([{ transform: `translate(${(-tx).toFixed(1)}px,${(-ty).toFixed(1)}px) scale(${(1 / s).toFixed(4)})` }, { transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.2,.8,.2,1)' });   /* fix2 (G3/G6): animación explícita, sin depender de transiciones CSS */
     root.classList.toggle('legs', !!legs);
     const tb = root.querySelector('.v8turn'); if (tb) tb.style.top = Math.round(y0 + 2) + 'px';
-    root.style.setProperty('--v8st', Math.round(g.H - g.sab - navH() - sheetH + 14) + 'px'); root.style.setProperty('--v8y0', Math.round(legs ? y0 : y0 - 40) + 'px');   /* R2: la figura se recorta en el borde de la hoja */
+    root.style.setProperty('--v8st', Math.round(g.H - g.sab - navH() - sheetH + 14 + LO()) + 'px');   /* fix7: la hoja baja LO px (traslado), el encuadre no cambia */ root.style.setProperty('--v8y0', Math.round(legs ? y0 : y0 - 40) + 'px');   /* R2: la figura se recorta en el borde de la hoja */
     document.documentElement.style.setProperty('--v8tt', Math.round(Math.max(g.sat + 8, Math.min(sheetTop - 54, (y0 + sheetTop) / 2 - 20))) + 'px');   /* a la altura del pecho, sin tapar el botón ↻ */
   }
   function syncBody() {
@@ -8525,14 +8585,28 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
   }
 
   /* fix2 · Entreno (boceto aprobado): el mapa de cuerpo usa el avatar real de frente y de espalda con la luz de fase en los músculos del día */
+  /* fix7 · luz del mapa de Entreno = la «fuerte» de Hoy (mismo color de fase saturado ×2.2, mismas proporciones del shader):
+     capa «color» al 75 % (la piel toma el tono de fase sin volverse gris) + brillo aditivo al 42 % + halo suave recortado a la silueta */
+  const psCol = () => { const [r, g, b] = phRGB(), l = r * .299 + g * .587 + b * .114, f = x => Math.round(Math.max(0, Math.min(1, l + (x - l) * 2.2)) * 255); return `rgb(${f(r)},${f(g)},${f(b)})`; };
+  function bodyFit(b) {   /* fix7: el mapa se ajusta al hueco real sobre la hoja (antes se estimaba con 340 px y la hoja tapaba las piernas) */
+    const scr = b.closest('.scr'), lv = scr && scr.querySelector('.live'), box = b.parentElement; if (!lv || !box || scr.scrollTop > 2) return;
+    const bt = box.getBoundingClientRect().top, lt = lv.getBoundingClientRect().top, h0 = +b.dataset.h || 220;
+    const nx = b.querySelector('.v6next') ? 24 : 0, h = Math.max(110, Math.min(240, Math.floor(lt - bt - 14 - 10 - nx)));   /* «Próximo · …» va debajo de los pies, no encima */ if (Math.abs(h - h0) < 3) return;
+    b.dataset.h = String(h); box.style.height = (h + 14) + 'px'; delete b.dataset.v8bm; }
+  let bmRaf = 0;   /* fix7 · perf: el mapa se mide y arma en el siguiente cuadro (medir dentro del render forzaba un layout extra) */
+  function bodyMapSoon() { if (bmRaf) return; bmRaf = requestAnimationFrame(() => { bmRaf = 0; try { bodyMap(); } catch (e) {} }); }
   function bodyMap() {
     document.querySelectorAll('#s-entreno button[data-act=scrollBlocks][data-body]').forEach(b => {
+      try { bodyFit(b); } catch (e) {}
       let mus = []; try { mus = JSON.parse(b.dataset.body || '[]'); } catch (e) {}
-      const key = mus.join(',') + '|' + phc(); if (b.dataset.v8bm === key) return; b.dataset.v8bm = key; b.classList.add('v8bm');
-      const h = +b.dataset.h || 220, w = Math.round(h * 1080 / 1916);
-      const fig = v => { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.style.width = w + 'px'; sp.style.height = h + 'px';   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
+      const key = mus.join(',') + '|' + phc() + '|' + b.dataset.h; if (b.dataset.v8bm === key) return; b.dataset.v8bm = key; b.classList.add('v8bm');
+      const h = +b.dataset.h || 220, w = Math.round(h * 1080 / 1916), ps = psCol();
+      const fig = v => { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.style.width = w + 'px'; sp.style.height = h + 'px'; sp.style.setProperty('--ps', ps);   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
         const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
-        mus.filter(m => AS['m_' + v + '_' + m]).forEach(m => { const c = mkc('m_' + v + '_' + m); ['a', 'b'].forEach(x => { const i = document.createElement('i'); i.className = x + ' ' + c; sp.appendChild(i); }); });
+        const ms = mus.filter(m => AS['m_' + v + '_' + m]);
+        ms.forEach(m => { const c = mkc('m_' + v + '_' + m); ['lc', 'ls'].forEach(x => { const i = document.createElement('i'); i.className = x + ' ' + c; sp.appendChild(i); }); });
+        if (ms.length) { const hw = document.createElement('span'); hw.className = 'lh ' + mkc('av_' + v); const bl = document.createElement('span'); bl.className = 'lhb'; bl.style.filter = `blur(${Math.max(2.5, h / 48).toFixed(1)}px)`;
+          ms.forEach(m => { const i = document.createElement('i'); i.className = mkc('m_' + v + '_' + m); bl.appendChild(i); }); hw.appendChild(bl); sp.appendChild(hw); }
         return sp; };
       let box = b.querySelector('.v8bmw'); if (!box) { box = document.createElement('span'); box.className = 'v8bmw'; b.appendChild(box); }
       box.textContent = ''; box.appendChild(fig('f')); box.appendChild(fig('b'));
@@ -8546,11 +8620,16 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     SCREENS.hoy = renderHoy;
     const oR = render;
     render = function (s) { try { if (!s || s === App.screen) syncBody(); } catch (e) {}   /* v8.4 · perf: la clase del body antes de medir (cambiarla después invalidaba el estilo de toda la página) */
-      const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} try { bodyMap(); } catch (e) {} return r; };   // eslint-disable-line no-global-assign
+      const r = oR.apply(this, arguments); try { syncBody(); if (App.screen !== 'hoy') stopVideo(); else startVideo(); } catch (e) {} bodyMapSoon(); return r; };   // eslint-disable-line no-global-assign
     if (window.MV) { MV.render = render; MV.V8 = { open, close, turn: () => turn(), snap: setSnap, state: S, tab: k => ACT.v8tab(k), geo: () => S.geo, video: VID }; }
     const oH = header;
     header = function () { const r = oH.apply(this, arguments); try { hdr(); } catch (e) {} return r; };   // eslint-disable-line no-global-assign
     gyroInit();
+    /* fix7: hueco de iOS (app de inicio) y barra más abajo */
+    gapCheck(); const reGap = () => { if (gapCheck() && App.screen === 'hoy') { try { render('hoy'); } catch (e) {} } };
+    window.addEventListener('resize', reGap); window.addEventListener('orientationchange', () => setTimeout(reGap, 300)); window.addEventListener('pageshow', reGap);
+    /* fix7: la hoja de Entreno / Comida plegada con ✕ vuelve a abrirse al cambiar de día en el explorador (antes se veía vacía en otro día) */
+    ['exDay', 'exToday', 'exDayGo'].forEach(k => { const o = ACT[k]; if (typeof o !== 'function') return; ACT[k] = function () { try { const c = U().ui.closed || {}; ['entreno', 'comida'].forEach(x => { delete c['live:' + x]; }); } catch (e) {} return o.apply(this, arguments); }; });
     ACT.v8open = () => open();
     ACT.v8close = () => close();
     ACT.v8turn = () => turn();
