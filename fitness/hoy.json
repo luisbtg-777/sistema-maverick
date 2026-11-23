@@ -1,38 +1,44 @@
 {
- "fecha": "2026-11-22",
- "dia": "dom 22 nov",
+ "fecha": "2026-11-23",
+ "dia": "lun 23 nov",
  "fase": "BASICS",
- "semana": 1,
- "rutina": "🛋️ Descanso",
- "cafe": null,
+ "semana": 2,
+ "rutina": "💪 BÍCEP · 6:00–7:45",
+ "cafe": "5:15",
  "pre": null,
  "ventana": {
-  "abre": "12:00",
+  "abre": "8:30",
   "cierra": "16:00",
-  "tipo": "2 comidas"
+  "tipo": "16:8"
  },
  "comidas": [
   {
    "nombre": "C1",
-   "hora": "12:00",
-   "kcal": 921,
-   "p": 95
+   "hora": "8:30",
+   "kcal": 706,
+   "p": 64
   },
   {
    "nombre": "C2",
+   "hora": "12:00",
+   "kcal": 691,
+   "p": 63
+  },
+  {
+   "nombre": "C3",
    "hora": "15:30",
-   "kcal": 982,
-   "p": 94
+   "kcal": 685,
+   "p": 66
   }
  ],
- "kcal": 1905,
+ "kcal": 2060,
  "p": 190,
- "c": 140,
- "g": 65,
+ "c": 190,
+ "g": 60,
  "agua_l": 3.8,
- "linea1": "BASICS · S1 · DOM 22 nov",
- "linea2": "🛋️ Descanso",
- "linea3": "🍳 12:00 · 🍖 15:30 · 🔒 16:00",
- "linea4": "1,905 kcal · P 190 · 💧 3.8 L",
+ "linea1": "BASICS · S2 · LUN 23 nov",
+ "linea2": "💪 BÍCEP · 6:00–7:45",
+ "linea3": "☕ 5:15 · 🍳 8:30 · 🍖 12:00 · 🐟 15:30 · 🔒 16:00",
+ "linea4": "2,060 kcal · P 190 · 💧 3.8 L",
  "app": "https://luisbtg-777.github.io/sistema-maverick/fitness-mv.html"
 }
