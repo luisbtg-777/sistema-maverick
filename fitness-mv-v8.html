@@ -2032,13 +2032,15 @@ html.v6 .v8mstrip .v8ms .t{display:flex;flex-direction:column;align-items:flex-s
 html.v6 .v8mstrip .v8ms b{font-size:12.5px;font-weight:600}
 html.v6 .v8mstrip .v8ms small{font-size:10.5px;color:#93a0b4;font-variant-numeric:tabular-nums}
 html.v6 .v8mstrip .v8ms.dn{border-color:rgba(109,186,148,.7)} html.v6 .v8mstrip .v8ms.dn small{color:#6dba94}
-html.v6 .v8mstrip .v8ms.late{border-color:rgba(240,149,106,.75)} html.v6 .v8mstrip .v8ms.late small{color:#f0b49a}
-html.v6 .v8mstrip .v8ms.cur{border-color:var(--ph,#7ab3e0);background:rgba(122,179,224,.16);background:color-mix(in srgb,var(--ph,#7ab3e0) 18%,transparent)}   /* J3: color de la fase */
+html.v6 .v8mstrip .v8ms.late{border-color:rgba(240,149,106,.75);border-style:dashed} html.v6 .v8mstrip .v8ms.late small{color:#f0b49a}
+html.v6 .v8mstrip .v8ms.cur{border-width:2.5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);border-color:var(--ph,#7ab3e0);background:rgba(122,179,224,.16);background:color-mix(in srgb,var(--ph,#7ab3e0) 18%,transparent)}   /* J3: color de la fase */
 html.v6 .v8mstrip .v8ms:active{transform:scale(.96)}
 @media (max-width:349px){ html.v6 .v8mstrip .v8ms .e{display:none} }
 
 /* v8.16 · J4: a < 360 px el botón «Marcar» de P · C · G va en su propia línea (no tapa «de 190 · 190 · 60») */
 @media (max-width:359px){ html.v6 #s-hoy .v8mac{height:auto!important;min-height:118px} html.v6 #s-hoy .v8mac .v8pill{position:static!important;margin-top:8px;align-self:flex-end} }
+
+/* K1: el estado no depende solo del color (Cut: vista = atrasada en tono; Hyper: vista = hecha) → punteado + ⚠ (atrasada), ✓ (hecha), borde grueso + relleno (vista) */
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -8586,7 +8588,7 @@ const V8 = (() => {
       : pl.meals.length > 1 ? `<div class="v8card v8mstrip" role="group" aria-label="Comidas del día">${pl.meals.map(x => {   /* v8.16 · J: tira de platos: atrasada (naranja) · hecha (verde) · la que se ve (azul) */
           const dn = getRef(iso_, { type: 'meal', i: x.i }), cur = x.i === m.i, late = !dn && !cur && x.t <= nm && mealSlotState(pl, x, nm) === 'pendiente';   /* J2: atrasada solo si ya pasó su franja */
           const ex = (() => { try { return V6.emojiOf({ k: 'meal' + x.i, title: x.name || '' }, pl) || '🍽️'; } catch (e2) { return '🍽️'; } })();
-          return `<button class="v8ms${cur ? ' cur' : dn ? ' dn' : late ? ' late' : ''}" data-act="v8mealPick" data-arg="${x.i}" aria-pressed="${cur}" aria-label="${esc(x.short)} ${hm(x.t)}${dn ? ', hecha' : late ? ', atrasada' : ''}"><span class="e" aria-hidden="true">${ex}<\/span><span class="t"><b>${esc(x.short)}<\/b><small>${dn ? '✓' : hm(x.t)}<\/small><\/span><\/button>`; }).join('')}<\/div>` : '';
+          return `<button class="v8ms${cur ? ' cur' : dn ? ' dn' : late ? ' late' : ''}" data-act="v8mealPick" data-arg="${x.i}" aria-pressed="${cur}" aria-label="${esc(x.short)} ${hm(x.t)}${dn ? ', hecha' : late ? ', atrasada' : ''}"><span class="e" aria-hidden="true">${ex}<\/span><span class="t"><b>${esc(x.short)}<\/b><small>${dn ? '✓' : late ? '⚠ ' + hm(x.t) : hm(x.t)}<\/small><\/span><\/button>`; }).join('')}<\/div>` : '';
     return extra + `<button class="v8card v8meal" data-act="meal" data-arg="${m.i}" aria-label="Ver plato de ${esc(m.short)} y sustituir">${'' /* la ✕ va en la tarjeta de macros (un solo cierre por hoja) */}
 <span class="v8plate" style="--a1:${a1.toFixed(1)}%;--a2:${a2.toFixed(1)}%" aria-hidden="true"><i>${emo}<\/i><\/span>
 <span class="v8lab">${esc(m.short)} · ${hm(m.t)}${done ? ' · hecha' : ''}<\/span><span class="v8h">${esc(ln.title).replace(/(\d) (g|ml|kcal)\b/g, '$1\u00a0$2')}<\/span>${ln.sub ? `<span class="v8sub">${esc(ln.sub)}<\/span>` : ''}${ln.alt ? `<span class="v8alt">${svgI('swap', 13, 1.8)} <span>${ln.altH}<\/span><\/span>` : ''}<\/button>
