@@ -2024,6 +2024,23 @@ html.v6 #s-comida.v8com .fold > .days ~ .v8clk{margin-top:14px!important}
 @media (max-width:399px){ html.v6 .rv-sec{flex-wrap:wrap} html.v6 .rv-sec .rv-orig{flex-basis:100%;padding-left:44px;margin-top:0;text-align:left} }
 /* v8.14 · T2: a < 340 px, viendo otro día, el horario de la ventana en cifra más chica (no choca con 🔒 ni con C1/C3) */
 html.v6 #s-comida .v8clkc.v8clksm b{font-size:25px!important;letter-spacing:0!important}
+/* v8.16 · J · tira de platos en Hoy › Comida */
+html.v6 .v8mstrip{display:flex;gap:6px;padding:7px!important}
+html.v6 .v8mstrip .v8ms{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:6px;padding:6px 4px;border-radius:15px;border:1.5px solid rgba(255,255,255,.14);background:transparent;color:#cfd6e2;font:inherit;cursor:pointer}
+html.v6 .v8mstrip .v8ms .e{font-size:17px;line-height:1}
+html.v6 .v8mstrip .v8ms .t{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1}
+html.v6 .v8mstrip .v8ms b{font-size:12.5px;font-weight:600}
+html.v6 .v8mstrip .v8ms small{font-size:10.5px;color:#93a0b4;font-variant-numeric:tabular-nums}
+html.v6 .v8mstrip .v8ms.dn{border-color:rgba(109,186,148,.7)} html.v6 .v8mstrip .v8ms.dn small{color:#6dba94}
+html.v6 .v8mstrip .v8ms.late{border-color:rgba(240,149,106,.75);border-style:dashed} html.v6 .v8mstrip .v8ms.late small{color:#f0b49a}
+html.v6 .v8mstrip .v8ms.cur{border-width:2.5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);border-color:var(--ph,#7ab3e0);background:rgba(122,179,224,.16);background:color-mix(in srgb,var(--ph,#7ab3e0) 18%,transparent)}   /* J3: color de la fase */
+html.v6 .v8mstrip .v8ms:active{transform:scale(.96)}
+@media (max-width:349px){ html.v6 .v8mstrip .v8ms .e{display:none} }
+
+/* v8.16 · J4: a < 360 px el botón «Marcar» de P · C · G va en su propia línea (no tapa «de 190 · 190 · 60») */
+@media (max-width:359px){ html.v6 #s-hoy .v8mac{height:auto!important;min-height:118px} html.v6 #s-hoy .v8mac .v8pill{position:static!important;margin-top:8px;align-self:flex-end} }
+
+/* K1: el estado no depende solo del color (Cut: vista = atrasada en tono; Hyper: vista = hecha) → punteado + ⚠ (atrasada), ✓ (hecha), borde grueso + relleno (vista) */
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -4376,7 +4393,9 @@ function momentOf(nm, pl) {
 }
 /* v7 · D8: la comida "de ahora" es la MISMA en Hoy, en Comida y en el pilar: la última pendiente que ya llegó (≤ +15′); si ninguna llegó, la primera pendiente */
 function mealNow(pl, n) { const iso = pl.iso, d = U().days[iso] || {}, miss = pl.meals.filter(m => !(d.meals && d.meals[m.i]) && !getRef(iso, { type: 'meal', i: m.i }));
-  const arr = miss.filter(m => m.t <= n + 15); return arr.length ? arr[arr.length - 1] : miss[0] || null; }
+  const arr = miss.filter(m => m.t <= n + 15), lst = arr[arr.length - 1], fut = miss.find(m => m.t > n + 15);
+  if (lst && fut && mealSlotState(pl, lst, n) === 'pendiente') return fut;   /* v8.16 · J: si la comida debida ya pasó su franja, la que sigue es la próxima (las atrasadas quedan en la tira) */
+  return arr.length ? lst : miss[0] || null; }
 /* v8.10 · I2: «Ahora» solo para la comida en su franja (30 min antes de su hora → hora de la siguiente comida o cierre); antes de eso es «Siguiente»; pasada su franja, «Pendiente» */
 function mealSlotState(pl, m, n) { if (!m || pl.open == null) return 'pendiente'; const c = pl.close > pl.open ? pl.close : pl.close + 1440;
   if (n < pl.open) return 'siguiente'; if (n >= c) return 'pendiente';
@@ -5716,6 +5735,7 @@ function renderComida(el) {
     const dn = getRef(iso, { type: 'meal', i: sel.i });
     const rows = (sel.foods.length ? '' : sel.items.slice(0, 4).map(x => `<div class="fi"><span>${esc(x)}<\/span><\/div>`).join('')) + sel.foods.slice(0, 4).map(f => `<div class="fi" data-act="subst" data-arg="${f.food}"><span>${esc(foodName(f.label))}${f.alt ? `<span style="color:var(--t3)"> ó ${esc(f.alt.name.toLowerCase())} ${f.alt.g} g<\/span>` : ''}<\/span><span class="gr">${f.g} g<\/span><\/div>`).join('') + (sel.foods.length > 4 ? `<div class="fi" style="color:var(--t3)">+ ${sel.foods.length - 4} más<\/div>` : '');
     const allDone = !pend && pl.meals.length; void rows;
+    const nxt = pl.meals.find(m => m.t > sel.t && !(d.meals && d.meals[m.i]) && !getRef(iso, { type: 'meal', i: m.i })) || pend;   /* v8.16 · J: «Siguiente» = la que viene; si no queda ninguna después, la primera pendiente */
     // Opción 3: el plato en 1 línea; completo (y sustituir) en el enlace
     const maxc = Math.floor((W_() - 98) / 6.7), nm1 = f => foodShort(f.label);
     let one1 = (sel.foods.length ? sel.foods.map(f => nm1(f) + ' ' + f.g + ' g') : sel.items.map(x => String(x).split(/[(,]/)[0].trim())).join(' · ');
@@ -5726,7 +5746,7 @@ function renderComida(el) {
     const sst = { ahora: 'Ahora', siguiente: 'Siguiente', pendiente: 'Pendiente' };
     liveH = live('comida', allDone && !App.mealSel && App.mealSel !== 0 ? (shut ? (W_() < 360 ? 'Cerrada' : 'Ventana cerrada') : 'Comidas ✓') : esc(sel.short === 'Pre' ? 'Pre · ' : sel.short + ' · ') + sel.at, MVUI.chip(allDone && !App.mealSel && App.mealSel !== 0 ? pl.meals.length + '/' + pl.meals.length + (W_() < 360 ? '' : ' hechas') : dn ? 'Hecha' : sel === curM && iso === today() ? sst[mealSlotState(pl, sel, nm0)] : 'Plato', dn ? 'off' : ''),   /* v7 · D8 + v8.10 · I2: «Ahora» solo en la franja de la comida */
       big(fmtN(sel.kcal), 'kcal') + delta(esc(one1)) +
-      (dn ? acts(pend ? { label: 'Siguiente: ' + pend.short + ' ' + pend.at, act: 'mealSel', arg: pend.i } : { label: 'Ver mañana', act: 'exDay', arg: addD(iso, 1), icon: 'moon' }, { label: 'Desmarcar ' + sel.short, act: 'tog', arg: 'meal:' + sel.i + ':' + iso })
+      (dn ? acts(nxt ? { label: 'Siguiente: ' + nxt.short + ' ' + nxt.at, act: 'mealSel', arg: nxt.i } : { label: 'Ver mañana', act: 'exDay', arg: addD(iso, 1), icon: 'moon' }, { label: 'Desmarcar ' + sel.short, act: 'tog', arg: 'meal:' + sel.i + ':' + iso })
           : acts(iso > today() ? { label: 'Volver a hoy', act: 'exToday', icon: 'reset' } : { label: 'Comí la ' + sel.short, act: 'tog', arg: 'meal:' + sel.i + ':' + iso, icon: 'check' }, { label: 'Ver plato y sustituir', act: 'meal', arg: sel.i + (iso !== today() ? ':' + iso : '') })), '', 40);   /* v7 · D13: en una fecha futura no se marca "Comí" */
   } else if (pl.trip) {   /* v3.3c · F4: viaje */
     const tp = pl.trip;
@@ -8557,17 +8577,21 @@ const V8 = (() => {
     const iso = pl.iso, T = pl.targets || { kcal: 0, p: 0, c: 0, f: 0 }, e = eaten(pl);
     if (pl.trip) { const tp = pl.trip; return `<div class="v8card"><div class="v8lab">Comida · viaje<\/div><div class="v8h">≥${tp.p} g proteína<\/div><div class="v8sub">${esc(tp.plate)}${tp.hours ? ' · ' + esc(tp.hours) : tp.window ? ' · ventana ' + esc(tp.window.replace('flotante ', '')) : ''}<\/div>${tp.rule ? `<div class="v8sub">${esc(tp.rule)}<\/div>` : ''}<div class="v8acts"><button class="v8pill neu" data-act="sheet" data-arg="salidas:${pl.iso}">Registrar el día ${svgI('ok', 13, 2.2)}<\/button><\/div><\/div>`; }
     if (!pl.meals.length) return `<div class="v8card"><div class="v8lab">Comida<\/div><div class="v8h">Sin platos fijos hoy<\/div><div class="v8sub">${esc(titleFor(pl).h2 || 'Sigue la guía del día')}<\/div><\/div>`;
-    const m = mealNow(pl, nm) || pl.meals[pl.meals.length - 1], done = getRef(iso, { type: 'meal', i: m.i }), ln = mealLines(m);
+    const pick = S.mealPick && S.mealPick.iso === iso ? pl.meals.find(x => x.i === S.mealPick.i) : null;   /* v8.16 · J: comida elegida en la tira */
+    const m = pick || mealNow(pl, nm) || pl.meals[pl.meals.length - 1], done = getRef(iso, { type: 'meal', i: m.i }), ln = mealLines(m);
     const mk = (m.p || 0) * 4 + (m.c || 0) * 4 + (m.f || 0) * 9 || 1, a1 = (m.p || 0) * 4 / mk * 100, a2 = a1 + (m.c || 0) * 4 / mk * 100;
     const emo = (() => { try { return V6.emojiOf({ k: 'meal' + m.i, title: m.name || '' }, pl) || '🍽️'; } catch (x) { return '🍽️'; } })();
     const pct = T.kcal ? Math.min(100, Math.round(e.kcal / T.kcal * 100)) : 0, C = 2 * Math.PI * 36;
-    const iso_ = pl.iso, earlier = pl.meals.filter(x => x.i !== m.i && x.t < m.t && x.t <= nm && !getRef(iso_, { type: 'meal', i: x.i }));
+    const iso_ = pl.iso;
     const om = pl.meals[0], openW = (App.mom || {}).id === 'abrir' && om && !getRef(iso_, { type: 'meal', i: om.i }), w0 = om ? pl.water.find(x => Math.abs(x.t - om.t) <= 10) : null;
     const extra = openW ? `<div class="v8card v8quickrow"><span class="v8sub">Abre la ventana: ${esc(om.short)}${w0 ? ' + ' + w0.ml + ' ml' : ''}<\/span><button class="v8pill neu" data-act="openWin">Abrir ventana ${svgI('ok', 13, 2.2)}<\/button><\/div>`
-      : earlier.length ? `<div class="v8card v8quickrow"><span class="v8sub">Pendientes: ${esc(earlier.map(x => x.short).join(', '))}<\/span><button class="v8pill neu" data-act="markEarlier" data-arg="${earlier.map(x => x.i).join(',')}">Marcar anteriores<\/button><\/div>` : '';
+      : pl.meals.length > 1 ? `<div class="v8card v8mstrip" role="group" aria-label="Comidas del día">${pl.meals.map(x => {   /* v8.16 · J: tira de platos: atrasada (naranja) · hecha (verde) · la que se ve (azul) */
+          const dn = getRef(iso_, { type: 'meal', i: x.i }), cur = x.i === m.i, late = !dn && !cur && x.t <= nm && mealSlotState(pl, x, nm) === 'pendiente';   /* J2: atrasada solo si ya pasó su franja */
+          const ex = (() => { try { return V6.emojiOf({ k: 'meal' + x.i, title: x.name || '' }, pl) || '🍽️'; } catch (e2) { return '🍽️'; } })();
+          return `<button class="v8ms${cur ? ' cur' : dn ? ' dn' : late ? ' late' : ''}" data-act="v8mealPick" data-arg="${x.i}" aria-pressed="${cur}" aria-label="${esc(x.short)} ${hm(x.t)}${dn ? ', hecha' : late ? ', atrasada' : ''}"><span class="e" aria-hidden="true">${ex}<\/span><span class="t"><b>${esc(x.short)}<\/b><small>${dn ? '✓' : late ? '⚠ ' + hm(x.t) : hm(x.t)}<\/small><\/span><\/button>`; }).join('')}<\/div>` : '';
     return extra + `<button class="v8card v8meal" data-act="meal" data-arg="${m.i}" aria-label="Ver plato de ${esc(m.short)} y sustituir">${'' /* la ✕ va en la tarjeta de macros (un solo cierre por hoja) */}
 <span class="v8plate" style="--a1:${a1.toFixed(1)}%;--a2:${a2.toFixed(1)}%" aria-hidden="true"><i>${emo}<\/i><\/span>
-<span class="v8lab">${esc(m.short)} · ${hm(m.t)}${done ? ' · hecha' : ''}<\/span><span class="v8h">${esc(ln.title)}<\/span>${ln.sub ? `<span class="v8sub">${esc(ln.sub)}<\/span>` : ''}${ln.alt ? `<span class="v8alt">${svgI('swap', 13, 1.8)} <span>${ln.altH}<\/span><\/span>` : ''}<\/button>
+<span class="v8lab">${esc(m.short)} · ${hm(m.t)}${done ? ' · hecha' : ''}<\/span><span class="v8h">${esc(ln.title).replace(/(\d) (g|ml|kcal)\b/g, '$1\u00a0$2')}<\/span>${ln.sub ? `<span class="v8sub">${esc(ln.sub)}<\/span>` : ''}${ln.alt ? `<span class="v8alt">${svgI('swap', 13, 1.8)} <span>${ln.altH}<\/span><\/span>` : ''}<\/button>
 <div class="v8grid"><div class="v8card v8pct"><svg width="86" height="86" viewBox="0 0 86 86" aria-hidden="true"><circle cx="43" cy="43" r="36" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="7"/><circle cx="43" cy="43" r="36" fill="none" stroke="var(--ph)" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(C * pct / 100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 43 43)"${pct ? '' : ' stroke-opacity="0"'}/><\/svg><span class="v8pv"><b>${pct}%<\/b><small>del día<\/small><\/span><\/div>
 <div class="v8card v8mac"><div class="v8lab">P · C · G<\/div><div class="v8mv">${e.p} · ${e.c} · ${e.f}<\/div><div class="v8sub">de ${T.p} · ${T.c} · ${T.f}<\/div>
 <button class="v8pill neu" data-act="v8mark" data-arg="meal:${m.i}" aria-pressed="${done}" aria-label="${done ? 'Desmarcar' : 'Marcar'} ${esc(m.short)}">${done ? 'Hecha' : 'Marcar'} ${svgI('ok', 13, 2.2)}<\/button><\/div><\/div>`;
@@ -9347,7 +9371,8 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     ACT.v8close = () => close();
     ACT.v8turn = () => turn();
     ACT.v8tab = k => { const pane = document.querySelector('#s-hoy .v8pane'); if (pane) S.scroll[S.tab] = pane.scrollTop; S.tab = k; S.lastTab = k; if (!S.open) return open(k); render('hoy'); };
-    ACT.v8mark = a => mark(a);
+    ACT.v8mark = a => { if (/^meal:/.test(a)) S.mealPick = null; return mark(a); };   /* v8.16 · J: al marcar, la tarjeta vuelve a «la que sigue» */
+    ACT.v8mealPick = a => { const pane = document.querySelector('#s-hoy .v8pane'); if (pane) S.scroll[S.tab] = pane.scrollTop; S.mealPick = { iso: today(), i: +a }; render('hoy'); };
     const oT = toast;
     toast = function () { const t = document.getElementById('toast'); if (t) t.classList.remove('v8ok'); return oT.apply(this, arguments); };   // eslint-disable-line no-global-assign
     const oGo = ACT.go;
