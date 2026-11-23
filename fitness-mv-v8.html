@@ -1957,6 +1957,62 @@ html.v6 #s-comida.v8com .mac.v8mac{width:auto!important;flex:1 1 0!important;min
 @media (max-width:359px){#s-comida.v8com .v8femo i{font-size:15px}#s-comida.v8com .v8femo em{font-size:12.5px}#s-comida.v8com .v8femo{gap:2px}html.v6 #s-comida.v8com .mac.v8mac .v b{font-size:20px!important}html.v6 #s-comida.v8com .mac.v8mac svg{width:36px;height:36px}}
 html.v6 #app #s-comida.v8com .v8comrow .lnk{width:auto!important;margin:0!important;height:36px!important;min-height:36px!important;padding:0 2px!important;flex:none}
 @media (max-width:359px){#s-comida.v8com .v8clkc b{font-size:34px}#s-comida.v8com .v8clkc small{letter-spacing:.08em}#s-comida.v8com .v8clkc span{max-width:62%}}
+/* ══ v8.10 (revisión v8.9) ══ */
+/* Comida · D5: el reloj, los macros y la tarjeta viva van juntos abajo (sin hueco entre macros y tarjeta); el aire queda arriba del reloj */
+html.v6 #s-comida.v8com .fold > .v8clk{margin-top:auto!important}
+html.v6 #app #s-comida.v8com .fold > .live.v8comlive{margin-top:12px!important;margin-bottom:calc(var(--v8railb) + var(--v8railh) + 10px)!important}   /* en su sitio sin que «sticky» la suba sobre los macros */
+/* D6: «/ 190 g» sin el espaciado de las etiquetas */
+html.v6 #s-comida.v8com .mac.v8mac .v span{letter-spacing:0!important;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* D1/D3: encabezado de la tarjeta viva sin «…»: cada pieza completa; si no caben, las kcal bajan a su propia línea */
+html.v6 #s-comida.v8com .live.v8comlive .hd{flex-wrap:wrap!important;row-gap:4px;white-space:nowrap}
+html.v6 #s-comida.v8com .live.v8comlive .hd > *{flex:none!important;overflow:visible!important;text-overflow:clip!important;max-width:none!important;min-width:0}
+html.v6 #s-comida.v8com .live.v8comlive .hd .big.v8comk,html.v6 #s-comida.v8com .live.v8comlive .hd .big.v8comk *{overflow:visible!important;text-overflow:clip!important;max-width:none!important}
+#s-comida.v8com .v8femo{gap:8px}
+#s-comida.v8com .v8femo span{gap:3px}
+/* «Comí la C1» conserva su ✓ también a 320 */
+@media (max-width:359px){
+  html.v6 #s-comida.v8com .v8comrow .acts .cta svg{display:inline-block!important;width:15px;height:15px;margin-right:5px}
+  html.v6 #s-comida.v8com .v8comrow .acts .cta{padding:0 13px!important}
+  html.v6 #s-comida.v8com .live.v8comlive .hd .lbl{letter-spacing:.08em!important}
+  #s-comida.v8com .v8femo{gap:8px}
+}
+/* D8: la línea del día no repite la comida de la tarjeta viva mientras esta se ve; el detalle se despliega al bajar */
+#s-comida .v8dline .v8lcard > :not(.v8lh){transition:opacity .2s}
+#s-comida .v8dline.v8peek .v8lcard > :not(.v8lh){display:none}
+#s-comida .v8dline.v8peek .v8lcard{padding-top:12px;padding-bottom:12px}
+/* N2: el nombre del alimento completo (en 2 líneas si hace falta), nunca «…» */
+#s-comida .v8lf span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:break-word;line-height:1.25}
+/* Cuerpo · D2: el subtítulo de la etiqueta en 1–2 líneas completas (sin «…») */
+#s-cuerpo .v8cut span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.25;overflow-wrap:break-word}
+#s-cuerpo .v8cut span i.nw{font-style:normal;white-space:nowrap}
+/* Entreno · D9: descanso con la barra delgada (ícono del calendario del mismo tamaño que en Empezar) */
+html.v6 #s-entreno .live.v8tlrest .v8tlgo svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
+/* Hoy · D4: el plato de la pestaña Comida queda dentro de su tarjeta (antes se salía por la derecha) */
+html.v6 .v8meal .v8plate{right:12px;width:104px;height:104px;margin-top:-52px;padding:8px}
+html.v6 .v8meal .v8plate i{padding-right:0;font-size:36px}
+@media (max-width:359px){html.v6 .v8meal .v8plate{width:92px;height:92px;margin-top:-46px;right:10px}html.v6 .v8meal .v8plate i{font-size:32px}}
+/* Más · D10: el pie fijo («Zona de riesgo») es opaco donde va su texto: lo que pasa por debajo al bajar (Acerca) ya no se transparenta ni se le encima */
+html.v6 .sheet .foot,html.v6 .sheet .foot.col{background:linear-gradient(180deg,rgba(10,12,16,0) 0,rgb(10,12,16) 18px,rgb(10,12,16) 100%)!important}
+/* I3 · ningún texto cortado con «…» (prueba fix11 · corte en 320 / 390 / 430) */
+@media (max-width:359px){html.v6 body.v8hoy .top .brand.v8eye{flex-direction:column;gap:1px}html.v6 body.v8hoy .top .brand.v8eye .v8sep{display:none}}
+html.v6 body.v8hoy .top .brand.v8eye .v8e2{text-overflow:clip!important}
+.v8bt small{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+#s-camino .v8camnx{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.3}
+#s-comida .v8lm .v8lme small{font:500 12.5px var(--v8f);letter-spacing:0;color:#a3a9b1;margin-left:4px;vertical-align:2px}
+@media (max-width:359px){html.v6 .sheet .seg button{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.1;font-size:12px;letter-spacing:0}html.v6 .sheet .seg{height:auto!important;min-height:36px}}
+.safety .sline{white-space:normal!important}.safety .sline span:nth-child(2){overflow:visible!important;text-overflow:clip!important}
+#s-comida .v8lm .v8lme i{font-style:normal}
+@media (max-width:359px){#s-comida .v8lm{flex-wrap:wrap;row-gap:2px;padding:8px 14px}#s-comida .v8lm .v8lme{order:5;flex:1 0 100%}#s-comida .v8lm b{flex:1}}
+#s-comida .v8lgo span{white-space:nowrap}#s-comida .v8lrow{flex-wrap:wrap;row-gap:6px}#s-comida .v8lgo{flex:none}
+#s-entreno .v8tlnext.v8tlnc{right:auto;width:72px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0;border-radius:18px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);letter-spacing:.08em;line-height:1.2}
+#s-entreno .v8tlnext.v8tlnc span:first-child{font-size:12.5px;letter-spacing:.04em;color:#8d939b}
+#s-entreno .v8tlnext.v8tlnc span:not(:first-child){color:#e9ecf0}
+/* fix11 · el encabezado de la tarjeta viva crece cuando las kcal bajan a su línea (no se encima con los emojis) */
+html.v6 #s-comida.v8com .live.v8comlive .hd{height:auto!important;min-height:30px}
+/* Programa a 320: cada botón toma el ancho de su palabra más larga («Confirmado» completo) */
+@media (max-width:359px){html.v6 .sheet .seg button{flex:1 1 auto!important;min-width:min-content!important;padding:0 2px!important}html.v6 .sheet .seg{gap:2px!important}}
+/* «Suplementos» cabe en su pestaña: cada pestaña toma al menos el ancho de su palabra */
+html.v6 #s-comida .ttabs button{flex:1 1 auto!important;min-width:max-content!important}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -4310,6 +4366,11 @@ function momentOf(nm, pl) {
 /* v7 · D8: la comida "de ahora" es la MISMA en Hoy, en Comida y en el pilar: la última pendiente que ya llegó (≤ +15′); si ninguna llegó, la primera pendiente */
 function mealNow(pl, n) { const iso = pl.iso, d = U().days[iso] || {}, miss = pl.meals.filter(m => !(d.meals && d.meals[m.i]) && !getRef(iso, { type: 'meal', i: m.i }));
   const arr = miss.filter(m => m.t <= n + 15); return arr.length ? arr[arr.length - 1] : miss[0] || null; }
+/* v8.10 · I2: «Ahora» solo para la comida en su franja (30 min antes de su hora → hora de la siguiente comida o cierre); antes de eso es «Siguiente»; pasada su franja, «Pendiente» */
+function mealSlotState(pl, m, n) { if (!m || pl.open == null) return 'pendiente'; const c = pl.close > pl.open ? pl.close : pl.close + 1440;
+  if (n < pl.open) return 'siguiente'; if (n >= c) return 'pendiente';
+  const nx = pl.meals.filter(x => x.t > m.t).sort((a, b) => a.t - b.t)[0], end = nx ? nx.t : c;
+  return n < m.t - 30 ? 'siguiente' : n < end ? 'ahora' : 'pendiente'; }
 function weeklyCheckinDone(iso) { const from = addD(iso, -((new Date(iso + 'T12:00').getDay() + 6) % 7)); return U().body.measures.some(m => m.d >= from && m.d <= iso && m.waist != null); }
 function fastingMinutes(iso, nm) { // minutos desde el cierre de la ventana anterior
   const pl = plan(iso);
@@ -5044,6 +5105,11 @@ function protagonists(W) {
   // entrenador r2: el tren inferior cuenta como UN grupo contra el umbral; si entra, se enciende cada músculo con ≥ 2 series.
   const LOWER = ['quads', 'gluteos', 'isquios', 'gemelos'], TH = .18, lowSum = LOWER.reduce((a, k) => a + (t[k] || 0), 0), lowIn = tot > 0 && lowSum / tot >= TH;
   const pr = order.filter(k => LOWER.indexOf(k) >= 0 ? (lowIn && t[k] >= 2) : t[k] / tot >= TH);   // en orden de aparición en la sesión
+  if (lowIn) {   /* v8.10 · C1: día de pierna: el músculo del tren inferior que el plan declara (W.muscles) y que un ejercicio trabaja aunque no sea el principal (ligas de pierna: cuádriceps + glúteo) también se enciende */
+    const ex = new Set(); (W.blocks || []).forEach(b => { if (b.type === 'abs') return; (b.exercises || []).forEach(e => (e.muscles || ((P.exercises[e.id] || {}).muscles) || []).forEach(m => ex.add(MUSCLE_ALIAS[m] || m))); });
+    const add = LOWER.filter(k => pr.indexOf(k) < 0 && (W.muscles || []).indexOf(k) >= 0 && ex.has(k));
+    if (add.length) { let at = -1; pr.forEach((k, i) => { if (LOWER.indexOf(k) >= 0) at = i; }); pr.splice(at + 1, 0, ...add); }
+  }
   return pr.length ? pr : musclesOf(W);
 }
 function sculptMuscles(W) {
@@ -5390,7 +5456,9 @@ function cutWeekRir(pl) {
 }
 function weekNote(pl) { // nota de la semana del coach + RIR de la semana (Plan A/B)
   const st = pl.st, tr = (STG[pl.R.stage === 'peak2' ? 'fase2' : pl.R.stage] || {}).training || {}; const out = [];   // la Peak Week final (sem 12) lleva la nota del Corte final
-  const wn = st.week ? (tr.week_notes || {})[st.week] : st.cycle_week ? (tr.week_notes || {})[st.cycle_week] : null; if (wn) out.push(wn);
+  let wn = st.week ? (tr.week_notes || {})[st.week] : st.cycle_week ? (tr.week_notes || {})[st.cycle_week] : null;
+  if (wn && pl.W && /THENX\s*\d/.test(wn)) { try { const bm = blockMins(pl), i = pl.W.blocks.findIndex(b => b.type === 'calistenia'); if (i >= 0 && bm[i]) wn = wn.replace(/THENX\s*\d+(?:\s*[-–]\s*\d+)?\s*['′]/, 'THENX ' + bm[i] + '′'); } catch (e) {} }   /* v8.10 · C3: los minutos de THENX salen del bloque calibrado (calistenia_min, el que suma la sesión), no del texto de la nota */
+  if (wn) out.push(wn);
   const rir = st.week ? (P.training_common.rir_by_week[U().assumptions.viaje_medellin === 'descartado' ? 'plan_b_sin_viaje' : 'plan_a'] || {})[st.week] : null;
   if (pl.variant === 'transicion' && wn) {   /* v7 fix2 · P-N1: S1 de Reversa / Mini-corte → "RIR de la semana" con la regla del dato (week_notes "1") */
     const head = wn.indexOf(':') > 0 ? wn.slice(0, wn.indexOf(':')).trim() : '', rest = (wn.indexOf(':') > 0 ? wn.slice(wn.indexOf(':') + 1) : wn).split('·').map(x => x.trim()).filter(x => x && !/^RIR\b/i.test(x));
@@ -5643,7 +5711,9 @@ function renderComida(el) {
     if (one1.length > maxc && sel.foods.length) { const names = sel.foods.map(f => nm1(f).split(' ')[0].toLowerCase()); one1 = names.join(' · ');   // diseño op3 · 5: sin "…": primero se quitan los gramos, luego se cuentan los que no caben
       for (let k = names.length - 1; one1.length > maxc && k >= 1; k--) one1 = names.slice(0, k).join(' · ') + ' +' + (names.length - k);
       one1 = one1.charAt(0).toUpperCase() + one1.slice(1); }
-    liveH = live('comida', allDone && !App.mealSel && App.mealSel !== 0 ? (W_() < 360 ? 'Cerrada' : 'Ventana cerrada') : esc(sel.short === 'Pre' ? 'Pre · ' : sel.short + ' · ') + sel.at, MVUI.chip(allDone && !App.mealSel && App.mealSel !== 0 ? pl.meals.length + '/' + pl.meals.length + ' hechas' : dn ? 'Hecha' : sel === curM && iso === today() ? (nm0 >= pl.open && nm0 < pl.close ? 'Ahora' : 'Pendiente') : 'Plato', dn ? 'off' : ''),   /* v7 · D8: "Ahora" solo con la ventana abierta */
+    const shut = iso < today() || (iso === today() && nm0 >= (pl.close > pl.open ? pl.close : pl.close + 1440));   /* v8.10 · I1: «Ventana cerrada» solo cuando de verdad cerró; con todo comido antes, «Comidas ✓» */
+    const sst = { ahora: 'Ahora', siguiente: 'Siguiente', pendiente: 'Pendiente' };
+    liveH = live('comida', allDone && !App.mealSel && App.mealSel !== 0 ? (shut ? (W_() < 360 ? 'Cerrada' : 'Ventana cerrada') : 'Comidas ✓') : esc(sel.short === 'Pre' ? 'Pre · ' : sel.short + ' · ') + sel.at, MVUI.chip(allDone && !App.mealSel && App.mealSel !== 0 ? pl.meals.length + '/' + pl.meals.length + (W_() < 360 ? '' : ' hechas') : dn ? 'Hecha' : sel === curM && iso === today() ? sst[mealSlotState(pl, sel, nm0)] : 'Plato', dn ? 'off' : ''),   /* v7 · D8 + v8.10 · I2: «Ahora» solo en la franja de la comida */
       big(fmtN(sel.kcal), 'kcal') + delta(esc(one1)) +
       (dn ? acts(pend ? { label: 'Siguiente: ' + pend.short + ' ' + pend.at, act: 'mealSel', arg: pend.i } : { label: 'Ver mañana', act: 'exDay', arg: addD(iso, 1), icon: 'moon' }, { label: 'Desmarcar ' + sel.short, act: 'tog', arg: 'meal:' + sel.i + ':' + iso })
           : acts(iso > today() ? { label: 'Volver a hoy', act: 'exToday', icon: 'reset' } : { label: 'Comí la ' + sel.short, act: 'tog', arg: 'meal:' + sel.i + ':' + iso, icon: 'check' }, { label: 'Ver plato y sustituir', act: 'meal', arg: sel.i + (iso !== today() ? ':' + iso : '') })), '', 40);   /* v7 · D13: en una fecha futura no se marca "Comí" */
@@ -5654,7 +5724,7 @@ function renderComida(el) {
     const pd = pl.peak ? P.peak_week.days.find(x => x.d === R.peak_day) : null;
     liveH = live('comida', pd ? 'Peak · D' + pd.d : 'Día', MVUI.chip(pd ? 'Ajuste' : 'Sin platos', 'off'), big(fmtN(tg.kcal), 'kcal · P ' + tg.p + ' · C ' + tg.c + ' · G ' + tg.f) + delta(pd && pd.carb_choice ? 'D6: elige carbos según el espejo' : 'sin platos definidos para este día', 'none') + acts(pd && pd.carb_choice ? { label: 'Pregunta del espejo', act: 'sheet', arg: 'espejo:' + iso, icon: 'sparkle' } : { label: 'Ver Súper', act: 'cseg', arg: 'super' }, null), '', 40);
   }
-  el.innerHTML = `<div class="fold">${head}${explorer('comida')}${seg}${roomy && !pl.trip ? macros + strip_ : ''}${liveH}<\/div><div class="below" id="com-below">${roomy || pl.trip ? '' : macros.replace('margin:12px 16px 0', 'margin:0') + `<section class="g card" data-card="com:strip" style="padding:12px 0"><button class="x" data-act="cardClose" data-arg="com:strip" aria-label="Cerrar">✕<\/button><div style="padding-right:44px">${strip_}<\/div><\/section>`}${comidaBelow(pl)}<\/div>`;
+  el.innerHTML = `<div class="fold">${head}${explorer('comida')}${seg}${roomy && !pl.trip ? macros + strip_ : ''}${liveH}<\/div><div class="below" id="com-below">${roomy || pl.trip ? '' : macros.replace('margin:12px 16px 0', 'margin:0') + `<section class="g card" data-card="com:strip" style="padding:12px 0"><button class="x" data-act="cardClose" data-arg="com:strip" aria-label="Cerrar">✕<\/button><div style="padding-right:44px">${strip_}<\/div><\/section>`}${window.__comLazy ? '' : comidaBelow(pl)}<\/div>`;   /* v8.10 · perf: al navegar, las tarjetas de abajo se arman en tiempo ocioso (comDefer) */
 }
 /* v7 · P7: Peak Week baja la grasa a 35–40 g o el día a 1,560 kcal 1–2 días (carga y descarga de carbos, firmado por nutrición): se avisa junto a la regla */
 function pkExc(pl, rule) {
@@ -6210,7 +6280,7 @@ function entLive(pl, cta) {
   const W = pl.W, iso = pl.iso, rp = routineParts(W, pl.gymDurCal || pl.gymDur, pl), nar = W_() < 360;
   const rowH = (emo, t, sub, min, act) => `<button class="erow" data-act="sheet" data-arg="rutina:${iso}" ${act || ''}><span class="emo" aria-hidden="true">${emo}<\/span><span class="et"><b>${esc(t)}<\/b><small>${sub}<\/small><\/span><span class="em">${min ? min + '′' : ''}<\/span><\/button>`;
   let rows = '';
-  if (rp.wu.length) rows += rowH('🔆', 'Warm-up', 'movilidad + activación', rp.wuMin, 'data-erow="wu"' + (rp.warmOnly ? ' data-wu-only' : ''));
+  if (rp.wu.length) rows += rowH('☀️', 'Warm-up', 'movilidad + activación', rp.wuMin, 'data-erow="wu"' + (rp.warmOnly ? ' data-wu-only' : ''));
   if (rp.calX.length) { const sk0 = rp.skills || (rp.calX.map(b => strip(b.title)).join(' · ')); rows += rowH('🤸', 'Calistenia', esc(holdDay(pl) ? (nar ? sk0.split(/\s*(?:→|·)\s*/)[0] + ' · holds' : sk0 + ' · solo holds') : sk0), rp.calXMin, 'data-erow="cal"'); }
   if (rp.fz.length && !rp.nF) rows += rowH('🏋️', 'Fuerza', esc(rp.fz.map(b => capsWords(strip(b.title))).join(' · ') || blocksSummary(W, pl.variant)), rp.fzMin, 'data-erow="fz"');   /* Peak Week: bloques sin ejercicios sueltos */
   else if (rp.fz.length) rows += rowH('🏋️', 'Fuerza', nar ? rp.nF + ' ejerc.' + (rp.anchors ? ' · ' + rp.anchors + ' ⚓' : '') : rp.nF + ' ejercicios' + (rp.anchors ? ' · ' + rp.anchors + (rp.anchors === 1 ? ' ancla' : ' anclas') + ' ⚓' : ''), rp.fzMin, 'data-erow="fz"');
@@ -6241,7 +6311,7 @@ function rutinaSheet(iso, curK) {
   const vc = variantChip(pl.variant); if (vc) body += `<div class="g flat rnote">${esc(vc.t)} · ${esc(vc.sub)}<\/div>`;
   if (pl.R.bad_night && pl.R.bad_night.tier != null) body += `<div class="g flat rnote" data-badnight>😴 ${esc(((P.training_common.bad_night || {}).tiers || [])[pl.R.bad_night.tier].session_md || '')}<\/div>`;
   if (rp.cal.length) {
-    body += rp.warmOnly ? `<div class="rsec"><span class="emo">🔆<\/span><b>Warm-up<\/b><span>${rp.calMin}′<\/span><\/div>` : `<div class="rsec"><span class="emo">🤸<\/span><b>Calistenia<\/b><span>${rp.calMin}′<\/span><\/div>`;
+    body += rp.warmOnly ? `<div class="rsec"><span class="emo">☀️<\/span><b>Warm-up<\/b><span>${rp.calMin}′<\/span><\/div>` : `<div class="rsec"><span class="emo">🤸<\/span><b>Calistenia<\/b><span>${rp.calMin}′<\/span><\/div>`;
     rp.cal.forEach((b, bi) => {
       if (!b.exercises || !b.exercises.length) { body += `<div class="rrow"><span class="ro"><\/span><span class="rn"><b>${esc(strip(b.title).replace(/\s*\d+['′]$/, ''))}<\/b><small>${esc(b.type === 'warmup' ? 'movilidad + activación' : (b.source || b.note || ''))}<\/small><\/span><span class="rr">${b.duration_min ? (Array.isArray(b.duration_min) ? b.duration_min[1] : b.duration_min) + '′' : ''}<\/span><\/div>`; return; }
       b.exercises.forEach((e, ei) => { body += exRow(e, (W.blocks.indexOf(b)) + ':' + ei); });
@@ -6648,7 +6718,7 @@ function rutinaV34(iso, curK) {
   if ((W.rules || []).length && !bl.some(b => (b.warnings || []).length)) body += `<section class="rv-card sm" data-rvrules><div class="rv-src">🛡️ Seguridad<\/div>${W.rules.map(x => `<div class="rv-warn">${esc(x)}<\/div>`).join('')}<\/section>`;   /* E3: reglas de seguridad de Peak Week */
   bl.forEach((b, bi) => {
     if (b.type === 'warmup') {
-      body += `<details class="rv-wu" data-warmup><summary class="rv-sec rsec"><span class="emo" aria-hidden="true">🔥<\/span><b>Warm-up · ${BM[bi] || b.duration_min || 5} min<\/b><span class="rv-ver">ver ▾<\/span><\/summary><div class="rv-card sm"><ul class="rv-ul">${(b.items || []).map(x => `<li>${esc(x)}<\/li>`).join('')}<\/ul><\/div><\/details>`;
+      body += `<details class="rv-wu" data-warmup><summary class="rv-sec rsec"><span class="emo" aria-hidden="true">☀️<\/span><b>Warm-up · ${BM[bi] || b.duration_min || 5} min<\/b><span class="rv-ver">ver ▾<\/span><\/summary><div class="rv-card sm"><ul class="rv-ul">${(b.items || []).map(x => `<li>${esc(x)}<\/li>`).join('')}<\/ul><\/div><\/details>`;
     } else if (b.type === 'calistenia' || b.type === 'skill' || b.type === 'band') {
       const sk = pl.R.skills, mins = BM[bi] != null ? BM[bi] : W.calistenia_min != null ? W.calistenia_min : b.duration_min;
       const foc = (sk && sk.ladders && sk.ladders.length) ? sk.ladders.map(x => strip((((P.training_common.skill_levels || {}).ladders || {})[x.id] || {}).name || x.id)).join(' · ') : (W.skill && P.skills[W.skill] ? strip(P.skills[W.skill].name) : cardTitle(b.title));
@@ -6974,7 +7044,7 @@ ${sec('Peso')}${u.body.weights.length ? `<table class="tbl">${[...u.body.weights
 ${sec('Cargas por ejercicio')}${ids.length ? `<div class="list">${ids.map(id => row('chart', esc(id.indexOf('legacy:') === 0 ? (u.lift_labels[id] || id) + ' (legacy)' : (P.exercises[id] || {}).name || id), u.lifts[id].length + ' registros · último ' + esc(lastLift(id) || '—'), { act: 'sheet', arg: 'ej:' + id })).join('')}<\/div>` : '<div class="empty">Sin registros de cargas.<\/div>'}` };
   },
   riesgo() { return { eyebrow: 'Más · Zona de riesgo', title: 'Zona de riesgo', body: `<div class="list">${row('reset', 'Reiniciar racha y agua', 'la racha vuelve a 0 y se limpian las tomas de agua', { act: 'resetStreak' })}${row('danger', 'Borrar TODO', 'doble confirmación · no se puede deshacer', { act: 'resetAll', tStyle: 'color:#FF9A9A' })}<\/div><div class="txt">Antes de borrar, exporta un respaldo desde Nube y datos.<\/div>` }; },
-  acerca() { return { eyebrow: 'Más · Acerca', title: 'Fitness MV v3', body: `<div class="txt"><p>App v3 · build ${esc(BUILD.date)} · un solo archivo offline (PWA).<\/p><p>Protocolo <b>${esc(P.id)}<\/b> v${esc(P.version)} · ${esc(P.status)}<\/p><p>Fuente: ${esc(P.source.file)} · sha256 ${esc(P.source.sha256.slice(0, 12))}…<\/p><p>Datos del usuario v${U().schema} · ${esc(BUILD.engine)}<\/p><p>Nota de caché: si instalaste la app en la pantalla de inicio y no ves cambios, ciérrala y ábrela de nuevo. Funciona sin red después de la primera carga.<\/p><\/div>` }; },
+  acerca() { return { eyebrow: 'Más · Acerca', title: 'Fitness MV v3', body: `<div class="txt"><p>App v3 · build ${esc(BUILD.date)} · un solo archivo offline (PWA).<\/p><p>Protocolo <b>${esc(P.id)}<\/b> v${esc(P.version)} · ${esc(P.status)}<\/p><p>Fuente: ${esc(P.source.file)} · sha256 ${esc(P.source.sha256.slice(0, 12))} (12 primeros)<\/p><p>Datos del usuario v${U().schema} · ${esc(BUILD.engine)}<\/p><p>Nota de caché: si instalaste la app en la pantalla de inicio y no ves cambios, ciérrala y ábrela de nuevo. Funciona sin red después de la primera carga.<\/p><\/div>` }; },
   cierre() {
     const iso = today(), pl = plan(iso), d = U().days[iso] || {}, ps = pillarsState(iso), n = ps.filter(p => p.done).length;
     const sub = { entreno: () => pl.W ? wTitle(pl.W).h1 + (d.session ? ' · ' + d.session.min + ' min' : '') : 'descanso', comida: () => pl.meals.filter(m => d.meals && d.meals[m.i]).length + ' de ' + pl.meals.length + ' · ' + fmtN(pl.targets ? pl.targets.kcal : 0) + ' kcal',
@@ -7960,7 +8030,7 @@ const V8 = (() => {
     if (pl.R.source === 'pre' || (pl.st && pl.st.maintenance)) return `<span class="v8e1">${esc(eyebrowFor(pl))}<\/span>`;   /* en espera: "En espera" como v7 */
     const si = stageInfo(pl);
     const tail = dd + (pl.peak ? ' · Día ' + pl.R.peak_day : si.week ? ' · S' + si.week : '');
-    return `<span class="v8e1">${si.fn ? `<b>F<span>${si.fn.slice(1)}<\/span><\/b><i> · <\/i>` : ''}<b>${esc(si.name.toUpperCase())}<\/b><\/span><span class="v8e2"> · ${esc(tail)}<\/span>`;
+    return `<span class="v8e1">${si.fn ? `<b>F<span>${si.fn.slice(1)}<\/span><\/b><i> · <\/i>` : ''}<b>${esc(si.name.toUpperCase())}<\/b><\/span><span class="v8e2"><i class="v8sep"> · <\/i>${esc(tail)}<\/span>`;
   }
   const ES = [[/\bchest\b/gi, 'Pecho'], [/\bbiceps?\b/gi, 'Bícep'], [/\bback\b/gi, 'Espalda'], [/\btriceps?\b/gi, 'Trícep'], [/\blegs?\b/gi, 'Pierna'], [/\bpush\b/gi, 'Empuje'], [/\bpull\b/gi, 'Tirón'],
     [/\bshoulders?\b/gi, 'Hombro'], [/\btraps\b/gi, 'Trapecio'], [/\bglutes?\b/gi, 'Glúteo'], [/\barms\b/gi, 'Brazos'], [/\barm\b/gi, 'Brazo'], [/\bfull-body\b/gi, 'Cuerpo completo'], [/\bpump\b/gi, 'Bombeo'], [/\bskills\b/gi, 'Habilidades']];
@@ -8461,7 +8531,7 @@ const V8 = (() => {
     const when = pl.gymFlex ? 'cuando puedas' : hm(pl.gymAt) + '–' + hm(pl.gymAt + (pl.gymDur || 0));
     const stt = done ? 'hecho' : live ? 'en curso' : (pl.gymAt != null && nm > pl.gymAt + (pl.gymDur || 0) + 45) ? 'pendiente' : pl.optional ? 'opcional' : '';
     const ttl = trainTitle(pl).split(' · ').map(cap).join(' + '), cur = done ? -1 : W.blocks.findIndex((b, i) => !(blkDone(iso, i) || (live && i < (s.b || 0))));
-    const ico = b => b.type === 'warmup' ? '🔥' : (String(b.title || '').match(/^(\p{Extended_Pictographic}️?)/u) || [])[1] || b.icon || '🏋️';
+    const ico = b => b.type === 'warmup' ? '☀️' : (String(b.title || '').match(/^(\p{Extended_Pictographic}️?)/u) || [])[1] || b.icon || '🏋️';
     const blk = (b, i) => { const r = rows[i], dt = blockDetail(b), on = done || blkDone(iso, i) || (live && i < (s.b || 0)), meta = [b.source, b.subtype === 'emom' ? 'final del entreno · cada minuto' : ''].filter(Boolean).join(' · ');
       return `<div class="v8blk${on ? ' done' : ''}${i === cur ? ' cur' : ''}"><div class="v8row v8bh"><span class="v8ck${on ? ' on' : ''}" aria-hidden="true">${on ? svgI('ok', 12, 2.2) : ''}<\/span><span class="v8be" aria-hidden="true">${ico(b)}<\/span><span class="v8bt"><b>${esc(fixDur(r.n, durOf(b)))}<\/b>${meta || i === cur ? `<small>${i === cur ? '<i>Ahora' + (meta ? ' · ' : '') + '<\/i>' : ''}${esc(meta)}<\/small>` : ''}<\/span><span class="v8m">${esc(r.min)}<\/span><\/div>
 <div class="v8bb">${dt.rows.map(([n, d]) => `<div class="v8ex"><span class="v8exn">${esc(n)}<\/span>${d ? `<span class="v8exs">${esc(d)}<\/span>` : ''}<\/div>`).join('')}${dt.rest ? `<div class="v8rest">${esc(dt.rest)}<\/div>` : ''}${dt.notes.map(t => `<div class="v8bn">${esc(t)}<\/div>`).join('')}
@@ -8900,7 +8970,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
      abajo una barra delgada: «SESIÓN · LUN 16 · ● 6:00–7:45 · 92′ · ✕» + «↻ Volver a hoy» (o «Empezar» hoy) + «Rutina completa ›».
      Mismos datos y mismas acciones: cada mosaico abre la rutina (su subtítulo va en la etiqueta accesible y a un toque). Descanso: avatares
      grandes con «Próximo · …» y la tarjeta de descanso de siempre. ══ */
-  const TL_ICON = { wu: '🔆', cal: '🤸', fz: '🏋️', car: '🔥' };
+  const TL_ICON = { wu: '☀️', cal: '🤸', fz: '🏋️', car: '🔥' };
   function tlGroups(pl) {   /* músculos encendidos que trabaja cada fila (wu · cal · fz · car), sin repetir */
     const W = pl.W, lit = sculptMuscles(W), out = {}; if (!W) return out;
     let rp = null; try { rp = routineParts(W, pl.gymDurCal || pl.gymDur, pl); } catch (e) { return out; }
@@ -8924,7 +8994,14 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     st.innerHTML = `<button class="v8tlfig" data-act="scrollBlocks" aria-label="Músculos: ${esc(mus.map(m => MUSCLE_LABEL[m] || m).join(', ') || 'ninguno')}"><span class="v8bmw"><\/span><\/button><svg class="v8tll" aria-hidden="true"><\/svg><div class="v8tlcol"><\/div>${next ? `<span class="v8tlnext">${esc(next)}<\/span>` : ''}<div class="floor"><\/div>`;
     if (obox) obox.replaceWith(st); else { const ex = fold.querySelector('.days'); const after = ex ? (ex.closest('.explorer') || ex) : null; if (after && after.parentElement === fold) after.after(st); else lv.before(st); }
     sc.classList.add('v8tl');
-    if (!W) return;
+    if (!W) {   /* v8.10 · D9: en descanso la tarjeta es la misma barra delgada que en días de entreno, para que los avatares midan lo mismo.
+                   Mismos datos y acciones: «DESCANSO ● Sin pesas · 0 bloques ✕» + «Ver la semana» + «Timer ›» («descanso real» va en la etiqueta accesible) */
+      const colx = lv.querySelector('.col'), cta = colx && colx.querySelector('.acts .cta'), lk = colx && colx.querySelector('.lnk'), bg = colx && colx.querySelector('.big'), hd = lv.querySelector('.hd');
+      if (colx && cta) { const bt = bg ? [...bg.children].map(c => c.textContent.trim()).join(' ').replace(/\s+/g, ' ') : '', cic = cta.querySelector('svg') ? cta.querySelector('svg').outerHTML : '';
+        if (hd && bg) { hd.insertAdjacentHTML('beforeend', `<span class="v8tltot" aria-label="${esc(bt)}">${esc((bt.match(/^\d+\s*\S+/) || [bt])[0])}<\/span>`); }
+        colx.innerHTML = `<div class="v8tlbar"><button class="v8tlgo neu" data-act="${cta.dataset.act}" data-arg="${esc(cta.dataset.arg || '')}">${cic}<span>${esc(cta.textContent.trim())}<\/span><\/button>${lk ? `<button class="v8tllnk" data-act="${lk.dataset.act}" data-arg="${esc(lk.dataset.arg || '')}">${esc(lk.textContent.trim())} ${svgI('chev', 13, 2.2)}<\/button>` : ''}<\/div>`;
+        lv.classList.add('v8tlbarlive', 'v8tlrest'); }
+      return; }
     // columna de bloques: los mismos datos de la tarjeta (filas wu · cal · fz · car)
     const rows = [...lv.querySelectorAll('.erow')], G = tlGroups(pl), col = st.querySelector('.v8tlcol');
     col.innerHTML = rows.map(r => { const k = r.dataset.erow || 'fz', n = (r.querySelector('.et b') || {}).textContent || '', sub = (r.querySelector('.et small') || {}).textContent || '', m = (r.querySelector('.em') || {}).textContent || '', ms = G[k] || [];
@@ -8955,7 +9032,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const lv = sc.querySelector('.live[data-live=entreno]'), rail = document.querySelector('.rail'); if (!lv) return;
     const Wd = sc.clientWidth || W_(), sr = st.getBoundingClientRect(), rr = rail ? rail.getBoundingClientRect() : { top: (window.innerHeight || 844) - 90 };
     const avail = Math.floor(rr.top - 10 - lv.offsetHeight - sr.top - 8 + sc.scrollTop * 0);
-    const nxH = st.querySelector('.v8tlnext') ? 24 : 0;
+    const nxH = 0;   /* v8.10 · D9: «Próximo · …» va en la columna del centro (vacía en descanso): los avatares miden lo mismo que en días de entreno */
     let h = Math.max(96, Math.min(440, avail - 6 - nxH)); const wMax = Math.min((Wd / 2 - 39) / .66, (Wd / 2 - 36) / .83);   /* la caja de cada figura (con su margen transparente) no pasa del borde */ if (h * .5636 > wMax) h = Math.floor(wMax / .5636);
     const w = Math.round(h * .5636), ps = psCol(), mus = JSON.parse(st.dataset.body || '[]');
     const key = [mus.join(','), ps, h, Wd, avail].join('|'), stH = Math.max(h + nxH + 6, avail);
@@ -8966,7 +9043,8 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const cx = Wd / 2, fl = Math.round(cx - 29 - 6 - .83 * w), bl = Math.round(cx + 29 + 6 - .17 * w), top = 4;
     const [ff, fb] = box.children; ff.style.left = fl + 'px'; fb.style.left = bl + 'px'; ff.style.top = fb.style.top = top + 'px';
     const fo = st.querySelector('.floor'); fo.style.cssText = `left:${Math.round(cx - w * .95)}px;width:${Math.round(w * 1.9)}px;top:${Math.round(top + h * .93)}px;height:${Math.round(h * .1)}px`;
-    const nx = st.querySelector('.v8tlnext'); if (nx) nx.style.top = Math.round(top + h + 4) + 'px';
+    const nx = st.querySelector('.v8tlnext'); if (nx) { if (!nx.dataset.col) { nx.dataset.col = '1'; nx.setAttribute('aria-label', nx.textContent); nx.innerHTML = nx.textContent.split(/\s*·\s*/).map(x => `<span>${esc(x)}<\/span>`).join(''); }
+      nx.classList.add('v8tlnc'); nx.style.left = Math.round(cx - 36) + 'px'; nx.style.top = Math.round(top + h * .4) + 'px'; }
     // columna de bloques centrada en el torso
     const tiles = [...st.querySelectorAll('.v8tlt')], n = tiles.length; if (!n) { st.querySelector('.v8tll').innerHTML = ''; return; }
     let th = Math.round(Math.max(52, Math.min(66, h * .19))), gap = Math.max(6, Math.min(14, Math.round((h * .78 - n * th) / Math.max(1, n - 1))));
@@ -9032,7 +9110,12 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
       s += `<path d="M${a[0].toFixed(1)} ${a[1].toFixed(1)}C${mx} ${a[1].toFixed(1)} ${mx} ${b[1].toFixed(1)} ${b[0].toFixed(1)} ${b[1].toFixed(1)}" fill="none" stroke="${c}" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 0 6px ${c}99)"/>`; }
     const st = E.stageAt(iso, S), ph = phc();
     if (st.kind === 'protocolo') { const nx = X(st.week), ny = Y(kc[st.week - 1]);
-      s += `<line x1="${nx.toFixed(1)}" x2="${nx.toFixed(1)}" y1="${(ny + 12).toFixed(1)}" y2="${H - 30}" stroke="${ph}" stroke-opacity=".35" stroke-dasharray="2 3"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="11" fill="${ph}" fill-opacity=".25"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="6.5" fill="${ph}" style="filter:drop-shadow(0 0 8px ${ph})"/><text x="${(nx + 14).toFixed(1)}" y="${(ny + 24).toFixed(1)}" fill="${ph}" font-size="12.5" font-weight="600" letter-spacing="1.5">HOY<\/text>`; }
+      /* v8.10 · D7: «HOY» donde la curva no lo cruce (abajo-der., arriba-der., arriba-izq., abajo-izq.; la 1.ª libre) */
+      const pts = []; for (let i = 1; i < tot; i++) { const a = [X(i), Y(kc[i - 1])], b = [X(i + 1), Y(kc[i])], mx = (a[0] + b[0]) / 2; for (let k = 0; k <= 12; k++) { const t = k / 12, u = 1 - t; pts.push([u * u * u * a[0] + 3 * u * u * t * mx + 3 * u * t * t * mx + t * t * t * b[0], u * u * u * a[1] + 3 * u * u * t * a[1] + 3 * u * t * t * b[1] + t * t * t * b[1]]); } }
+      const cand = [[nx + 14, ny + 24, 'start'], [nx + 14, ny - 14, 'start'], [nx - 14, ny - 14, 'end'], [nx - 14, ny + 24, 'end']].map(([x, y, an]) => { const bx = an === 'end' ? [x - 40, x] : [x, x + 40], by = [y - 12, y + 3];
+        const hit = pts.filter(q => q[0] > bx[0] - 4 && q[0] < bx[1] + 4 && q[1] > by[0] - 4 && q[1] < by[1] + 4).length + (bx[0] < 2 || bx[1] > Wd - 2 || by[0] < 2 ? 999 : 0); return [x, y, an, hit]; });
+      const best = cand.find(c => !c[3]) || cand.slice().sort((p, q) => p[3] - q[3])[0], [hx, hy, ha] = best;
+      s += `<line x1="${nx.toFixed(1)}" x2="${nx.toFixed(1)}" y1="${(ny + 12).toFixed(1)}" y2="${H - 30}" stroke="${ph}" stroke-opacity=".35" stroke-dasharray="2 3"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="11" fill="${ph}" fill-opacity=".25"/><circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="6.5" fill="${ph}" style="filter:drop-shadow(0 0 8px ${ph})"/><text x="${hx.toFixed(1)}" y="${hy.toFixed(1)}"${ha === 'end' ? ' text-anchor="end"' : ''} fill="${ph}" font-size="12.5" font-weight="600" letter-spacing="1.5">HOY<\/text>`; }
     const px = X(tot), py = Y(kc[tot - 1]), GD = '#e8dcc0';
     const tro = (x, y, dash) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="19" fill="#0e1217" stroke="${GD}" stroke-width="1.5"${dash ? ' stroke-dasharray="3 3"' : ''}/><text x="${x.toFixed(1)}" y="${(y + 6).toFixed(1)}" font-size="17" text-anchor="middle">🏆<\/text>`;
     if (F2.show) { const fx = Wd - 34, fy = 40, I2 = f2Info(iso);
@@ -9064,7 +9147,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     METRICS.filter(m => CU_TAG[m.id]).forEach(m => { const [emo, side, fy, [px, py]] = CU_TAG[m.id], has = seriesFor(m.id).length > 0, v = m.get(b);
       const val = has && v != null ? fmtN(v, m.d) : '—', sub = !has ? 'medir' : (m.id === 'cintura' || m.id === 'peso') ? (vsPlan(m.id) || 'meta ' + (m.id === 'peso' ? g.weight_kg.join('–') : goalTxtOf(m.id, b))) : goalTxtOf(m.id, b);
       const x = side === 'l' ? 8 : Wd - 8 - tw, y = Math.round(T + fy * h), on = m.id === met.id;
-      tags += `<button class="v8cut${on ? ' on' : ''}${has ? '' : ' empty'}" data-seg="${m.id}" aria-pressed="${on}" aria-label="${esc(m.label)} · ${esc(val + (has ? ' ' + m.unit : ''))} · ${esc(sub)}" style="left:${x}px;top:${y}px;width:${tw}px"><b>${emo} ${esc(m.label)}<\/b><em>${esc(val)}${has && m.unit ? `<small>${esc(m.unit)}<\/small>` : ''}<\/em><span>${esc(sub)}<\/span><\/button>`;
+      tags += `<button class="v8cut${on ? ' on' : ''}${has ? '' : ' empty'}" data-seg="${m.id}" aria-pressed="${on}" aria-label="${esc(m.label)} · ${esc(val + (has ? ' ' + m.unit : ''))} · ${esc(sub)}" style="left:${x}px;top:${y}px;width:${tw}px"><b>${emo} ${esc(m.label)}<\/b><em>${esc(val)}${has && m.unit ? `<small>${esc(m.unit)}<\/small>` : ''}<\/em><span>${esc(sub).replace(/ (vs plan)$/, '<br>vs plan').replace(/[−+]?\d[\d.,–-]*(?:\s(?:%|cm|kg)(?=$|[\s·<]))?/g, x => '<i class="nw">' + x + '<\/i>')}<\/span><\/button>`;   /* v8.10 · D2: nunca «…»: «vs plan» en su línea y la unidad pegada al número */
       const ax = L + px * w, ay = T + py * h, sx = side === 'l' ? x + tw : x, sy = y + 34;
       lines += `<path d="M${sx} ${sy}L${ax.toFixed(1)} ${ay.toFixed(1)}" stroke="${ph}" stroke-opacity="${on ? .85 : .5}" stroke-dasharray="2 3" fill="none"/><circle cx="${ax.toFixed(1)}" cy="${ay.toFixed(1)}" r="3.5" fill="${ph}" class="v8cud" data-m="${m.id}"/>`; });
     const ad = METRICS.find(m => m.id === 'adonis'), adv = ad.get(b), adOn = met.id === 'adonis';
@@ -9140,19 +9223,25 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     if (lv && col && m && !lv.classList.contains('v8comlive')) {
       const hd = lv.querySelector('.hd'), bg = col.querySelector('.big'), dl = col.querySelector('.delta');
       if (bg) { bg.classList.add('v8comk'); hd.appendChild(bg); }
-      const fs = m.foods.length ? m.foods : m.items.map(x => ({ label: String(x), g: '', food: '' })), sh = fs.slice(0, fs.length > 6 ? 5 : 6);
-      const row = `<div class="v8femo" aria-label="${esc(fs.map(f => foodShort(f.label) + (f.g ? ' ' + f.g + ' g' : '')).join(', '))}">${sh.map(f => `<span title="${esc(foodShort(f.label))}"><i aria-hidden="true">${femo(f)}<\/i>${f.g ? `<em>${f.g}<\/em>` : `<em>${esc(foodShort(f.label).split(' ')[0])}<\/em>`}<\/span>`).join('')}${fs.length > 6 ? `<span class="more"><em>+${fs.length - 5}<\/em><\/span>` : ''}<\/div>`;
+      const fs = m.foods.length ? m.foods : m.items.map(x => ({ label: String(x), g: '', food: '' })), cap = W_() < 360 ? 5 : 6, sh = fs.slice(0, fs.length > cap ? cap - 1 : cap);   /* v8.10 · D1: a < 360 px caben 5 (4 + «+n»), sin encimar emoji y número */
+      const row = `<div class="v8femo" aria-label="${esc(fs.map(f => foodShort(f.label) + (f.g ? ' ' + f.g + ' g' : '')).join(', '))}">${sh.map(f => `<span title="${esc(foodShort(f.label))}"><i aria-hidden="true">${femo(f)}<\/i>${f.g ? `<em>${f.g}<\/em>` : `<em>${esc(foodShort(f.label).split(' ')[0])}<\/em>`}<\/span>`).join('')}${fs.length > cap ? `<span class="more"><em>+${fs.length - sh.length}<\/em><\/span>` : ''}<\/div>`;
       if (dl) dl.outerHTML = row; else col.insertAdjacentHTML('afterbegin', row);
       const ac = col.querySelector('.acts'), lk = lv.querySelector('.lnk');
       if (ac) { const r2 = document.createElement('div'); r2.className = 'v8comrow'; ac.replaceWith(r2); r2.appendChild(ac); if (lk) r2.appendChild(lk); }
       lv.classList.add('v8comlive');
     }
+    if (lv && m) lv.dataset.meal = m.i;
   }
   /* perf (v8.9): al NAVEGAR a Comida (go) las tarjetas de abajo (las de siempre) se montan en tiempo ocioso, como deferBelow en Cuerpo y Camino:
      el primer cuadro solo calcula lo de arriba. Se re-montan con postMount (mismos relabel/recolor). Con __syncBelow (pruebas) o al redibujar en sitio, todo va síncrono. */
-  function comDefer(el) {
+  function comDefer(el, lazy) {
     if (window.__syncBelow) { comLine(); return; }
     const bl = el.querySelector('.below'); if (!bl) return;
+    if (lazy) {   /* v8.10 · perf: comidaBelow ni siquiera se arma en el primer cuadro; llega en tiempo ocioso (mismo HTML, mismo postMount) */
+      bl.style.minHeight = Math.max(1600, ((U().ui.scroll || {}).comida || 0) + H_()) + 'px';
+      const tok = bl.dataset.v8d = String(Math.random());
+      (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => { if (!bl.isConnected || bl.dataset.v8d !== tok) return; const st = el.scrollTop; try { bl.insertAdjacentHTML('beforeend', comidaBelow(plan(exDate()))); } catch (e) { console.error('v8 com below', e); } bl.style.minHeight = ''; try { postMount(bl); } catch (e) {} el.scrollTop = st; try { comLine(); } catch (e) {} }, { timeout: 120 });
+      return; }
     const keep = n => n.classList && (n.classList.contains('ttabs') || n.classList.contains('days'));
     const frag = document.createDocumentFragment(); [...bl.childNodes].forEach(n => { if (!keep(n)) frag.appendChild(n); });
     if (!frag.childNodes.length) return;
@@ -9164,15 +9253,33 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const el = document.getElementById('s-comida'); if (!el || App.screen !== 'comida' || !el.classList.contains('v8com') || App.comidaSeg !== 'dia') return;
     const bl = el.querySelector('.below'); if (!bl || bl.querySelector('.v8dline')) return;
     const iso = exDate(), pl = plan(iso), sel = pl.meals.find(m => m.i === App.mealSel) || (iso === today() ? mealNow(pl, nowMin()) : pl.meals[0]) || pl.meals[0], isT = iso === today(), fut = iso > today();
-    const card = m => { const dn = getRef(iso, { type: 'meal', i: m.i }), on = sel && m.i === sel.i, ar = m.i + (isT ? '' : ':' + iso), stt = dn ? 'hecha' : isT && on && nowMin() >= pl.open && nowMin() < (pl.close > pl.open ? pl.close : pl.close + 1440) ? 'ahora' : '';
-      if (!on) return `<button class="v8lm${dn ? ' done' : ''}" data-act="mealSel" data-arg="${m.i}" aria-label="${esc(m.short)} · ${hm(m.t)} · ${fmtN(m.kcal)} kcal${dn ? ' · hecha' : ''}"><b>${hm(m.t)} · ${esc(m.short)}${dn ? ' ✓' : ''}<\/b><span class="v8lme">${m.foods.slice(0, 6).map(f => femo(f)).join('')}<\/span><span class="v8lmk">${fmtN(m.kcal)} kcal<\/span>${svgI('chev', 13, 2.2)}<\/button>`;
-      const fs = m.foods.length ? m.foods.map(f => `<div class="v8lf"><i aria-hidden="true">${femo(f)}<\/i><b>${f.g} g<\/b><span>${esc(foodShort(f.label))}<\/span><\/div>`).join('') : m.items.map(x => `<div class="v8lf wide"><span>${esc(x)}<\/span><\/div>`).join('');
+    const card = m => { const dn = getRef(iso, { type: 'meal', i: m.i }), on = sel && m.i === sel.i, ar = m.i + (isT ? '' : ':' + iso), stt = dn ? 'hecha' : isT && on ? (mealSlotState(pl, m, nowMin()) === 'ahora' ? 'ahora' : mealSlotState(pl, m, nowMin()) === 'siguiente' ? 'siguiente' : '') : '';   /* v8.10 · I2 */
+      if (!on) return `<button class="v8lm${dn ? ' done' : ''}" data-act="mealSel" data-arg="${m.i}" aria-label="${esc(m.short)} · ${hm(m.t)} · ${fmtN(m.kcal)} kcal${dn ? ' · hecha' : ''}"><b>${hm(m.t)} · ${esc(m.short)}${dn ? ' ✓' : ''}<\/b><span class="v8lme" data-n="${m.foods.length}">${m.foods.slice(0, 6).map(f => '<i>' + femo(f) + '<\/i>').join('')}${m.foods.length > 6 ? '<small>+' + (m.foods.length - 6) + '<\/small>' : ''}<\/span><span class="v8lmk">${fmtN(m.kcal)} kcal<\/span>${svgI('chev', 13, 2.2)}<\/button>`;
+      const fs = m.foods.length ? m.foods.map(f => `<div class="v8lf"><i aria-hidden="true">${femo(f)}<\/i><b>${f.g} g<\/b><span>${esc(foodShort(f.label)).replace(/\//g, '/<wbr>')}<\/span><\/div>`).join('') : m.items.map(x => `<div class="v8lf wide"><span>${esc(x)}<\/span><\/div>`).join('');
       const alts = m.foods.filter(f => f.alt && f.alt.g).map(f => esc(foodShort(f.label).toLowerCase()) + ' → ó ' + esc(String(f.alt.name || f.alt.food).toLowerCase()) + ' ' + f.alt.g + ' g');
       const act = fut ? '' : `<button class="v8lgo neu" data-act="tog" data-arg="meal:${m.i}:${iso}">${svgI('ok', 13, 2.2)}<span>${dn ? 'Desmarcar ' + esc(m.short) : 'Comí la ' + esc(m.short)}<\/span><\/button>`;
       return `<div class="v8lcard${dn ? ' done' : ''}" data-meal="${m.i}"><div class="v8lh"><b>${hm(m.t)} · ${esc(m.short)}<\/b>${stt ? `<i class="v8ld"><\/i><span>${stt}<\/span>` : ''}<\/div><div class="v8lfs">${fs}<\/div>${alts.length ? `<div class="v8lalt">${svgI('swap', 13, 1.8)} ${alts.join(' · ')}<\/div>` : ''}${(m.extra || []).length ? `<div class="v8lalt">${esc(m.extra.join(' · '))}<\/div>` : ''}<div class="v8lk">${fmtN(m.kcal)} kcal · P ${m.p} · C ${m.c} · G ${m.f}<\/div><div class="v8lrow">${act}<button class="v8llnk" data-act="meal" data-arg="${ar}">Plato y sustituir ${svgI('chev', 13, 2.2)}<\/button><\/div><\/div>`; };
     const pt = (t, txt, cls) => `<div class="v8lp${cls ? ' ' + cls : ''}"><b>${t}<\/b> · ${txt}<\/div>`;
     const h = `<section class="v8dline" data-v8line aria-label="Tu día de comidas">${pt(hm(pl.open), 'abre la ventana', 'open')}${pl.meals.map(m => `<div class="v8li${sel && m.i === sel.i ? ' on' : ''}">${card(m)}<\/div>`).join('')}${pt('🔒 ' + hm(pl.close), 'cierra la ventana', 'close')}<\/section>`;
     const tt = bl.querySelector(':scope > .ttabs'), dy = bl.querySelector(':scope > .days'); const after = tt || dy; if (after) after.insertAdjacentHTML('afterend', h); else bl.insertAdjacentHTML('afterbegin', h);
+    lmeFit(bl); comPeek(el);
+  }
+  function lmeFit(bl) {   /* v8.10 · I3: los emojis de cada comida resumida caben completos: los que no caben se cuentan en «+n» (nunca cortados) */
+    bl.querySelectorAll('.v8lme').forEach(e => { const n = +e.dataset.n || 0; let it = [...e.querySelectorAll('i')];
+      while (it.length > 1 && e.scrollWidth > e.clientWidth + 1) { it.pop().remove(); let sm = e.querySelector('small'); if (!sm) { sm = document.createElement('small'); e.appendChild(sm); } sm.textContent = '+' + (n - it.length); } }); }
+  /* v8.10 · D8: la comida elegida no se ve dos veces. Mientras la tarjeta viva (misma comida, mismas acciones) está en pantalla, en la línea
+     esa comida va como encabezado («12:00 · C1 ● ahora») y su detalle se despliega en cuanto la tarjeta viva sale de la vista (al bajar).
+     El detalle sigue en el DOM (lectores de pantalla, pruebas); solo se pliega a la vista. Sin tarjeta viva (✕), va abierta siempre. */
+  let PEEK = null;
+  function comPeek(el) {
+    if (PEEK) { try { PEEK.disconnect(); } catch (e) {} PEEK = null; }
+    const ln = el.querySelector('.v8dline'), lv = el.querySelector('.fold .live[data-live=comida].v8comlive'), card = ln && ln.querySelector('.v8lcard');
+    if (!ln || !card) return;
+    const lm = lv ? +lv.dataset.meal : NaN;
+    if (!lv || lv.offsetParent === null || lm !== +card.dataset.meal || !window.IntersectionObserver) { ln.classList.remove('v8peek'); return; }
+    const set = on => ln.classList.toggle('v8peek', on);
+    const r = lv.getBoundingClientRect(); set(r.bottom > 0 && r.top < innerHeight);
+    PEEK = new IntersectionObserver(es => es.forEach(e => set(e.isIntersecting)), { root: el, threshold: 0 }); PEEK.observe(lv);
   }
   function bmFig(v, mus, w, h, ps) { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.dataset.v = v; sp.style.width = w + 'px'; sp.style.height = h + 'px'; sp.style.setProperty('--ps', ps);   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
     const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
@@ -9218,7 +9325,8 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     { const oVM = viajeMap, oWB = weekBaseKcal; let REC = null;   /* v8.9: se guardan las kcal por semana que calcula el mapa original (la curva nueva las reutiliza) */
       weekBaseKcal = function (n) { const v = oWB.apply(this, arguments); if (REC) REC[n] = v; return v; };   // eslint-disable-line no-global-assign
       viajeMap = function (iso) { REC = {}; try { return oVM.apply(this, arguments); } finally { Object.assign(CAMKC, { iso, at: performance.now(), v: REC }); REC = null; } }; }   // eslint-disable-line no-global-assign
-    { const oC = SCREENS.comida; SCREENS.comida = function (el, o) { const r = oC.apply(this, arguments); try { comBuild(el); if (o && o._go) comDefer(el); else comLine(); } catch (e) { console.error('v8 com', e); } return r; }; }
+    { const oC = SCREENS.comida; SCREENS.comida = function (el, o) { const lazy = !!(o && o._go && !window.__syncBelow); window.__comLazy = lazy; let r; try { r = oC.apply(this, arguments); } finally { window.__comLazy = false; }
+      try { comBuild(el); if (o && o._go) comDefer(el, lazy); else comLine(); } catch (e) { console.error('v8 com', e); } return r; }; }
     ACT.v8open = () => open();
     ACT.v8close = () => close();
     ACT.v8turn = () => turn();
