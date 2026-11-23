@@ -1881,6 +1881,82 @@ html.v6 #s-cuerpo .live.v8culive .v8cusub .chip::after{content:" ·";color:#6b72
 html.v6 #s-cuerpo .live.v8culive .v8cusub .delta{margin:0!important;padding:0!important;min-width:0;overflow:hidden}
 html.v6 #s-cuerpo .live.v8culive .v8cusub .delta span{font:500 12.5px var(--v8f)!important;color:#8d939b!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 html.v6 #s-cuerpo .live.v8culive .v8cusub .chip:last-child::after{content:none}
+/* ══ v8.9 · Comida op5 + op3 ══ */
+#s-comida.v8com .v8clk{position:relative;margin:6px 8px 0;z-index:10}
+#s-comida.v8com .v8clk svg{display:block;overflow:visible}
+#s-comida.v8com .v8ckm{cursor:pointer}
+#s-comida.v8com .v8clkc{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center;pointer-events:none;text-align:center}
+#s-comida.v8com .v8clkc small{font:600 12.5px var(--v8f);letter-spacing:.1em;text-transform:uppercase;color:#a3a9b1}
+#s-comida.v8com .v8clkc b{font:200 48px/1.05 var(--v8d),var(--v8f);color:#fff;letter-spacing:-.01em;margin-top:2px}
+#s-comida.v8com .v8clkc span{font:500 12.5px var(--v8f);color:#a3a9b1;margin-top:2px;max-width:82%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html.v6 #s-comida.v8com [data-card="com:macros"] .cbody{gap:6px!important;justify-content:space-between}
+html.v6 #s-comida.v8com .mac.v8mac{display:flex;align-items:center;gap:7px;flex:1;min-width:0}
+html.v6 #s-comida.v8com .mac.v8mac .bar{display:none!important}
+html.v6 #s-comida.v8com .mac.v8mac .l{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html.v6 #s-comida.v8com .mac.v8mac .v{display:flex;flex-direction:column;line-height:1.05}
+html.v6 #s-comida.v8com .mac.v8mac .v b{font:300 24px/1 var(--v8d),var(--v8f)!important;color:#fff}
+html.v6 #s-comida.v8com .mac.v8mac .v span{font:500 12.5px var(--v8f);color:#8d939b}
+html.v6 #s-comida.v8com .live.v8comlive{border-radius:26px!important}
+html.v6 #s-comida.v8com .live.v8comlive .glow{display:none!important}
+html.v6 #s-comida.v8com .live.v8comlive .hd{flex-wrap:nowrap;white-space:nowrap;padding-right:40px}
+html.v6 #s-comida.v8com .live.v8comlive .hd .big.v8comk{margin:0 0 0 auto!important;padding:0!important;display:inline-flex!important;align-items:baseline;gap:4px}
+html.v6 #s-comida.v8com .live.v8comlive .hd .big.v8comk b{font:500 13px var(--v8f)!important;letter-spacing:.02em!important;color:#e9ecf0!important}
+html.v6 #s-comida.v8com .live.v8comlive .hd .big.v8comk span{font:500 12.5px var(--v8f)!important;color:#8d939b!important;margin:0!important}
+#s-comida.v8com .v8femo{display:flex;justify-content:space-between;gap:4px;margin:10px 2px 2px}
+#s-comida.v8com .v8femo span{display:inline-flex;align-items:center;gap:4px;min-width:0}
+#s-comida.v8com .v8femo i{font-style:normal;font-size:17px;line-height:1}
+#s-comida.v8com .v8femo em{font:500 13.5px var(--v8f);font-style:normal;color:#e9ecf0;white-space:nowrap}
+#s-comida.v8com .v8comrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+html.v6 #s-comida.v8com .v8comrow .acts{margin:0!important;width:auto!important;flex:none}
+html.v6 #s-comida.v8com .v8comrow .acts .cta{height:36px!important;min-height:36px;padding:0 15px!important;border-radius:999px!important;font:600 13.5px var(--v8f)!important;width:auto!important}
+html.v6 #s-comida.v8com .v8comrow .lnk{width:auto!important;margin:0!important;height:36px!important;min-height:36px;padding:0 2px!important;flex:none}
+/* línea del día (op3) */
+#s-comida .v8dline{position:relative;margin:14px 12px 6px;padding-left:22px}
+#s-comida .v8dline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;border-radius:1px;background:linear-gradient(var(--ph),rgba(255,255,255,.14))}
+#s-comida .v8lp{position:relative;font:500 13.5px var(--v8f);color:#a3a9b1;padding:6px 0}
+#s-comida .v8lp b{color:#fff;font-weight:600}
+#s-comida .v8lp::before,#s-comida .v8li::before{content:"";position:absolute;left:-19px;top:11px;width:10px;height:10px;border-radius:50%;background:#0b0e12;border:2px solid var(--ph)}
+#s-comida .v8lp.open::before,#s-comida .v8li.on::before{background:var(--ph);box-shadow:0 0 8px var(--ph)}
+#s-comida .v8lp.close::before{border-color:rgba(255,255,255,.35)}
+#s-comida .v8li{position:relative;margin:8px 0}
+#s-comida .v8lm{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:0 14px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:#e9ecf0;cursor:pointer;text-align:left}
+#s-comida .v8lm b{font:600 12.5px var(--v8f);letter-spacing:.1em;text-transform:uppercase;color:#d7dbe0;white-space:nowrap}
+#s-comida .v8lm .v8lme{flex:1;min-width:0;font-size:17px;letter-spacing:2px;white-space:nowrap;overflow:hidden}
+#s-comida .v8lm .v8lmk{font:500 13px var(--v8f);color:#e9ecf0;white-space:nowrap}
+#s-comida .v8lm svg{color:#8d939b;flex:none}
+#s-comida .v8lm.done{opacity:.7}
+#s-comida .v8lcard{border-radius:24px;padding:14px 16px;background:linear-gradient(rgba(44,50,59,.6),rgba(22,26,32,.8));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(255,255,255,.07),0 12px 28px rgba(0,0,0,.35)}
+#s-comida .v8lh{display:flex;align-items:center;gap:8px}
+#s-comida .v8lh b{font:600 12.5px var(--v8f);letter-spacing:.12em;text-transform:uppercase;color:#d7dbe0}
+#s-comida .v8lh .v8ld{width:7px;height:7px;border-radius:50%;background:var(--ph);box-shadow:0 0 8px var(--ph)}
+#s-comida .v8lh span{font:600 12.5px var(--v8f);letter-spacing:.12em;text-transform:uppercase;color:#fff}
+#s-comida .v8lfs{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px 10px;margin-top:12px}
+#s-comida .v8lf{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:7px;align-items:center}
+#s-comida .v8lf i{grid-row:1/3;font-style:normal;font-size:21px}
+#s-comida .v8lf b{font:500 13.5px var(--v8f);color:#fff}
+#s-comida .v8lf span{font:400 12.5px var(--v8f);color:#8d939b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#s-comida .v8lf.wide{grid-column:1/-1;display:block}
+#s-comida .v8lalt{margin-top:10px;font:500 12.5px/1.45 var(--v8f);color:#a3a9b1}
+#s-comida .v8lalt svg{color:var(--ph);vertical-align:-2px}
+#s-comida .v8lk{margin-top:10px;font:500 13px var(--v8f);color:#c9ced5}
+#s-comida .v8lrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+#s-comida .v8lgo{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 15px;border-radius:999px;border:0;background:#151a21;color:#fff;font:600 13.5px var(--v8f);cursor:pointer;box-shadow:-4px -4px 10px rgba(255,255,255,.05),5px 6px 14px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.07)}
+#s-comida .v8lgo svg{color:var(--ph)}
+#s-comida .v8llnk{display:inline-flex;align-items:center;gap:4px;border:0;background:none;color:#c9ced5;font:500 13.5px var(--v8f);cursor:pointer;height:36px;white-space:nowrap}
+html.v6 #s-comida.v8com [data-card="com:macros"]{height:auto!important;min-height:0!important;margin-top:6px!important}
+html.v6 #s-comida.v8com [data-card="com:macros"] .cbody{flex-direction:row!important;height:auto!important}
+html.v6 #s-comida.v8com .mac.v8mac{height:auto!important;flex-direction:row!important;margin:0!important}
+html.v6 #s-comida.v8com .v8comrow .acts.one{display:flex!important}
+html.v6 #s-comida.v8com .v8comrow .acts .cta .ctxt{white-space:nowrap}
+html.v6 #s-comida.v8com .v8comrow .lnk .ctxt{white-space:nowrap}
+html.v6 #s-comida.v8com .v8comrow{min-width:0}
+html.v6 #app #s-comida.v8com .live.v8comlive .col{width:100%!important;max-width:100%!important}
+html.v6 #app #s-comida.v8com .v8comrow .acts{width:auto!important;max-width:none!important}
+#s-comida.v8com .v8clk svg text{letter-spacing:0!important;font-family:var(--v8f)}
+html.v6 #s-comida.v8com .mac.v8mac{width:auto!important;flex:1 1 0!important;min-width:0!important;max-width:none!important}
+@media (max-width:359px){#s-comida.v8com .v8femo i{font-size:15px}#s-comida.v8com .v8femo em{font-size:12.5px}#s-comida.v8com .v8femo{gap:2px}html.v6 #s-comida.v8com .mac.v8mac .v b{font-size:20px!important}html.v6 #s-comida.v8com .mac.v8mac svg{width:36px;height:36px}}
+html.v6 #app #s-comida.v8com .v8comrow .lnk{width:auto!important;margin:0!important;height:36px!important;min-height:36px!important;padding:0 2px!important;flex:none}
+@media (max-width:359px){#s-comida.v8com .v8clkc b{font-size:34px}#s-comida.v8com .v8clkc small{letter-spacing:.08em}#s-comida.v8com .v8clkc span{max-width:62%}}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -9010,6 +9086,94 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
       lv.classList.add('v8culive');
     }
   }
+  /* ══ v8.9 · COMIDA = boceto r6 · comida_op5 (arriba) + comida_op3 (abajo, al bajar). Mismos datos y acciones; nada se pierde:
+     · reloj de la ventana (semicírculo apertura → cierre) en lugar de la tira C1/C2/🔒: comidas en su hora (tocar = elegirla, como la tira),
+       «ahora», «faltan para cerrar» / «abre en» (cuenta regresiva también con la ventana cerrada)
+     · anillos P · C · G dentro de la misma tarjeta de macros (sin ✕)
+     · tarjeta viva: «C1 · 12:00 ● AHORA · 921 kcal ✕», emojis con gramos de TODOS los alimentos, «Comí la C1» y «Ver plato y sustituir ›»
+     · abajo, la línea vertical del día (abre → C1 → C2 → 🔒 cierra) con la comida elegida abierta (alimentos, gramos, alternativas «ó …»,
+       kcal y P · C · G, Comí / Plato y sustituir) y las demás resumidas; y después TODAS las tarjetas de siempre (opciones A/B/C/D/🐟/Mi opción,
+       Día / Súper / Suplementos / Sustituir, ayuno-café, reglas, balance…). La tira y el plato de v7 no se arman (perf). ══ */
+  const FEMO = { verdura: '🥦', aceite: '🫒', aguacate: '🥑', pollo: '🍗', arroz: '🍚', whey: '🥤', huevo: '🥚', zanahoria: '🥕', clara: '🍳', tortilla: '🫓', papa: '🥔', almendra: '🌰', avena: '🥣', fruta: '🍎',
+    pescado: '🐟', res: '🥩', camote: '🍠', atun_aceite: '🐟', atun: '🐟', frijol: '🫘', pasta: '🍝', platano: '🍌', crema_arroz: '🥣', miel: '🍯', salmon: '🐟' };
+  const femo = f => FEMO[f.food] || FEMO[String(f.food || '').split('_')[0]] || '🍽️';
+  const hmm = t => { t = Math.max(0, Math.round(t)); return t < 60 ? t + ' min' : Math.floor(t / 60) + 'h ' + String(t % 60).padStart(2, '0'); };
+  function comSel(pl, tl) { const nb = tl && tl.querySelector('.n.now'); const i = nb ? +nb.dataset.arg : null; return pl.meals.find(m => m.i === i) || null; }
+  function comClock(pl, sel, W) {
+    const iso = pl.iso, isT = iso === today(), nm = nowMin(), o = pl.open, c = pl.close > pl.open ? pl.close : pl.close + 1440, ph = phc();
+    const Hh = Math.max(112, Math.min(232, H_() - (H_() < 800 ? 568 : 610))), r = Math.min(W / 2 - 46, Hh - 40), cx = W / 2, cy = r + 34, cT = Math.round(cy - r * (W < 340 ? .2 : .46)), Hs = Math.round(Math.max(cy + 34, cT + (W < 340 ? 70 : 84) + 4));
+    const A = t => Math.PI * (1 - Math.max(0, Math.min(1, (t - o) / (c - o)))), P = (t, rr) => [cx + (rr || r) * Math.cos(A(t)), cy - (rr || r) * Math.sin(A(t))], f1 = v => v.toFixed(1);
+    const arc = (t1, t2) => { const [x1, y1] = P(t1), [x2, y2] = P(t2); return `M${f1(x1)} ${f1(y1)}A${r} ${r} 0 0 1 ${f1(x2)} ${f1(y2)}`; };
+    let s = `<path d="${arc(o, c)}" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round"/>`;
+    for (let h = Math.ceil(o / 60) * 60; h < c; h += 60) { const [x1, y1] = P(h, r - 14), [x2, y2] = P(h, r - 20); s += `<line x1="${f1(x1)}" y1="${f1(y1)}" x2="${f1(x2)}" y2="${f1(y2)}" stroke="#fff" stroke-opacity=".22"/>`; }
+    const inW = isT && nm > o && nm < c; if (isT && nm > o) s += `<path d="${arc(o, Math.min(nm, c))}" fill="none" stroke="${ph}" stroke-width="10" stroke-linecap="round" style="filter:drop-shadow(0 0 8px ${ph})"/>`;
+    const d = U().days[iso] || {};
+    pl.meals.forEach(m => { const [x, y] = P(m.t), dn = getRef(iso, { type: 'meal', i: m.i }), on = sel && sel.i === m.i, lab = m.short === 'Pre' ? 'Pre' : m.short;
+      s += `<g class="v8ckm${on ? ' on' : ''}${dn ? ' done' : ''}" data-act="mealSel" data-arg="${m.i}" role="button" aria-label="${esc(m.name || m.short)} · ${hm(m.t)}${dn ? ' · hecha' : ''}"><circle cx="${f1(x)}" cy="${f1(y)}" r="22" fill="transparent"/><circle cx="${f1(x)}" cy="${f1(y)}" r="15" fill="#0e1217" stroke="${on ? ph : 'rgba(255,255,255,.35)'}" stroke-width="${on ? 2 : 1.2}"/>${dn ? `<path d="M${f1(x - 5)} ${f1(y)}l3.5 3.5 6.5-7" fill="none" stroke="${ph}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>` : `<text x="${f1(x)}" y="${f1(y + 4.2)}" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">${esc(lab)}<\/text>`}`
+        + `<text x="${f1(x)}" y="${f1(y - (y < cy - r * .6 ? 24 : 22))}" text-anchor="${x > cx + r * .5 ? 'start' : x < cx - r * .5 ? 'end' : 'middle'}" font-size="12.5" fill="rgba(246,244,238,.75)" dx="${x > cx + r * .5 ? 10 : x < cx - r * .5 ? -10 : 0}">${hm(m.t)}<\/text><\/g>`; });
+    if (inW) { const [x, y] = P(nm); s += `<circle cx="${f1(x)}" cy="${f1(y)}" r="9" fill="#fff" class="v8cknow" style="filter:drop-shadow(0 0 8px #fff)"/>`; }
+    const [ox, oy] = P(o), [qx, qy] = P(c);
+    if (!pl.meals.some(m => Math.abs(m.t - o) < 20)) s += `<text x="${f1(ox)}" y="${f1(oy + 24)}" text-anchor="middle" font-size="12.5" fill="rgba(246,244,238,.6)">${hm(o)}<\/text>`;   /* si una comida abre la ventana, su hora ya está en su marca */
+    s += `<text x="${f1(qx)}" y="${f1(qy + 24)}" text-anchor="middle" font-size="12.5" fill="rgba(246,244,238,.6)">🔒 ${hm(pl.close)}<\/text>`;
+    const pend = pl.meals.filter(m => !m.notMeal && !getRef(iso, { type: 'meal', i: m.i })), nx = pend[0];
+    let k, big, sub;
+    if (!isT) { k = 'Ventana'; big = hm(o) + '–' + hm(pl.close); sub = pl.meals.filter(m => !m.notMeal).length + ' comidas · ' + pl.meals.map(m => m.short + ' ' + hm(m.t)).join(' · '); }
+    else if (nm < o) { k = 'Abre en'; big = hmm(o - nm); sub = 'ayuno' + (nx ? ' · ' + nx.short + ' a las ' + hm(nx.t) : ''); }
+    else if (nm < c) { k = 'Faltan para cerrar'; big = hmm(c - nm); sub = !pend.length ? 'Comidas ✓' : pend.map((m, j) => j === 0 && m.t <= nm + 10 ? m.short + ' pendiente' : m.short + ' a las ' + hm(m.t)).slice(0, 2).join(' · '); }
+    else { let no = 330; try { no = nextOpen(iso); } catch (e) {} k = 'Abre en'; big = hmm(1440 - nm + no); sub = 'ventana cerrada · ' + (pl.meals.filter(m => !m.notMeal).length - pend.length) + '/' + pl.meals.filter(m => !m.notMeal).length + ' comidas'; }
+    return `<div class="v8clk" style="height:${Hs}px"><svg width="${W}" height="${Hs}" viewBox="0 0 ${W} ${Hs}" role="img" aria-label="Ventana ${hm(o)}–${hm(pl.close)}">${s}<\/svg><div class="v8clkc" style="top:${cT}px"><small>${esc(k)}<\/small><b>${esc(big)}<\/b><span>${esc(sub)}<\/span><\/div><\/div>`;
+  }
+  function comBuild(el) {
+    if (!el || App.screen !== 'comida') return; const iso = exDate(), pl = plan(iso); el.classList.remove('v8com');
+    if (pl.trip || !pl.meals.length || pl.open == null) return;
+    const fold = el.querySelector('.fold'), tl = fold && fold.querySelector('.tl'); if (!tl) return;
+    el.classList.add('v8com'); const sel = comSel(pl, tl), W = Math.min(430, W_()) - 16;
+    const ck = document.createElement('div'); ck.innerHTML = comClock(pl, sel, W); const mc0 = fold.querySelector('[data-card="com:macros"]'); tl.remove(); if (mc0) mc0.before(ck.firstChild); else fold.querySelector('.live').before(ck.firstChild);   /* reloj arriba, anillos debajo (op5) */
+    const bl = el.querySelector('.below'), tt = fold.querySelector('.ttabs'); if (tt && bl) bl.insertBefore(tt, bl.firstChild);   /* como v7: las pestañas Día · Súper · Suplementos · Sustituir van al empezar lo de abajo */
+    const dy = fold.querySelector('.days'); if (dy && bl && H_() < 800) { bl.insertBefore(dy, bl.firstChild); el.classList.add('v8comshort'); }
+    // anillos P · C · G (misma tarjeta, sin ✕)
+    const mc = fold.querySelector('[data-card="com:macros"]');
+    if (mc) mc.querySelectorAll('.mac').forEach((m, j) => { if (m.querySelector('.v8rg')) return; const v = m.querySelector('.v b'), g = m.querySelector('.v span'), l = m.querySelector('.l'); const vv = parseFloat(String(v && v.textContent).replace(/,/g, '')) || 0, gg = parseFloat(String(g && g.textContent).replace(/[^\d.]/g, '')) || 0, fr = gg ? Math.min(1, vv / gg) : 0, C = 2 * Math.PI * 17;
+      m.insertAdjacentHTML('afterbegin', `<svg class="v8rg" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle cx="22" cy="22" r="17" fill="none" stroke="var(--ph)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(C * fr).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 22 22)"${fr ? '' : ' stroke-opacity="0"'}/><text x="22" y="26.5" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ph)">${['P', 'C', 'G'][j] || ''}<\/text><\/svg>`); m.classList.add('v8mac'); });
+    // tarjeta viva: kcal arriba, emojis con gramos, acciones en una fila
+    const lv = fold.querySelector('.live[data-live=comida]'), col = lv && lv.querySelector('.col'), m = sel;
+    if (lv && col && m && !lv.classList.contains('v8comlive')) {
+      const hd = lv.querySelector('.hd'), bg = col.querySelector('.big'), dl = col.querySelector('.delta');
+      if (bg) { bg.classList.add('v8comk'); hd.appendChild(bg); }
+      const fs = m.foods.length ? m.foods : m.items.map(x => ({ label: String(x), g: '', food: '' })), sh = fs.slice(0, fs.length > 6 ? 5 : 6);
+      const row = `<div class="v8femo" aria-label="${esc(fs.map(f => foodShort(f.label) + (f.g ? ' ' + f.g + ' g' : '')).join(', '))}">${sh.map(f => `<span title="${esc(foodShort(f.label))}"><i aria-hidden="true">${femo(f)}<\/i>${f.g ? `<em>${f.g}<\/em>` : `<em>${esc(foodShort(f.label).split(' ')[0])}<\/em>`}<\/span>`).join('')}${fs.length > 6 ? `<span class="more"><em>+${fs.length - 5}<\/em><\/span>` : ''}<\/div>`;
+      if (dl) dl.outerHTML = row; else col.insertAdjacentHTML('afterbegin', row);
+      const ac = col.querySelector('.acts'), lk = lv.querySelector('.lnk');
+      if (ac) { const r2 = document.createElement('div'); r2.className = 'v8comrow'; ac.replaceWith(r2); r2.appendChild(ac); if (lk) r2.appendChild(lk); }
+      lv.classList.add('v8comlive');
+    }
+  }
+  /* perf (v8.9): al NAVEGAR a Comida (go) las tarjetas de abajo (las de siempre) se montan en tiempo ocioso, como deferBelow en Cuerpo y Camino:
+     el primer cuadro solo calcula lo de arriba. Se re-montan con postMount (mismos relabel/recolor). Con __syncBelow (pruebas) o al redibujar en sitio, todo va síncrono. */
+  function comDefer(el) {
+    if (window.__syncBelow) { comLine(); return; }
+    const bl = el.querySelector('.below'); if (!bl) return;
+    const keep = n => n.classList && (n.classList.contains('ttabs') || n.classList.contains('days'));
+    const frag = document.createDocumentFragment(); [...bl.childNodes].forEach(n => { if (!keep(n)) frag.appendChild(n); });
+    if (!frag.childNodes.length) return;
+    bl.style.minHeight = Math.max(1600, ((U().ui.scroll || {}).comida || 0) + H_()) + 'px';   /* el espacio queda reservado mientras llegan: el scroll guardado se restaura igual */
+    const tok = bl.dataset.v8d = String(Math.random());
+    (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => { if (!bl.isConnected || bl.dataset.v8d !== tok) return; const st = el.scrollTop; bl.appendChild(frag); bl.style.minHeight = ''; try { postMount(bl); } catch (e) {} el.scrollTop = st; try { comLine(); } catch (e) {} }, { timeout: 120 });
+  }
+  function comLine() {   /* abajo (cuadro siguiente): la línea vertical del día */
+    const el = document.getElementById('s-comida'); if (!el || App.screen !== 'comida' || !el.classList.contains('v8com') || App.comidaSeg !== 'dia') return;
+    const bl = el.querySelector('.below'); if (!bl || bl.querySelector('.v8dline')) return;
+    const iso = exDate(), pl = plan(iso), sel = pl.meals.find(m => m.i === App.mealSel) || (iso === today() ? mealNow(pl, nowMin()) : pl.meals[0]) || pl.meals[0], isT = iso === today(), fut = iso > today();
+    const card = m => { const dn = getRef(iso, { type: 'meal', i: m.i }), on = sel && m.i === sel.i, ar = m.i + (isT ? '' : ':' + iso), stt = dn ? 'hecha' : isT && on && nowMin() >= pl.open && nowMin() < (pl.close > pl.open ? pl.close : pl.close + 1440) ? 'ahora' : '';
+      if (!on) return `<button class="v8lm${dn ? ' done' : ''}" data-act="mealSel" data-arg="${m.i}" aria-label="${esc(m.short)} · ${hm(m.t)} · ${fmtN(m.kcal)} kcal${dn ? ' · hecha' : ''}"><b>${hm(m.t)} · ${esc(m.short)}${dn ? ' ✓' : ''}<\/b><span class="v8lme">${m.foods.slice(0, 6).map(f => femo(f)).join('')}<\/span><span class="v8lmk">${fmtN(m.kcal)} kcal<\/span>${svgI('chev', 13, 2.2)}<\/button>`;
+      const fs = m.foods.length ? m.foods.map(f => `<div class="v8lf"><i aria-hidden="true">${femo(f)}<\/i><b>${f.g} g<\/b><span>${esc(foodShort(f.label))}<\/span><\/div>`).join('') : m.items.map(x => `<div class="v8lf wide"><span>${esc(x)}<\/span><\/div>`).join('');
+      const alts = m.foods.filter(f => f.alt && f.alt.g).map(f => esc(foodShort(f.label).toLowerCase()) + ' → ó ' + esc(String(f.alt.name || f.alt.food).toLowerCase()) + ' ' + f.alt.g + ' g');
+      const act = fut ? '' : `<button class="v8lgo neu" data-act="tog" data-arg="meal:${m.i}:${iso}">${svgI('ok', 13, 2.2)}<span>${dn ? 'Desmarcar ' + esc(m.short) : 'Comí la ' + esc(m.short)}<\/span><\/button>`;
+      return `<div class="v8lcard${dn ? ' done' : ''}" data-meal="${m.i}"><div class="v8lh"><b>${hm(m.t)} · ${esc(m.short)}<\/b>${stt ? `<i class="v8ld"><\/i><span>${stt}<\/span>` : ''}<\/div><div class="v8lfs">${fs}<\/div>${alts.length ? `<div class="v8lalt">${svgI('swap', 13, 1.8)} ${alts.join(' · ')}<\/div>` : ''}${(m.extra || []).length ? `<div class="v8lalt">${esc(m.extra.join(' · '))}<\/div>` : ''}<div class="v8lk">${fmtN(m.kcal)} kcal · P ${m.p} · C ${m.c} · G ${m.f}<\/div><div class="v8lrow">${act}<button class="v8llnk" data-act="meal" data-arg="${ar}">Plato y sustituir ${svgI('chev', 13, 2.2)}<\/button><\/div><\/div>`; };
+    const pt = (t, txt, cls) => `<div class="v8lp${cls ? ' ' + cls : ''}"><b>${t}<\/b> · ${txt}<\/div>`;
+    const h = `<section class="v8dline" data-v8line aria-label="Tu día de comidas">${pt(hm(pl.open), 'abre la ventana', 'open')}${pl.meals.map(m => `<div class="v8li${sel && m.i === sel.i ? ' on' : ''}">${card(m)}<\/div>`).join('')}${pt('🔒 ' + hm(pl.close), 'cierra la ventana', 'close')}<\/section>`;
+    const tt = bl.querySelector(':scope > .ttabs'), dy = bl.querySelector(':scope > .days'); const after = tt || dy; if (after) after.insertAdjacentHTML('afterend', h); else bl.insertAdjacentHTML('afterbegin', h);
+  }
   function bmFig(v, mus, w, h, ps) { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.dataset.v = v; sp.style.width = w + 'px'; sp.style.height = h + 'px'; sp.style.setProperty('--ps', ps);   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
     const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
     const ms = mus.filter(m => AS['m_' + v + '_' + m]);
@@ -9021,6 +9185,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     try { tlLayout(); } catch (e) { console.error('v8 tl', e); }
     try { camLayout(); } catch (e) { console.error('v8 cam', e); }
     try { cuFit(); } catch (e) { console.error('v8 cu', e); }
+    try { comLine(); } catch (e) { console.error('v8 com', e); }
     document.querySelectorAll('#s-entreno button[data-act=scrollBlocks][data-body]').forEach(b => {
       try { bodyFit(b); } catch (e) {}
       let mus = []; try { mus = JSON.parse(b.dataset.body || '[]'); } catch (e) {}
@@ -9053,6 +9218,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     { const oVM = viajeMap, oWB = weekBaseKcal; let REC = null;   /* v8.9: se guardan las kcal por semana que calcula el mapa original (la curva nueva las reutiliza) */
       weekBaseKcal = function (n) { const v = oWB.apply(this, arguments); if (REC) REC[n] = v; return v; };   // eslint-disable-line no-global-assign
       viajeMap = function (iso) { REC = {}; try { return oVM.apply(this, arguments); } finally { Object.assign(CAMKC, { iso, at: performance.now(), v: REC }); REC = null; } }; }   // eslint-disable-line no-global-assign
+    { const oC = SCREENS.comida; SCREENS.comida = function (el, o) { const r = oC.apply(this, arguments); try { comBuild(el); if (o && o._go) comDefer(el); else comLine(); } catch (e) { console.error('v8 com', e); } return r; }; }
     ACT.v8open = () => open();
     ACT.v8close = () => close();
     ACT.v8turn = () => turn();
