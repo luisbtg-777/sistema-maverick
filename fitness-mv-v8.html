@@ -9191,9 +9191,10 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
   const femo = f => FEMO[f.food] || FEMO[String(f.food || '').split('_')[0]] || '🍽️';
   const hmm = t => { t = Math.max(0, Math.round(t)); return t < 60 ? t + ' min' : Math.floor(t / 60) + 'h ' + String(t % 60).padStart(2, '0'); };
   function comSel(pl, tl) { const nb = tl && tl.querySelector('.n.now'); const i = nb ? +nb.dataset.arg : null; return pl.meals.find(m => m.i === i) || null; }
-  function comClock(pl, sel, W) {
+  function comClock(pl, sel, W, ex) {
+    ex = ex || 0;   /* S3: alto sobrante de la pantalla → el reloj crece hacia abajo (sin hueco arriba) */
     const iso = pl.iso, isT = iso === today(), nm = nowMin(), o = pl.open, c = pl.close > pl.open ? pl.close : pl.close + 1440, ph = phc();
-    const Hh = Math.max(112, Math.min(232, H_() - (H_() < 800 ? 568 : 610))), r = Math.min(W / 2 - 46, Hh - 40), cx = W / 2, cy = r + 34, cT = Math.round(cy - r * (W < 340 ? .2 : .46)), Hs = Math.round(Math.max(cy + 34, cT + (W < 340 ? 70 : 84) + 4));
+    const Hh = Math.max(112, Math.min(232, H_() - (H_() < 800 ? 568 : 610))), r = Math.min(W / 2 - 46, Hh - 40), cx = W / 2, cy = r + 34 + Math.round(ex * .5), cT = Math.round(cy - r * (W < 340 ? .2 : .46) + ex * .3), Hs = Math.round(Math.max(cy + 34, cT + (W < 340 ? 70 : 84) + 4) + ex * .2);
     const A = t => Math.PI * (1 - Math.max(0, Math.min(1, (t - o) / (c - o)))), P = (t, rr) => [cx + (rr || r) * Math.cos(A(t)), cy - (rr || r) * Math.sin(A(t))], f1 = v => v.toFixed(1);
     const arc = (t1, t2) => { const [x1, y1] = P(t1), [x2, y2] = P(t2); return `M${f1(x1)} ${f1(y1)}A${r} ${r} 0 0 1 ${f1(x2)} ${f1(y2)}`; };
     let s = `<path d="${arc(o, c)}" fill="none" stroke="#fff" stroke-opacity=".09" stroke-width="10" stroke-linecap="round"/>`;
@@ -9203,7 +9204,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     pl.meals.forEach(m => { const [x, y] = P(m.t), dn = getRef(iso, { type: 'meal', i: m.i }), on = sel && sel.i === m.i, lab = m.short === 'Pre' ? 'Pre' : m.short;
       s += `<g class="v8ckm${on ? ' on' : ''}${dn ? ' done' : ''}" data-act="mealSel" data-arg="${m.i}" role="button" aria-label="${esc(m.name || m.short)} · ${hm(m.t)}${dn ? ' · hecha' : ''}"><circle cx="${f1(x)}" cy="${f1(y)}" r="22" fill="transparent"/><circle cx="${f1(x)}" cy="${f1(y)}" r="15" fill="#0e1217" stroke="${on ? ph : 'rgba(255,255,255,.35)'}" stroke-width="${on ? 2 : 1.2}"/>${dn ? `<path d="M${f1(x - 5)} ${f1(y)}l3.5 3.5 6.5-7" fill="none" stroke="${ph}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>` : `<text x="${f1(x)}" y="${f1(y + 4.2)}" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">${esc(lab)}<\/text>`}`
         + `<text x="${f1(x)}" y="${f1(y - (y < cy - r * .6 ? 24 : 22))}" text-anchor="${x > cx + r * .5 ? 'start' : x < cx - r * .5 ? 'end' : 'middle'}" font-size="12.5" fill="rgba(246,244,238,.75)" dx="${x > cx + r * .5 ? 10 : x < cx - r * .5 ? -10 : 0}">${hm(m.t)}<\/text><\/g>`; });
-    if (inW) { const [x, y] = P(nm); s += `<circle cx="${f1(x)}" cy="${f1(y)}" r="9" fill="#fff" class="v8cknow" style="filter:drop-shadow(0 0 8px #fff)"/>`; }
+    if (inW) { const nr = pl.meals.some(m => Math.abs(m.t - nm) < 25), [x, y] = nr ? P(nm, r + 13) : P(nm); s += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${nr ? 6 : 9}" fill="#fff" class="v8cknow" style="filter:drop-shadow(0 0 8px #fff)"/>`; }   /* S1: junto a una comida, el «ahora» va por fuera del anillo y no tapa la marca */
     const [ox, oy] = P(o), [qx, qy] = P(c);
     if (!pl.meals.some(m => Math.abs(m.t - o) < 20)) s += `<text x="${f1(ox)}" y="${f1(oy + 24)}" text-anchor="middle" font-size="12.5" fill="rgba(246,244,238,.6)">${hm(o)}<\/text>`;   /* si una comida abre la ventana, su hora ya está en su marca */
     s += `<text x="${f1(qx)}" y="${f1(qy + 24)}" text-anchor="middle" font-size="12.5" fill="rgba(246,244,238,.6)">🔒 ${hm(pl.close)}<\/text>`;
@@ -9223,6 +9224,8 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const ck = document.createElement('div'); ck.innerHTML = comClock(pl, sel, W); const mc0 = fold.querySelector('[data-card="com:macros"]'); tl.remove(); if (mc0) mc0.before(ck.firstChild); else fold.querySelector('.live').before(ck.firstChild);   /* reloj arriba, anillos debajo (op5) */
     const bl = el.querySelector('.below'), tt = fold.querySelector('.ttabs'); if (tt && bl) bl.insertBefore(tt, bl.firstChild);   /* como v7: las pestañas Día · Súper · Suplementos · Sustituir van al empezar lo de abajo */
     const dy = fold.querySelector('.days'); if (dy && bl && H_() < 800) { bl.insertBefore(dy, bl.firstChild); el.classList.add('v8comshort'); }
+    if (!el.classList.contains('v8comshort')) requestAnimationFrame(() => { if (!fold.isConnected) return; const hd0 = fold.querySelector('.head'), dy0 = fold.querySelector('.days'), ck0 = fold.querySelector('.v8clk');   /* S3: el aire entre el titular y los días se lo queda el reloj */
+      if (hd0 && dy0 && ck0) { const gap = dy0.getBoundingClientRect().top - hd0.getBoundingClientRect().bottom, ex = Math.max(0, Math.min(170, Math.round(gap - 28))); if (ex > 8) { const t = document.createElement('div'); t.innerHTML = comClock(pl, sel, W, ex); ck0.replaceWith(t.firstChild); } } });
     // anillos P · C · G (misma tarjeta, sin ✕)
     const mc = fold.querySelector('[data-card="com:macros"]');
     if (mc) mc.querySelectorAll('.mac').forEach((m, j) => { if (m.querySelector('.v8rg')) return; const v = m.querySelector('.v b'), g = m.querySelector('.v span'), l = m.querySelector('.l'); const vv = parseFloat(String(v && v.textContent).replace(/,/g, '')) || 0, gg = parseFloat(String(g && g.textContent).replace(/[^\d.]/g, '')) || 0, fr = gg ? Math.min(1, vv / gg) : 0, C = 2 * Math.PI * 17;
