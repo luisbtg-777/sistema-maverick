@@ -2017,6 +2017,11 @@ html.v6 #s-comida .ttabs button{flex:1 1 auto!important;min-width:max-content!im
 html.v6 .sheet:has(.rfoot) .foot.col:not(:has(.cta,.ghost,a.ghost,.txt)){position:static;background:none!important;margin:6px 0 0!important;padding:6px 0 0!important;bottom:auto}
 /* v8.11 · nota de la rutina: cita en itálica alineada con las filas (sin recuadro mal acolchado) */
 html.v6 .sheet .g.flat.rnote,html.v6 .sheet .rnote{border:0!important;background:transparent!important;box-shadow:none!important;padding:4px 0 4px 14px!important;margin-inline:0!important;border-left:2px solid var(--ph,rgba(255,255,255,.25))!important;border-radius:0!important}
+/* v8.12 · R2: el reloj va pegado debajo de los días (boceto op5); el aire sobrante queda entre el titular y los días */
+html.v6 #s-comida.v8com .fold > .days{margin-top:auto!important}
+html.v6 #s-comida.v8com .fold > .days ~ .v8clk{margin-top:14px!important}
+/* v8.12 · R4: «original …» en su propia línea en pantallas angostas */
+@media (max-width:399px){ html.v6 .rv-sec{flex-wrap:wrap} html.v6 .rv-sec .rv-orig{flex-basis:100%;padding-left:44px;margin-top:0;text-align:left} }
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -6682,7 +6687,7 @@ function rvCard(W, wid, b, bi, ctx) {
     + foot + (b.alt_md ? `<div class="rv-alt">${esc(b.alt_md)}<\/div>` : '') + (b.cut_md ? `<div class="rv-cut">✂️ ${esc(b.cut_md)}<\/div>` : '')
     + `<\/section>`;
 }
-const secHd = (emo, t, right, extra) => `<div class="rv-sec rsec"><span class="emo" aria-hidden="true">${emo}<\/span><b>${esc(t)}<\/b>${right ? `<span>${right}<\/span>` : ''}${extra || ''}<\/div>`;
+const secHd = (emo, t, right, extra) => `<div class="rv-sec rsec"><span class="emo" aria-hidden="true">${emo}<\/span><b>${esc(String(t).replace(/ATHLEN X/g, 'ATHLEAN-X'))}<\/b>${right ? `<span>${right}<\/span>` : ''}${extra || ''}<\/div>`;
 
 /* v3.4 · N1/N8: minutos CALIBRADOS por tarjeta (blocks[].duration_min) escalados a la duración del día (deload incluido): la suma da la cabecera */
 const isDeloadV = pl => pl.variant === 'deload' || pl.variant === 'deload_training';
@@ -9206,7 +9211,7 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     let k, big, sub;
     if (!isT) { k = 'Ventana'; big = hm(o) + '–' + hm(pl.close); sub = pl.meals.filter(m => !m.notMeal).length + ' comidas · ' + pl.meals.map(m => m.short + ' ' + hm(m.t)).join(' · '); }
     else if (nm < o) { k = 'Abre en'; big = hmm(o - nm); sub = 'ayuno' + (nx ? ' · ' + nx.short + ' a las ' + hm(nx.t) : ''); }
-    else if (nm < c) { k = 'Faltan para cerrar'; big = hmm(c - nm); sub = !pend.length ? 'Comidas ✓' : pend.map((m, j) => j === 0 && m.t <= nm + 10 ? m.short + ' pendiente' : m.short + ' a las ' + hm(m.t)).slice(0, 2).join(' · '); }
+    else if (nm < c) { k = W < 340 ? 'Cierra en' : 'Faltan para cerrar';   /* R3: a < 340 px la etiqueta corta no choca con el punto de «ahora» ni con C1/C3 */ big = hmm(c - nm); sub = !pend.length ? 'Comidas ✓' : pend.map((m, j) => j === 0 && m.t <= nm + 10 ? m.short + ' pendiente' : m.short + ' a las ' + hm(m.t)).slice(0, 2).join(' · '); }
     else { let no = 330; try { no = nextOpen(iso); } catch (e) {} k = 'Abre en'; big = hmm(1440 - nm + no); sub = 'ventana cerrada · ' + (pl.meals.filter(m => !m.notMeal).length - pend.length) + '/' + pl.meals.filter(m => !m.notMeal).length + ' comidas'; }
     return `<div class="v8clk" style="height:${Hs}px"><svg width="${W}" height="${Hs}" viewBox="0 0 ${W} ${Hs}" role="img" aria-label="Ventana ${hm(o)}–${hm(pl.close)}">${s}<\/svg><div class="v8clkc" style="top:${cT}px"><small>${esc(k)}<\/small><b>${esc(big)}<\/b><span>${esc(sub)}<\/span><\/div><\/div>`;
   }
@@ -9282,8 +9287,9 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     const lm = lv ? +lv.dataset.meal : NaN;
     if (!lv || lv.offsetParent === null || lm !== +card.dataset.meal || !window.IntersectionObserver) { ln.classList.remove('v8peek'); return; }
     const set = on => ln.classList.toggle('v8peek', on);
-    const r = lv.getBoundingClientRect(); set(r.bottom > 0 && r.top < innerHeight);
-    PEEK = new IntersectionObserver(es => es.forEach(e => set(e.isIntersecting)), { root: el, threshold: 0 }); PEEK.observe(lv);
+    const r = lv.getBoundingClientRect(), tb = document.querySelector('header.top'); set(r.bottom > (tb ? tb.getBoundingClientRect().bottom : 0) + 40 && r.top < innerHeight);
+    const hd = document.querySelector('header.top'), hT = hd ? Math.max(0, Math.round(hd.getBoundingClientRect().bottom - el.getBoundingClientRect().top)) : 0;   /* R1: lo tapado por el encabezado fijo no cuenta como visible */
+    PEEK = new IntersectionObserver(es => es.forEach(e => set(e.isIntersecting)), { root: el, threshold: 0, rootMargin: (-hT - 40) + 'px 0px 0px 0px' }); PEEK.observe(lv);
   }
   function bmFig(v, mus, w, h, ps) { const sp = document.createElement('span'); sp.className = 'v8bmf'; sp.dataset.v = v; sp.style.width = w + 'px'; sp.style.height = h + 'px'; sp.style.setProperty('--ps', ps);   // con nodos y no innerHTML: el avatar (~120 KB en base64) no pasa por el analizador de HTML
     const im = document.createElement('img'); im.alt = ''; im.setAttribute('draggable', 'false'); im.src = AS['av_' + v] || ''; sp.appendChild(im);
