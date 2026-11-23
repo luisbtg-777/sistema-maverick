@@ -2022,6 +2022,8 @@ html.v6 #s-comida.v8com .fold > .days{margin-top:auto!important}
 html.v6 #s-comida.v8com .fold > .days ~ .v8clk{margin-top:14px!important}
 /* v8.12 · R4: «original …» en su propia línea en pantallas angostas */
 @media (max-width:399px){ html.v6 .rv-sec{flex-wrap:wrap} html.v6 .rv-sec .rv-orig{flex-basis:100%;padding-left:44px;margin-top:0;text-align:left} }
+/* v8.14 · T2: a < 340 px, viendo otro día, el horario de la ventana en cifra más chica (no choca con 🔒 ni con C1/C3) */
+html.v6 #s-comida .v8clkc.v8clksm b{font-size:25px!important;letter-spacing:0!important}
 </style></head><body>
 <div id="bg" aria-hidden="true"><div class="photo"></div><div class="grade"></div><div class="warm"></div><svg class="grain" width="100%" height="100%" preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -9210,11 +9212,12 @@ ${om.length ? `<button class="v8turn" data-act="v8turn" aria-label="Girar: ${esc
     s += `<text x="${f1(qx)}" y="${f1(qy + 24)}" text-anchor="middle" font-size="12.5" fill="rgba(246,244,238,.6)">🔒 ${hm(pl.close)}<\/text>`;
     const pend = pl.meals.filter(m => !m.notMeal && !getRef(iso, { type: 'meal', i: m.i })), nx = pend[0];
     let k, big, sub;
-    if (!isT) { k = 'Ventana'; big = hm(o) + '–' + hm(pl.close); sub = pl.meals.filter(m => !m.notMeal).length + ' comidas · ' + pl.meals.map(m => m.short + ' ' + hm(m.t)).join(' · '); }
+    if (!isT) { k = 'Ventana'; big = hm(o) + '–' + hm(pl.close); sub = pl.meals.filter(m => !m.notMeal).length + ' comidas' + (W < 340 ? '' : ' · ' + pl.meals.map(m => m.short + ' ' + hm(m.t)).join(' · ')); }   /* T2: a < 340 px solo el conteo */
     else if (nm < o) { k = 'Abre en'; big = hmm(o - nm); sub = 'ayuno' + (nx ? ' · ' + nx.short + ' a las ' + hm(nx.t) : ''); }
-    else if (nm < c) { k = W < 340 ? 'Cierra en' : 'Faltan para cerrar';   /* R3: a < 340 px la etiqueta corta no choca con el punto de «ahora» ni con C1/C3 */ big = hmm(c - nm); sub = !pend.length ? 'Comidas ✓' : pend.map((m, j) => j === 0 && m.t <= nm + 10 ? m.short + ' pendiente' : m.short + ' a las ' + hm(m.t)).slice(0, 2).join(' · '); }
+    else if (nm < c) { k = W < 340 ? 'Cierra en' : 'Faltan para cerrar';   /* R3: a < 340 px la etiqueta corta no choca con el punto de «ahora» ni con C1/C3 */ big = hmm(c - nm); sub = !pend.length ? 'Comidas ✓' : (() => { const due = pend.filter(m => m.t <= nm + 10), fut = pend.filter(m => m.t > nm + 10);   /* T1: atrasadas («pendiente/s») separadas de la siguiente futura */
+      return [due.length ? due.map(m => m.short).join(' · ') + (due.length > 1 ? ' pendientes' : ' pendiente') : '', fut.length ? fut[0].short + (W < 340 && due.length ? ' ' : ' a las ') + hm(fut[0].t) : ''].filter(Boolean).join(' · '); })(); }
     else { let no = 330; try { no = nextOpen(iso); } catch (e) {} k = 'Abre en'; big = hmm(1440 - nm + no); sub = 'ventana cerrada · ' + (pl.meals.filter(m => !m.notMeal).length - pend.length) + '/' + pl.meals.filter(m => !m.notMeal).length + ' comidas'; }
-    return `<div class="v8clk" style="height:${Hs}px"><svg width="${W}" height="${Hs}" viewBox="0 0 ${W} ${Hs}" role="img" aria-label="Ventana ${hm(o)}–${hm(pl.close)}">${s}<\/svg><div class="v8clkc" style="top:${cT}px"><small>${esc(k)}<\/small><b>${esc(big)}<\/b><span>${esc(sub)}<\/span><\/div><\/div>`;
+    return `<div class="v8clk" style="height:${Hs}px"><svg width="${W}" height="${Hs}" viewBox="0 0 ${W} ${Hs}" role="img" aria-label="Ventana ${hm(o)}–${hm(pl.close)}">${s}<\/svg><div class="v8clkc${!isT && W < 340 ? ' v8clksm' : ''}" style="top:${cT}px"><small>${esc(k)}<\/small><b>${esc(big)}<\/b><span>${esc(sub)}<\/span><\/div><\/div>`;
   }
   function comBuild(el) {
     if (!el || App.screen !== 'comida') return; const iso = exDate(), pl = plan(iso); el.classList.remove('v8com');
