@@ -546,6 +546,9 @@ body.wide .card .cb>svg,body.wide .card .cb>div>svg{display:block;margin-left:au
 .seg.sm button{height:32px;min-width:38px;font-size:11px;padding:0 10px}
 .pc{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:17px;font:700 11px var(--mg-font);letter-spacing:.16em;text-transform:uppercase;color:#cfd5dc;background:var(--neu2);box-shadow:var(--sh-sm);cursor:pointer}
 .pc i{width:8px;height:8px;border-radius:50%}
+.cag{all:unset;cursor:pointer;height:28px;border-radius:14px;padding:0 10px;font:600 11.5px var(--mg-font);color:#8a9098;white-space:nowrap}.cag.on{background:var(--neu1,rgba(255,255,255,.08));color:#eef2f6;box-shadow:var(--sh-sm)}
+#enEye{max-width:512px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#enMode{pointer-events:none}.wks button{pointer-events:auto}#enPh .pc,#coPh .pc{text-transform:none;letter-spacing:.01em;font-size:11.5px;font-weight:600;padding:0 10px;gap:5px}#enPh,#coPh{gap:6px!important}#enGrp button,#coPh .seg button{min-width:28px;padding:0 7px;font-size:13px;letter-spacing:0}
+.wks{display:inline-flex;align-items:center;gap:0;white-space:nowrap}.wks button{all:unset;pointer-events:auto;cursor:pointer;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:10px;background:var(--neu2);box-shadow:var(--sh-sm);margin:0 6px;color:#eef2f6;font-size:13px;letter-spacing:0;line-height:1}.wks button[disabled]{opacity:.3;cursor:default}
 .pc.on{box-shadow:var(--sh-in),inset 0 0 0 2px var(--c);color:#fff}
 /* header */
 .hd-logo{left:121px;top:38px;display:flex;align-items:center;gap:12px;z-index:5}
@@ -676,15 +679,15 @@ svg text{font-family:var(--mg-font)}
   <div class="card" id="c-racha" style="left:959px;top:492px;width:453px;height:200px">
    <div class="ch"><div class="eye" id="rachaEye">Racha <span>· últimos 7 días</span></div><div class="seg sm" id="raTab" style="position:absolute;right:16px;top:12px"><button class="on" data-rt="racha">Racha</button><button data-rt="sem">Semanas</button></div></div><div class="cb"><svg id="chain" width="413" height="120"></svg><div id="semPil" style="display:none"></div></div></div>
   <div class="card" id="c-cam" style="left:113px;top:790px;width:830px;height:218px">
-   <div class="ch"><div class="eye">Camino <span>· grasa corporal hacia el Peak</span></div></div><div class="cb" style="padding-top:4px"><svg id="miniCam" width="790" height="150"></svg></div></div>
+   <div class="ch"><div class="eye" id="camEye">Camino <span>· grasa corporal hacia el Peak</span></div></div><div class="cb" style="padding-top:4px"><svg id="miniCam" width="790" height="150"></svg></div></div>
   <div class="card" id="c-sem" style="left:959px;top:708px;width:453px;height:300px">
    <div class="ch"><div class="eye" id="semEye"></div></div><div class="cb" id="hoyWeek"></div></div>
  </section>
 
  <section class="view" id="v-entreno" aria-label="Entreno">
-  <div class="abs vh"><div class="eye" id="enEye"></div><h1 class="ttl" id="enTtl" style="font-size:52px"></h1><div id="enMode" style="margin-top:6px;transform:scale(.9);transform-origin:left top;height:28px"></div></div>
+  <div class="abs vh" style="pointer-events:none"><div class="eye" id="enEye"></div><h1 class="ttl" id="enTtl" style="font-size:52px"></h1><div id="enMode" style="margin-top:6px;transform:scale(.9);transform-origin:left top;height:28px"></div></div>
   <div class="abs" style="left:121px;top:232px;display:flex;gap:8px;flex-wrap:wrap;width:500px" id="enPh"></div>
-  <div class="abs" style="left:121px;top:278px"><div class="seg sm" id="enSeg"></div></div>
+  <div class="abs" style="left:121px;top:278px;display:flex;gap:10px;width:500px"><div class="seg sm" id="enSeg"></div><div class="seg sm" id="enGrp" style="margin-left:auto"></div></div>
   <div class="fig" id="enF" style="left:96px;top:330px;width:276px;height:490px"></div>
   <div class="fig" id="enB" style="left:352px;top:330px;width:276px;height:490px"></div>
   <div class="abs" id="enBlocks" style="left:121px;top:880px;width:500px;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px"></div>
@@ -697,8 +700,8 @@ svg text{font-family:var(--mg-font)}
  </section>
 
  <section class="view" id="v-comida" aria-label="Comida">
-  <div class="abs vh"><div class="eye" id="coEye"></div><h1 class="ttl" style="letter-spacing:.06em;font-size:56px"><span class="num" id="coKc"></span><small id="coSub">kcal · meta del día</small></h1></div>
-  <div class="abs" style="left:121px;top:224px;display:flex;gap:8px;flex-wrap:wrap;width:560px" id="coPh"></div>
+  <div class="abs vh" style="pointer-events:none"><div class="eye" id="coEye"></div><h1 class="ttl" style="letter-spacing:.06em;font-size:56px"><span class="num" id="coKc"></span><small id="coSub">kcal · meta del día</small></h1></div>
+  <div class="abs" style="left:121px;top:224px;display:flex;gap:8px;flex-wrap:wrap;width:590px" id="coPh"></div>
   <div class="abs" style="left:121px;top:270px;display:flex;gap:10px" id="coDt"></div>
   <div class="abs" style="left:113px;top:318px"><svg id="clock" width="587" height="360"></svg></div>
   <div class="card" id="c-burn" style="left:113px;top:690px;width:286px;height:318px">
@@ -730,7 +733,7 @@ svg text{font-family:var(--mg-font)}
    <div class="ch"><div class="eye" id="vjEye">Viaje <span>· grasa estimada por fase, del inicio al Peak</span></div><div class="seg sm" id="vjTab" style="position:absolute;right:16px;top:12px"><button class="on" data-vj="viaje">Al Peak</button><button data-vj="full">Completo</button><button data-vj="fase">Fase en curso</button></div></div><div class="cb"><svg id="viaje" width="1259" height="330"></svg><svg id="faseCur" width="1259" height="330" style="display:none"></svg><svg id="viajeFull" width="1259" height="330" style="display:none"></svg></div></div>
   <div class="abs" id="phCards" style="left:113px;top:656px;width:1299px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px"></div>
   <div class="card" id="c-weeks" style="left:113px;top:796px;width:640px;height:212px">
-   <div class="ch"><div class="eye">Memento mori <span>· las 38 semanas</span></div></div><div class="cb"><svg id="weeks" width="600" height="150"></svg></div></div>
+   <div class="ch"><div class="eye">Memento mori <span>· las 90 semanas del plan · 🏆 cada Peak</span></div></div><div class="cb"><svg id="weeks" width="600" height="150"></svg></div></div>
   <div class="card" id="c-gantt" style="left:769px;top:796px;width:643px;height:212px">
    <div class="ch"><div class="eye" id="gaEye">Ruta completa <span>· 2026 → 2028</span></div><div class="seg sm" id="gaTab" style="position:absolute;right:16px;top:12px"><button class="on" data-ga="ruta">Ruta</button><button data-ga="fase">Por fase</button></div></div><div class="cb"><svg id="gantt" width="603" height="168"></svg><svg id="porFase" width="603" height="168" style="display:none"></svg></div></div>
  </section>
@@ -783,11 +786,12 @@ document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-t]');i
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 let HOY=iso(new Date());if(HOY<DAYS[0][0])HOY=DAYS[0][0];if(HOY>DAYS[DAYS.length-1][0])HOY=DAYS[DAYS.length-1][0];
 const dayOf=s=>DAYS.find(d=>d[0]===s);
-const ALIAS={CUTTING:'CUT','PEAK WEEK':'GOD'};const STG={};DAYS.forEach(d=>{const k=d[1];if(!STG[k])STG[k]={ini:d[0],fin:d[0]};STG[k].fin=d[0]});
-const phOf=name=>{const k=ALIAS[name]||name;if(PH[k])return PH[k];const r=STG[name]||{ini:HOY,fin:HOY};const nice={'CORTE FINAL':'🔪 Corte Final',PEAK2:'🏆 Peak final','MINI PEAK':'🏆 Mini Peak','MINI-CORTE':'🔥 Mini-corte',PUENTE:'🌉 Puente',REVERSA:'🔄 Reversa',VOLUMEN:'💪 Volumen limpio'}[name]||name;const p=nice.split(' ');const e=/\p{L}/u.test(p[0])?'•':p[0];const n=e==='•'?nice:p.slice(1).join(' ');const PC={PUENTE:'#8a8f98','CORTE FINAL':'#e8c15a',PEAK2:'#f3e6c4',REVERSA:'#7ab3e0',VOLUMEN:'#6dba94','MINI-CORTE':'#f0956a','MINI PEAK':'#f07090'};return PH[k]={k:name.toLowerCase(),n,e,c:PC[name]||'#8d96a3',ink:'#14171c',ini:r.ini,fin:r.fin,sem:Math.max(1,Math.round((dd(r.ini,r.fin)+1)/7))}};
+const ALIAS={CUTTING:'CUT','PEAK WEEK':'GOD'};const STG={},RUNS=[];DAYS.forEach(d=>{const r=RUNS[RUNS.length-1];if(r&&r.n===d[1])r.fin=d[0];else RUNS.push({n:d[1],ini:d[0],fin:d[0]})});
+{const t=new Date(HOY+'T12:00:00');t.setDate(t.getDate()-DOFF);const P0=iso(t);[...new Set(RUNS.map(r=>r.n))].forEach(n=>{const L=RUNS.filter(r=>r.n===n),r=L.find(r=>P0>=r.ini&&P0<=r.fin)||L.find(r=>r.ini>P0)||L[L.length-1];STG[n]={ini:r.ini,fin:r.fin}})}
+const phOf=name=>{const k=ALIAS[name]||name;if(PH[k])return PH[k];const r=STG[name]||{ini:HOY,fin:HOY};const nice={'CORTE FINAL':'🔪 Corte final',PEAK2:'🏆 Peak final','MINI PEAK':'🏆 Mini Peak','MINI-CORTE':'🔥 Mini-corte',PUENTE:'🌉 Puente',REVERSA:'🔄 Reversa',VOLUMEN:'💪 Volumen limpio'}[name]||name;const p=nice.split(' ');const e=/\p{L}/u.test(p[0])?'•':p[0];const n=e==='•'?nice:p.slice(1).join(' ');const PC={PUENTE:'#8a8f98','CORTE FINAL':'#e8c15a',PEAK2:'#f3e6c4',REVERSA:'#7ab3e0',VOLUMEN:'#6dba94','MINI-CORTE':'#f0956a','MINI PEAK':'#f07090'};return PH[k]={k:name.toLowerCase(),n,e,c:PC[name]||'#8d96a3',ink:'#14171c',ini:r.ini,fin:r.fin,sem:Math.max(1,Math.round((dd(r.ini,r.fin)+1)/7))}};
 const PHOY=(()=>{const t=new Date(HOY+'T12:00:00');t.setDate(t.getDate()-DOFF);return t.toISOString().slice(0,10)})(),S0R=(()=>{const t=new Date('2026-11-16T12:00:00');t.setDate(t.getDate()+DOFF);return t.toISOString().slice(0,10)})();
 const PLAN_END=DAYS[DAYS.length-1][0],dHoy=dayOf(HOY)||DAYS[DAYS.length-1],fase=phOf(dHoy[1]),diaN=dd(fase.ini,PHOY)+1,dHoyD=DT(HOY),PDOW=DT(PHOY).getDay();
-const WEEK=Math.floor(dd('2026-11-16',PHOY)/7)+1;const MON=(()=>{const d=new Date(dHoyD);d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)})();
+const WEEK=Math.floor(dd('2026-11-16',PHOY)/7)+1;const TOTW=Math.ceil(DAYS.length/7);ROUTE.length=0;RUNS.forEach(r=>{const p=phOf(r.n);ROUTE.push([(/^[🔵🟣🟢🌿🟠•]$/u.test(p.e)?'':p.e+' ')+p.n,r.ini,r.fin,p.c])});const POSTG={PUENTE:6.3,'CORTE FINAL':5.2,PEAK2:5,REVERSA:8,VOLUMEN:9.5,'MINI-CORTE':6.6,'MINI PEAK':6.2};const MON=(()=>{const d=new Date(dHoyD);d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)})();
 const addDays=(s,n)=>{const d=DT(s);d.setDate(d.getDate()+n);return iso(d)};
 const rut=label=>{const p=String(label).split(' '),emo=p[0],raw=p.slice(1).join(' ')||p[0];const name=raw.replace(/[^\p{L}\p{N}\s+.·-]/gu,'').replace(/\s+/g,' ').trim();const up=name.toUpperCase();const keys=Object.keys(MUS).filter(k=>k!=='Descanso'&&new RegExp('(^|[^A-ZÁÉÍÓÚ])'+k.toUpperCase()).test(up));const key=keys[0]||'Descanso';const zs=[...new Set((keys.length?keys:['Descanso']).map(k=>MUS[k][0]))];return {emo,name:tr(name),key,z:zs,m:[...new Set((keys.length?keys:['Descanso']).map(k=>MUS[k][1]))].join(' · ')}};
 const isHM=t=>/^\d{1,2}:\d{2}/.test(String(t||''));const pad=t=>isHM(t)?String(t).replace(/^(\d):/,'0$1:'):t;
@@ -797,7 +801,7 @@ const clean=t=>String(t).replace(/\s*\((?:v\d[\d.]*|PLAN_V\d+[^)]*)\)/g,'').repl
 const R=rut(dHoy[3]);
 const cap=s=>String(s).toLowerCase().replace(/(^|\s|\+\s)\S/g,c=>c.toUpperCase());
 document.documentElement.style.setProperty('--ph',fase.c);document.documentElement.style.setProperty('--ph-ink',fase.ink);
-$('pp').innerHTML=`${fase.e} ${esc(fase.n)} <span>· ${dHoy[2]?'S'+dHoy[2]:'mantenimiento'} · día ${diaN} / ${fase.sem*7}</span>`;
+$('pp').innerHTML=`${fase.e} ${esc(fase.n)} <span>· ${dHoy[2]?'S'+dHoy[2]:'sem '+Math.min(fase.sem,Math.ceil(diaN/7))} · día ${diaN} / ${dd(fase.ini,fase.fin)+1}</span>`;
 $('hdDate').textContent=`${DIA[dHoyD.getDay()]} ${lab(HOY)}`;
 
 
@@ -823,8 +827,8 @@ function dayStat(isoD,U){const pl=dayOf(isoD);if(!pl)return null;const d=(U.days
  const any=!!(Object.values(c).some(Boolean)||Object.keys(ml).length||Object.keys(wa).length||mode);
  const done=entreno&&comida&&agua;
  return {state:done?'done':(mode&&JUST[mode])?'just':'late',mode,kcal,P,ml:w,wa,entreno:!!c.entreno,rest,comida,agua,ayuno:!!(c.ayuno||chk(0)),chk,any,meals}}
-function mealMac(row,MS){MS=MS||{};const ph=phOf(row[1]),st=PLAN&&stOf(ph.k);const out=(row[9]||[]).map(m=>[m[3],null,null]);if(!st)return out;
- const dt=dtFor(st,DT(row[0]).getDay(),row[2]),mm=st.menus[dt]||{},sl=mm[row[6]?'pre':'fasted']||mm.pre||Object.values(mm)[0]||[];
+function mealMac(row,MS){MS=MS||{};const ph=phOf(row[1]),st=PLAN&&stOf(ph.k,addDays(row[0],-DOFF));const out=(row[9]||[]).map(m=>[m[3],null,null]);if(!st)return out;
+ const dt=dtFor(st,DT(row[0]).getDay(),row[2],addDays(row[0],-DOFF)),mm=st.menus[dt]||{},sl=mm[row[6]?'pre':'fasted']||mm.pre||Object.values(mm)[0]||[];
  const A=k=>{const s=sl.find(x=>x[0]===k);if(!s||!s[3][0])return null;const o=MS[k]||MS[k.toUpperCase()],f=o&&s[3].find(x=>x[0]===o);return f?Object.assign(f[3].slice(),{abs:1}):s[3][0][3]},pr=A('pre');
  (row[9]||[]).forEach((m,i)=>{const k=m[0].toLowerCase();let a=A(k);if(!a)return;const ab=a.abs,a0=(sl.find(x=>x[0]===k)||[])[3][0][3];a=a.slice();if(k==='c1'&&pr&&Math.abs(a0[3]+pr[3]-m[2])<Math.abs(a0[3]-m[2]))a=a.map((v,j)=>v+pr[j]);if(ab){out[i]=[a[0],a[1],a[2],a[3]];return}const f=m[2]/(a[3]||m[2]);out[i]=[m[3],Math.round(a[1]*f),Math.round(a[2]*f),m[2]]});return out}
 function buildEX(U){const ex=blankEX();ex.empty=false;ex.first=Object.keys(U.days||{}).filter(k=>/^\d{4}-/.test(k)).sort()[0]||HOY;
@@ -947,13 +951,26 @@ function drawDisc(F){const W=F.W,H=F.H,DW=W*(F.discK||1.25),cx=DW/2,rx=DW*.42,ry
  let tk='';for(let h=0;h<24;h++){const a=h/24*Math.PI*2;if(Math.cos(a)<=0)continue;const x1=cx+(rx+12)*Math.sin(a),y1=cy+(ry+3)*Math.cos(a),x2=cx+(rx+(h%6?17:22))*Math.sin(a),y2=cy+(ry+(h%6?6:9))*Math.cos(a);tk+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#fff" stroke-opacity="${h%6?.2:.45}"/>`}
  sv[1].innerHTML=tk+(red?'':`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="none" stroke="var(--ph)" stroke-width="3" stroke-dasharray="40 ${(rx*6.3).toFixed(0)}" stroke-linecap="round" opacity=".9"><animate attributeName="stroke-dashoffset" values="0;-${(rx*6.3+40).toFixed(0)}" dur="9s" repeatCount="indefinite"/></ellipse>`)}
 /* ══════════ datos del plan (protocolo de la app) ══════════ */
-let PLAN=null;const stOf=id=>PLAN.stages.find(s=>s.id===id);
-const dtFor=(st,dow,week)=>{const base=dow===0?'domingo':dow===6?'sabado':'gym_lv';const alt=base+'_s2_4';return (st.dt[alt]&&week>=2&&week<=4&&st.id==='basics')?alt:base};
+let PLAN=null;const PV={};
+const GRP=[['peak','🎯','Al Peak',['basics','forge','hyper','def','cut','god']],['cf','🔪','Corte final',['corte final','peak2']],['loop','∞','La vuelta',['puente','reversa','volumen','mini-corte','mini peak']]];
+const grpOf=id=>(GRP.find(g=>g[3].includes(id))||GRP[0])[0];
+function segOf(id,d){const L=((PLAN&&PLAN.post)||[]).filter(s=>s.id===id);if(!L.length)return null;d=d||PHOY;return L.find(s=>d>=s.ini&&d<=s.fin)||L.find(s=>s.ini>PHOY)||L[L.length-1]}
+function postView(id,d,wi){const g=segOf(id,d);if(!g)return null;let i=wi!=null?wi:g.wk.findIndex(w=>(d||PHOY)>=w.a&&(d||PHOY)<=w.b);if(i<0)i=0;i=Math.max(0,Math.min(g.wk.length-1,i));const k=g.ini+'|'+i;if(PV[k])return PV[k];const w=g.wk[i];
+ return PV[k]=Object.assign({},g,{post:true,wi:i,nw:g.wk.length,days:w.days,dt:w.dt,menus:w.menus,map:w.map,mode:w.mode||{},wa:w.a,wb:w.b,pk:['god','peak2','mini peak'].includes(g.id),blk:(w.days.find(x=>x&&x[5])||[])[5]||null})}
+const stOf=(id,d,wi)=>PLAN.stages.find(s=>s.id===id)||postView(id,d,wi);
+function postInit(){(PLAN.post||[]).forEach(s=>phOf(s.name));PLAN.all=PLAN.stages.concat([...new Set((PLAN.post||[]).map(s=>s.id))].map(id=>stOf(id)).filter(Boolean))}
+const wkStep=(p,st)=>st&&st.post&&st.nw>1?`<span class="wks"><button data-${p}wk="${st.wi-1}" ${st.wi?'':'disabled'} aria-label="semana anterior">‹</button>sem ${st.wi+1}/${st.nw}<button data-${p}wk="${st.wi+1}" ${st.wi<st.nw-1?'':'disabled'} aria-label="semana siguiente">›</button></span>`:'';
+const blkTxt=st=>st&&st.blk?(st.blk==='deload'?' · deload':' · bloque '+esc(st.blk)):'';
+const grpSeg=(p,G)=>GRP.map(g=>`<button class="${g[0]===G?'on':''}" data-${p}grp="${g[0]}" data-t="${g[2]}" aria-label="${g[2]}">${g[1]}</button>`).join('');
+const SN=p=>p.n.replace(/ limpio$/,'');
+const dtFor=(st,dow,week,d)=>{if(st&&st.post){if(d&&st.map[d])return st.map[d];const ks=Object.keys(st.map),k=st.pk?ks[dow-10]:ks.find(x=>DT(x).getDay()===dow);return st.map[k]||Object.keys(st.dt)[0]}const base=dow===0?'domingo':dow===6?'sabado':'gym_lv';const alt=base+'_s2_4';return (st.dt[alt]&&week>=2&&week<=4&&st.id==='basics')?alt:base};
 
 /* ---------- HOY ---------- */
 let hoyFig=null;
+function vPhCards(){const G=caGrp||grpOf(fase.k),L=PLAN.all.filter(s=>grpOf(s.id)===G),el=$('phCards');el.style.gridTemplateColumns=`128px repeat(${L.length},minmax(0,1fr))`;
+ el.innerHTML=`<div style="display:flex;flex-direction:column;justify-content:center;gap:5px;padding:6px;border-radius:20px;background:var(--neu2);box-shadow:var(--sh-sm)">${GRP.map(g=>`<button class="cag ${g[0]===G?'on':''}" data-cagrp="${g[0]}">${g[1]} ${g[2]}</button>`).join('')}</div>`+L.map((s,i)=>{const p=Object.values(PH).find(q=>q.k===s.id),cur=p===fase,n=L.length;return `<a href="#entreno" data-enph="${s.id}" class="vpop" style="animation-delay:${i*.06}s;text-decoration:none;color:inherit;padding:12px ${n>5?12:14}px;border-radius:20px;background:var(--card);border:${cur?'2px solid '+p.c:'1px solid var(--bd)'};min-width:0;overflow:hidden"><div class="eye" style="font-size:10px;color:${p.c};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.e} ${esc(SN(p))} <span>· ${s.weeks} sem</span></div><div style="margin-top:6px"><span class="big num" style="font-size:${n>5?23:26}px">${fmt(s.t[3])}</span><span class="u" style="font-size:12px">kcal</span></div><div class="mut num" style="font-size:11.5px">P ${s.t[0]} · C ${s.t[1]} · G ${s.t[2]}</div>${s.goal?`<div class="mut" style="font-size:11px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" data-t="${esc(s.goal+(s.exit?' · tope: '+s.exit:''))}">${esc(s.goal)}</div>`:''}</a>`}).join('')}
 function vHoy(){
- $('hoyEye').innerHTML=`${esc(fase.n)} <span>· ${esc(DIA[dHoyD.getDay()])} ${lab(HOY)} · ${dHoy[2]?'S'+dHoy[2]:'mantenimiento'}</span>`;
+ $('hoyEye').innerHTML=`${esc(fase.n)} <span>· ${esc(DIA[dHoyD.getDay()])} ${lab(HOY)} · ${dHoy[2]?'S'+dHoy[2]:'sem '+Math.min(fase.sem,Math.ceil(diaN/7))}</span>`;
  {const rk=dHoy[4]-EX.hoy.kcal,okk=Math.abs(rk)<=dHoy[4]*.02&&EX.hoy.comidaOk;count($('hoyKc'),okk?EX.hoy.kcal:Math.abs(rk));$('hoyKc').nextElementSibling.textContent=okk?'kcal · ✓ meta cumplida':rk<0?'kcal sobre la meta':'kcal restantes'}
  const enLate=(()=>{if(EX.hoy.entreno||EX.hoy.rest||(EX.hoy.mode&&JUST[EX.hoy.mode])||!isHM(dHoy[10]))return false;const n=new Date();return n.getHours()*60+n.getMinutes()>hm2m(dHoy[10].split('–')[1])+30})();const H=EX.hoy,cm=(dHoy[9]||[]).filter(m=>/^C\d/.test(m[0])),lateM=cm.filter((m,i)=>H.comidas[i]==='late'),nextM=cm.find((m,i)=>H.comidas[i]==='fut');
  $('hoySt').innerHTML=(H.mode?`<span class="st cur">${MODES[H.mode]||'•'} Modo ${esc(MODEN[H.mode]||H.mode)}</span>`:'')+`<span class="st ${H.entreno||H.rest?'':enLate?'late':'cur'}">${H.rest?'🛋️ Descanso':(H.entreno?'✓ ':enLate?'⚠ ':'🏋️ ')+esc(cap(R.name))+(isHM(dHoy[10])?' · '+esc(pad(dHoy[10].split('–')[0])):'')}</span>`+(lateM.length?`<span class="st late">⚠ ${lateM.map(m=>m[0]).join(' · ')} pendiente${lateM.length>1?'s':''}</span>`:'')+(nextM?`<span class="st">🍽️ ${esc(nextM[0])} ${(new Date().getHours()*60+new Date().getMinutes())>hm2m(nextM[1])?'pendiente · era a las':'a las'} ${esc(pad(nextM[1]))}</span>`:'')+`<span class="st">💧 ${fmt(H.agua)} / ${nb(dHoy[12],'L')}</span>`;
@@ -976,28 +993,37 @@ function vHoy(){
  const wk=[0,1,2,3,4,5,6].map(i=>dayOf(addDays(MON,i))).filter(Boolean);$('semEye').innerHTML=`Semana ${WEEK} <span>· plan real · toca un día</span>`;
  $('hoyWeek').innerHTML=`<div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px">${wk.map((d,i)=>{const x=rut(d[3]),cur=d[0]===HOY;return `<a href="#entreno" data-goen="${d[0]}" class="vpop" style="text-decoration:none;color:inherit;animation-delay:${i*.05}s;height:206px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 0;background:${cur?'var(--lime-wash)':'rgba(255,255,255,.035)'};border:${cur?'2px solid var(--ph)':'1px solid rgba(255,255,255,.07)'}" data-t="${esc(x.name)} · ${lab(d[0])} · ${nb(d[4],'kcal')}"><small class="mut" style="font-weight:600;letter-spacing:.12em">${DL[DT(d[0]).getDay()]}</small><span style="font-size:24px">${x.emo}</span><small style="font-size:${x.name.split(/\s*\+\s*/)[0].length>7?8:9}px;font-weight:600;letter-spacing:0;text-align:center;max-width:100%;padding:0 2px;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.name.split(/\s*\+\s*/)[0].toUpperCase())}</small><small class="mut num" style="font-size:10px">${fmt(d[4])}</small><b class="num" style="font-size:15px;font-weight:400">${DT(d[0]).getDate()}</b></a>`}).join('')}</div>`;
 }
+function grasaPlan(t){const pk=+DT(addDays('2027-08-09',DOFF));if(t<=pk)return grasaAt(t);let prev=grasaAt(pk);for(const r of RUNS){const ta=+DT(r.ini),tb=+DT(r.fin)+864e5;if(tb<=pk)continue;const a=Math.max(ta,pk),g1=POSTG[r.n]!=null?POSTG[r.n]:prev;if(t<tb){const f=Math.max(0,Math.min(1,(t-a)/(tb-a)));return prev+(g1-prev)*(1-Math.pow(1-f,1.3))}prev=g1}return prev}
 let G0=26.9;function grasaAt(t){const t0=+DT('2026-11-16'),t1=+DT('2027-08-09');const f=Math.max(0,Math.min(1,(t-t0)/(t1-t0)));return G0-(G0-6)*(1-Math.pow(1-f,1.2))}
 function miniCam(s,W,H){
- const t0=+DT('2026-11-16'),t1=+DT('2027-08-09'),x=t=>30+(t-t0)/(t1-t0)*(W-60),y=g=>12+(28-g)/(28-4)*(H-44);
- let o=`<rect x="30" y="${y(7)}" width="${W-60}" height="${y(5)-y(7)}" fill="${fase.c}" opacity=".08"/><text x="${W-30}" y="${y(7)-6}" text-anchor="end" class="ax">meta 5–7 %</text>`;
- let all='';MAIN.forEach((k,j)=>{const p=PH[k];let d='';for(let i=0;i<=16;i++){const t=+DT(p.ini)+i/16*(+DT(p.fin)-+DT(p.ini));d+=(d?'L':'M')+x(t).toFixed(1)+','+y(grasaAt(t)).toFixed(1)}all+=d.replace('M',all?'L':'M');
-  o+=`<path d="${d}" fill="none" stroke="${p.c}" stroke-width="${p===fase?6:4}" stroke-linecap="round" pathLength="1" class="vdraw" style="animation-delay:${j*.18}s" opacity="${p===fase?1:.75}"/><text x="${x((+DT(p.ini)+ +DT(p.fin))/2)}" y="${H-6}" text-anchor="middle" class="ax">${p.e} ${p.n}</text>`});
+ const pk2=(RUNS.find(r=>r.n==='PEAK2')||{fin:PLAN_END}).fin,t1a=PHOY<=pk2,A0=t1a?DAYS[0][0]:addDays(pk2,1),B0=t1a?pk2:PLAN_END,gx=t1a?28:12;
+ const t0=+DT(A0),t1=+DT(B0)+864e5,x=t=>30+(t-t0)/(t1-t0)*(W-60),y=g=>12+(gx-g)/(gx-4)*(H-44);
+ $('camEye').innerHTML=t1a?`Camino <span>· grasa corporal hacia el ${PHOY<='2027-08-09'?'Peak':'Peak final'}</span>`:'Camino <span>· la vuelta ∞ · peak tras peak</span>';
+ let o=`<rect x="30" y="${y(7)}" width="${W-60}" height="${y(5)-y(7)}" fill="${fase.c}" opacity=".08"/><text x="${W-30}" y="${y(5)+13}" text-anchor="end" class="ax">meta 5–7 %</text>`;
+ let all='',lastX=-99;RUNS.filter(r=>r.fin>=A0&&r.ini<=B0).forEach((r,j)=>{const p=phOf(r.n),a=Math.max(t0,+DT(r.ini)),b=Math.min(t1,+DT(r.fin)+864e5);let d='';for(let i=0;i<=16;i++){const t=a+i/16*(b-a);d+=(d?'L':'M')+x(t).toFixed(1)+','+y(grasaPlan(t)).toFixed(1)}all+=d.replace('M',all?'L':'M');
+  const cur=PHOY>=r.ini&&PHOY<=r.fin,cx=(x(a)+x(b))/2;
+  o+=`<path d="${d}" fill="none" stroke="${p.c}" stroke-width="${cur?6:4}" stroke-linecap="round" pathLength="1" class="vdraw" style="animation-delay:${j*.14}s" opacity="${cur?1:.75}"/>`;
+  if(/PEAK/.test(r.n))o+=`<text x="${x(b)}" y="${y(grasaPlan(b))-10}" text-anchor="middle" font-size="15">${r.n==='PEAK WEEK'?'👑':'🏆'}</text>`;
+  else if(x(b)-x(a)>44&&cx-lastX>70){o+=`<text x="${cx}" y="${H-6}" text-anchor="middle" class="ax">${p.e} ${esc(p.n)}</text>`;lastX=cx}});
  o+=`<path id="mcp" d="${all}" fill="none" stroke="none"/>`;
  if(!red)for(let i=0;i<4;i++)o+=`<circle r="2.6" fill="#fff" opacity=".8"><animateMotion dur="7s" begin="-${i*1.75}s" repeatCount="indefinite"><mpath href="#mcp"/></animateMotion></circle>`;
- const hx=x(+dHoyD),hy=y(grasaAt(+dHoyD));
- o+=`<circle cx="${hx}" cy="${hy}" r="8" fill="${fase.c}" class="vring"/><circle cx="${hx}" cy="${hy}" r="8" fill="${fase.c}" stroke="#0d1117" stroke-width="3"/><text x="${hx+14}" y="${hy-10}" font-size="12" font-weight="600" fill="#eef2f6">HOY${EX.med&&EX.med.hoy.grasa!=null?' · '+fmt(EX.med.hoy.grasa)+' %':''}</text><text x="${W-30}" y="${y(6)+22}" text-anchor="end" font-size="18">🏆</text>`;
+ const hx=x(+dHoyD),hy=y(grasaPlan(+dHoyD));
+ o+=`<circle cx="${hx}" cy="${hy}" r="8" fill="${fase.c}" class="vring"/><circle cx="${hx}" cy="${hy}" r="8" fill="${fase.c}" stroke="#0d1117" stroke-width="3"/><text x="${hx+14}" y="${hy-10}" font-size="12" font-weight="600" fill="#eef2f6">HOY${EX.med&&EX.med.hoy.grasa!=null?' · '+fmt(EX.med.hoy.grasa)+' %':''}</text>`;
  s.innerHTML=o}
 
 /* ---------- ENTRENO: todas las rutinas del protocolo ---------- */
-let enStage=fase.k,enDow=PDOW,enF=null,enB=null;
+let enStage=fase.k,enDow=PDOW,enF=null,enB=null,enWk=null;
 function vEntreno(){
- const st=stOf(enStage),P2=Object.values(PH).find(p=>p.k===enStage);
- $('enPh').innerHTML=PLAN.stages.map(s=>{const p=Object.values(PH).find(q=>q.k===s.id);return `<button class="pc ${s.id===enStage?'on':''}" style="--c:${p.c}" data-enph="${s.id}"><i style="background:${p.c}"></i>${esc(p.n)}</button>`}).join('');
- const order=[1,2,3,4,5,6,0];
- $('enSeg').innerHTML=order.map(dw=>{const dy=st.days.find(x=>x[0]===dw);return `<button class="${dw===enDow?'on':''} ${enStage===fase.k&&dw===dHoyD.getDay()?'today':''}" data-endow="${dw}" data-t="${esc(dy?dy[1]:'')}">${DLL[dw]}</button>`}).join('');
+ const st=stOf(enStage,null,enWk),P2=Object.values(PH).find(p=>p.k===enStage),G=grpOf(enStage);
+ if(st.pk&&enDow<10)enDow=10+Math.max(0,Object.keys(st.map).indexOf(PHOY));if(!st.pk&&enDow>=10)enDow=PDOW;
+ const isT=st.post?(st.days.find(x=>x[0]===enDow)||[])[4]===PHOY:enStage===fase.k&&enDow===PDOW;
+ $('enGrp').innerHTML=grpSeg('en',G);
+ $('enPh').innerHTML=PLAN.all.filter(s=>grpOf(s.id)===G).map(s=>{const p=Object.values(PH).find(q=>q.k===s.id);return `<button class="pc ${s.id===enStage?'on':''}" style="--c:${p.c}" data-enph="${s.id}" data-t="${esc(p.n)}"><i style="background:${p.c}"></i>${esc(SN(p))}</button>`}).join('');
+ const order=st.pk?st.days.map(x=>x[0]):[1,2,3,4,5,6,0],dnm=dw=>{const r=st.days.find(x=>x[0]===dw);return st.pk&&r?'D'+(dw-10)+' · '+DIA[DT(r[4]).getDay()]+' '+lab(r[4]):DIA[dw]};
+ $('enSeg').innerHTML=order.map(dw=>{const dy=st.days.find(x=>x[0]===dw),td=st.post?(dy||[])[4]===PHOY:enStage===fase.k&&dw===dHoyD.getDay();return `<button class="${dw===enDow?'on':''} ${td?'today':''}" data-endow="${dw}" data-t="${esc((dy?dy[1]:'')+(st.post&&dy&&dy[4]?' · '+lab(dy[4]):''))}">${st.pk?'D'+(dw-10):DLL[dw]}</button>`}).join('');
  const day=st.days.find(x=>x[0]===enDow)||[enDow,'Descanso',null,'rest'],x=rut(day[1]),w=day[2]?PLAN.workouts[day[2]]:null;
- $('enEye').innerHTML=`Entreno <span>· ${esc(P2.n)} · ${DOFF&&enStage===fase.k&&enDow===PDOW?'hoy · sesión del '+esc(DIA[enDow].toLowerCase())+' (plan corrido)':esc(DIA[enDow])}${w?' · '+esc(pad(w.at))+'–'+esc(pad(w.end||'')):''}</span>`+'';{const fm=enStage===fase.k&&enDow===PDOW&&EX.hoy.mode;$('enMode').innerHTML=fm?`<span class="st cur" style="font-size:11.5px">${MODES[EX.hoy.mode]||'•'} Modo ${esc(MODEN[EX.hoy.mode]||EX.hoy.mode)}${EX.hoy.mode==='fatiga'?' · baja la intensidad, RIR +1':''}</span>`:''}
- $('enTtl').style.fontSize=x.name.length>14?'38px':'52px';$('enTtl').innerHTML=`${esc(cap(x.name))}<small style="${x.name.length>10?'display:block;margin:10px 0 0 4px':''}">${esc(x.m)}</small>`;
+ $('enEye').innerHTML=`Entreno <span>· ${esc(SN(P2))} · ${st.post&&st.nw>1?wkStep('en',st)+' · ':''}${DOFF&&isT?'hoy · sesión del '+esc(dnm(enDow).toLowerCase())+' (plan corrido)':esc(dnm(enDow))}${w?' · '+esc(pad(w.at))+'–'+esc(pad(w.end||'')):''}</span>`+'';{const fm=isT&&EX.hoy.mode;$('enMode').innerHTML=fm?`<span class="st cur" style="font-size:11.5px">${MODES[EX.hoy.mode]||'•'} Modo ${esc(MODEN[EX.hoy.mode]||EX.hoy.mode)}${EX.hoy.mode==='fatiga'?' · baja la intensidad, RIR +1':''}</span>`:''}
+ $('enTtl').style.fontSize=x.name.length>14?'38px':'52px';$('enTtl').innerHTML=`${esc(cap(x.name))}<small style="${x.name.length>10?'display:block;margin:10px 0 0 4px':''}">${esc(x.m)}${blkTxt(st)}</small>`;
  const zf=x.z,zb=x.z;
  if(!enF){enF=makeFig($('enF'),'f',zf,{discK:.92});enB=makeFig($('enB'),'b',zb,{discK:.92})}else{setMask(enF,zf);setMask(enB,zb)}
  [enF,enB].forEach(F=>{if(F.gl)F.gl.uniform3fv(F.u.ph,rgb(P2.c))});
@@ -1009,7 +1035,7 @@ function vEntreno(){
   const tf=m=>`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
   $('rut').innerHTML=`<div class="tlh"><b>${esc(tr(clean(w.title)))}</b><span>${esc(pad(w.at))}–${esc(pad(w.end||''))} · ${tot}′ de trabajo${w.end&&hm2m(w.end)-hm2m(w.at)>tot?' + '+(hm2m(w.end)-hm2m(w.at)-tot)+'′ de transiciones':''}</span></div>`+
   blocks.map((b,i)=>{const m=b[2]||0,st=tf(t0),en=tf(t0+m);t0+=m;const op=.14+i*.07;
-   const exs=b[4].map(e=>`<div class="ex"><b>${esc(tr(clean(e[0])))}</b><em>${e[1]?e[1]+' × ':''}${esc(enStage===fase.k&&enDow===PDOW&&EX.hoy.mode==='fatiga'?String(e[2]||'').replace(/RIR (\d+)/g,(a,n)=>'RIR '+(+n+1)):(e[2]||''))}</em>${(e[3]&&e[3]!=='—')||e[4]?`<small>${e[3]&&e[3]!=='—'?'RIR '+esc(enStage===fase.k&&enDow===PDOW&&EX.hoy.mode==='fatiga'?String(e[3]).replace(/S\d+(?:-\d+)?|\d+/g,m=>m[0]==='S'?m:String(+m+1))+' (fatiga +1)':e[3]):''}${e[4]?' · descanso '+e[4]+' s':''}</small>`:''}</div>`).join('');
+   const exs=b[4].map(e=>`<div class="ex"><b>${esc(tr(clean(e[0])))}</b><em>${e[1]?e[1]+' × ':''}${esc(isT&&EX.hoy.mode==='fatiga'?String(e[2]||'').replace(/RIR (\d+)/g,(a,n)=>'RIR '+(+n+1)):(e[2]||''))}</em>${(e[3]&&e[3]!=='—')||e[4]?`<small>${e[3]&&e[3]!=='—'?'RIR '+esc(isT&&EX.hoy.mode==='fatiga'?String(e[3]).replace(/S\d+(?:-\d+)?|\d+/g,m=>m[0]==='S'?m:String(+m+1))+' (fatiga +1)':e[3]):''}${e[4]?' · descanso '+e[4]+' s':''}</small>`:''}</div>`).join('');
    const its=(b[3]||[]).map(t=>`<div class="li">${esc(tr(clean(t)))}</div>`).join('');
    return `<div class="tlb vrise" style="animation-delay:${i*.06}s"><div class="tlt"><b>${st}</b><i></i></div><div class="tlc" style="min-height:${Math.max(64,m*5.2)}px;background:color-mix(in srgb,${P2.c} ${Math.round(op*100)}%,rgba(14,18,25,.6));border-color:color-mix(in srgb,${P2.c} 45%,transparent)"><h4>${ICB[b[0]]||'•'} ${esc(tr(clean(String(b[1]))))}<span>${m}′ · ${st}–${en}</span></h4><div class="tlbar"><i style="width:${Math.round(m/tot*100)}%;background:${P2.c}"></i></div>${its}${exs}</div></div>`}).join('')+
   `<div class="tlb"><div class="tlt"><b>${w.end&&isHM(w.end)?tf(Math.max(t0,hm2m(w.end))):tf(t0)}</b><i class="end"></i></div><div class="mut" style="font-size:12.5px;padding:2px 0 0">Fin de la sesión${st.cardio?' · '+esc(st.cardio):''}</div></div>`;}
@@ -1026,9 +1052,12 @@ function vEntreno(){
  $('volEye').innerHTML=enTab==='carg'?`Cargas <span>· de la app</span>`:`Series <span>· por semana</span>`;vCargas();$('radar').innerHTML=ks.length?ks.map((k,i)=>`<text x="0" y="${14+i*Math.min(20,200/ks.length)}" font-size="11" fill="#eef2f6">${k}</text><rect x="104" y="${5+i*Math.min(20,200/ks.length)}" width="${(V[k]/mx)*196}" height="11" rx="6.5" fill="${P2.c}" opacity="${.45+.55*V[k]/mx}" class="vgrowx" style="animation-delay:${i*.06}s"/><text x="${110+(V[k]/mx)*196}" y="${14+i*Math.min(20,200/ks.length)}" font-size="10.5" fill="rgba(226,232,240,.75)">${V[k]}</text>`).join(''):`<text x="0" y="20" class="ax">El volumen por músculo de esta fase se ve al llegar a ella.</text>`;
 }
 document.addEventListener('click',e=>{const a=e.target.closest('[data-enph]'),b=e.target.closest('[data-endow]'),g=e.target.closest('[data-goen]');
- if(a){enStage=a.dataset.enph;vEntreno()}if(b){enDow=+b.dataset.endow;vEntreno()}if(g){const d=dayOf(g.dataset.goen);const k=phOf(d[1]).k;enStage=PLAN.stages.some(x=>x.id===k)?k:enStage;enDow=DT(addDays(d[0],-DOFF)).getDay()}
+ if(a){enStage=a.dataset.enph;enWk=null;vEntreno()}if(b){enDow=+b.dataset.endow;vEntreno()}if(g){const d=dayOf(g.dataset.goen);const k=phOf(d[1]).k;enStage=PLAN.all.some(x=>x.id===k)?k:enStage;enWk=null;const pd=addDays(d[0],-DOFF),sv=stOf(enStage,pd);if(sv&&sv.post){enWk=sv.wi;enDow=sv.pk?10+Math.max(0,Object.keys(sv.map).indexOf(pd)):DT(pd).getDay()}else enDow=DT(pd).getDay()}
+ {const x=e.target.closest('[data-enwk]');if(x&&!x.disabled){enWk=+x.dataset.enwk;vEntreno()}const y=e.target.closest('[data-engrp]');if(y){const g=GRP.find(q=>q[0]===y.dataset.engrp);enStage=g[3].includes(fase.k)?fase.k:g[3][0];enWk=null;vEntreno()}
+  const u=e.target.closest('[data-cowk]');if(u&&!u.disabled){coWk=+u.dataset.cowk;coKeep=false;coModeU=false;vComida()}const v=e.target.closest('[data-cogrp]');if(v){const g=GRP.find(q=>q[0]===v.dataset.cogrp);coStage=g[3].includes(fase.k)?fase.k:g[3][0];coWk=null;coDt=null;vComida()}
+  const w=e.target.closest('[data-cagrp]');if(w){caGrp=w.dataset.cagrp;vPhCards()}}
  const c=e.target.closest('[data-coph]'),t=e.target.closest('[data-codt]'),o=e.target.closest('[data-opt]'),m=e.target.closest('[data-mode]');
- if(c||t||m)document.querySelectorAll('.noanim').forEach(x=>x.classList.remove('noanim'));if(c){coStage=c.dataset.coph;coDt=null;vComida()}if(t){coDt=t.dataset.codt;vComida()}if(m){coMode=m.dataset.mode;vComida()}if(o){coSel[o.dataset.slot]=o.dataset.opt;const mv=$('v-comida')||document.querySelector('.view.on'),sc=$('menu').scrollTop;mv.classList.add('noanim');coKeep=true;vComida();$('menu').scrollTop=sc}
+ if(c||t||m)document.querySelectorAll('.noanim').forEach(x=>x.classList.remove('noanim'));if(c){coStage=c.dataset.coph;coWk=null;coDt=null;coModeU=false;vComida()}if(t){coDt=t.dataset.codt;coModeU=false;vComida()}if(m){coMode=m.dataset.mode;coModeU=true;vComida()}if(o){coSel[o.dataset.slot]=o.dataset.opt;const mv=$('v-comida')||document.querySelector('.view.on'),sc=$('menu').scrollTop;mv.classList.add('noanim');coKeep=true;vComida();$('menu').scrollTop=sc}
  const msb=e.target.closest('[data-ms]');if(msb){msTab=msb.dataset.ms;vMesCum()}const vjb=e.target.closest('[data-vj]');if(vjb){vjTab=vjb.dataset.vj;vFaseCur();document.querySelectorAll('#vjTab button').forEach(b=>b.classList.toggle('on',b.dataset.vj===vjTab))}const gab=e.target.closest('[data-ga]');if(gab){gaTab=gab.dataset.ga;vPorFase()}const rt=e.target.closest('[data-rt]');if(rt){raTab=rt.dataset.rt;vSemPil()}const dm=e.target.closest('[data-dm]');if(dm){dmTab=dm.dataset.dm;vPeso()}const et=e.target.closest('[data-et]');if(et){evTab=et.dataset.et;vCal()}const rv=e.target.closest('[data-rev]');if(rv){window.revI=+rv.dataset.rev;vCal()}const ct=e.target.closest('[data-cut]');if(ct){cuTab=ct.dataset.cut;vFlujo(EX.med)}const vt=e.target.closest('[data-vt]');if(vt){enTab=vt.dataset.vt;vEntreno()}const cd=e.target.closest('[data-cal]');if(cd){calSel=cd.dataset.cal;vCal()}});
 
 /* ---------- COMIDA: menús reales por fase y tipo de día ---------- */
@@ -1040,22 +1069,22 @@ function vCargas(){const L=EX.lifts||{},on=enTab==='carg';$('radar').style.displ
  $('cargas').innerHTML=`<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">`+rows.map((r,i)=>{const a=(r.e||r.h).slice(-8),mn2=Math.min(...a),mx2=Math.max(...a,mn2+0.001),stl=(r.e||r.h).length>=3&&(r.e||r.h).slice(-3).every(v=>v<=(r.e||r.h)[(r.e||r.h).length-3]),pts2=a.map((v,j)=>`${a.length>1?j*(74/(a.length-1)):37},${24-(mx2>mn2?(v-mn2)/(mx2-mn2):.5)*20}`).join(' '),E=r.e||r.h,pc=E[0]?Math.round((E[E.length-1]-E[0])/E[0]*100):0;
   return `<div class="vrise" data-t="${esc(r.name)} · ${r.h.length} registro${r.h.length>1?'s':''} · último ${lab(r.d)}" style="animation-delay:${i*.05}s;min-width:0;overflow:hidden;padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05)"><div style="display:flex;justify-content:space-between;gap:6px;font-size:11px;min-width:0"><b style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">${esc(r.name)}</b><span style="flex:none;color:${stl?'#ffd59a':r.h.length<2?'rgba(226,232,240,.5)':pc>0?'var(--ph)':pc<0?'#ffd59a':'rgba(226,232,240,.6)'}">${stl?'⚠ estancado':r.h.length<2?'nuevo':pc>0?'▲ '+pc+' %':pc<0?'⚠ ▼ '+(-pc)+' %':'='}</span></div><div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:3px"><svg width="76" height="28" style="flex:none"><polyline points="${pts2}" fill="none" stroke="${stl?'#e8b04a':'var(--ph)'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="num" style="font-size:13px;white-space:nowrap;flex:none">${r.t?nb(r.t,'kg'):nb(r.reps||0,'reps')}</span></div></div>`}).join('')+'</div>';if(0)rows.map((r,i)=>{const mx=Math.max(...r.h,1),mn=Math.min(...r.h),pts=r.h.slice(-8).map((v,j,a)=>`${a.length>1?j*(56/(a.length-1)):28},${18-(mx>mn?(v-mn)/(mx-mn):.5)*14}`).join(' '),up=r.tp!=null&&r.t>r.tp,dn=r.tp!=null&&r.t<r.tp;
   return `<div class="vrise" style="animation-delay:${i*.05}s;display:grid;grid-template-columns:1fr 60px 92px;gap:8px;align-items:center;padding:7px 0;border-top:1px solid rgba(255,255,255,.06)" data-t="${esc(r.name)} · ${r.h.length} registro${r.h.length>1?'s':''}"><div style="min-width:0"><b style="display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.name)}</b><small class="mut" style="font-size:11px">${lab(r.d)} · ${r.n} serie${r.n>1?'s':''}</small></div><svg width="60" height="22"><polyline points="${pts}" fill="none" stroke="var(--ph)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="text-align:right;white-space:nowrap"><span class="num" style="font-size:16px">${r.t?nb(r.t,'kg'):nb(r.reps||0,'reps')}</span>${r.t&&r.reps?`<span class="mut" style="font-size:11.5px"> × ${r.reps}</span>`:''}<div style="font-size:11px;color:${up?'var(--ph)':dn?'#ffd59a':'rgba(226,232,240,.55)'}">${up?'▲ +'+nb(Math.round((r.t-r.tp)*10)/10,'kg'):dn?'⚠ ▼ '+nb(Math.round((r.tp-r.t)*10)/10,'kg'):r.tp!=null?'= igual':'primer registro'}</div></div></div>`}).join('')}
-let coStage=fase.k,coDt=null,coMode=null,coKeep=false;const coSel={};
+let coModeU=false,coStage=fase.k,coDt=null,coMode=null,coKeep=false,coWk=null,caGrp=null;const coSel={};
 function vComida(){
- const st=stOf(coStage),P2=Object.values(PH).find(p=>p.k===coStage);
- if(!coDt)coDt=coStage===fase.k?dtFor(st,dHoyD.getDay(),dHoy[2]):'gym_lv';
- const DTN={refeed:'Refeed',gym_lv:'L–V',gym_lv_s2_4:'L–V · S2–4',sabado:'Sábado',sabado_s2_4:'Sábado · S2–4',domingo:'Domingo'};
- $('coPh').innerHTML=PLAN.stages.map(s=>{const p=Object.values(PH).find(q=>q.k===s.id);return `<button class="pc ${s.id===coStage?'on':''}" style="--c:${p.c}" data-coph="${s.id}"><i style="background:${p.c}"></i>${esc(p.n)}</button>`}).join('');
- const dts=Object.keys(st.dt).filter(k=>!/_s2_4$/.test(k));const base=coDt.replace('_s2_4','');const hasS=!!st.dt[base+'_s2_4'];const modes=Object.keys((st.menus[coDt]||{}));if(!coMode||!modes.includes(coMode))coMode=modes.includes('fasted')&&coStage===fase.k&&!dHoy[6]?'fasted':modes[0];
- $('coDt').innerHTML=`<div class="seg sm">${dts.map(k=>`<button class="${k===base?'on':''}" data-codt="${k}${/_s2_4$/.test(coDt)&&st.dt[k+'_s2_4']?'_s2_4':''}">${esc(DTN[k]||k)}</button>`).join('')}</div>${hasS?`<div class="seg sm"><button class="${/_s2_4$/.test(coDt)?'':'on'}" data-codt="${base}">S1</button><button class="${/_s2_4$/.test(coDt)?'on':''}" data-codt="${base}_s2_4">S2–4</button></div>`:''}${modes.length>1?`<div class="seg sm">${modes.map(m=>`<button class="${m===coMode?'on':''}" data-mode="${m}">${m==='fasted'?'En ayunas':'Con pre'}</button>`).join('')}</div>`:''}`;
- const D=st.dt[coDt];
+ const st=stOf(coStage,null,coWk),P2=Object.values(PH).find(p=>p.k===coStage),G=grpOf(coStage),tdk=st.post?st.map[PHOY]:(coStage===fase.k?dtFor(st,dHoyD.getDay(),dHoy[2]):null);
+ if(!coDt||!st.dt[coDt])coDt=tdk||Object.keys(st.dt)[0];
+ const DTN={refeed:'Refeed',gym_lv:'L–V',gym_lv_s2_4:'L–V · S2–4',sabado:'Sábado',sabado_s2_4:'Sábado · S2–4',domingo:'Domingo',break_lv:'Break L–V',break_sabado:'Break sáb',break_domingo:'Break dom'};
+ $('coPh').innerHTML=PLAN.all.filter(s=>grpOf(s.id)===G).map(s=>{const p=Object.values(PH).find(q=>q.k===s.id);return `<button class="pc ${s.id===coStage?'on':''}" style="--c:${p.c}" data-coph="${s.id}" data-t="${esc(p.n)}"><i style="background:${p.c}"></i>${esc(SN(p))}</button>`}).join('')+`<div class="seg sm" style="margin-left:auto">${grpSeg('co',G)}</div>`;
+ const dts=Object.keys(st.dt).filter(k=>!/_s2_4$/.test(k));const base=coDt.replace('_s2_4','');const hasS=!!st.dt[base+'_s2_4'];const modes=Object.keys((st.menus[coDt]||{}));if(st.post&&coDt===tdk&&st.mode&&st.mode[PHOY]&&!coModeU)coMode=st.mode[PHOY];else if(st.post&&!coModeU&&st.dt[coDt].mode0)coMode=st.dt[coDt].mode0;if(!coMode||!modes.includes(coMode))coMode=modes.includes('fasted')&&coStage===fase.k&&!dHoy[6]?'fasted':modes[0];
+ $('coDt').innerHTML=`<div class="seg sm">${dts.map(k=>`<button class="${k===base?'on':''}" data-codt="${k}${/_s2_4$/.test(coDt)&&st.dt[k+'_s2_4']?'_s2_4':''}">${esc((st.dt[k]&&st.dt[k].lab)||DTN[k]||k)}</button>`).join('')}</div>${hasS?`<div class="seg sm"><button class="${/_s2_4$/.test(coDt)?'':'on'}" data-codt="${base}">S1</button><button class="${/_s2_4$/.test(coDt)?'on':''}" data-codt="${base}_s2_4">S2–4</button></div>`:''}${modes.length>1?`<div class="seg sm">${modes.map(m=>`<button class="${m===coMode?'on':''}" data-mode="${m}">${m==='fasted'?'En ayunas':'Con pre'}</button>`).join('')}</div>`:''}`;
+ const D0=st.dt[coDt],D=D0.winm&&D0.winm[coMode]?Object.assign({},D0,{win:D0.winm[coMode]}):D0;
  const preS=coMode==='pre'?(((st.menus[coDt]||{})[coMode]||[]).find(s=>s[0]==='pre')||[])[1]:null,W0=preS&&isHM(preS)?preS:D.win[0];
- $('coEye').innerHTML=`Comida <span>· ${esc(P2.n)} · ${esc(DTN[coDt]||coDt)} · ventana ${esc(pad(W0))}–${esc(pad(D.win[1]))}</span>`;
+ $('coEye').innerHTML=`Comida <span>· ${esc(st.post?SN(P2):P2.n)} · ${st.post&&st.nw>1?wkStep('co',st)+' · ':''}${esc((D0.lab||DTN[coDt]||coDt))} · ${esc(pad(W0))}–${esc(pad(D.win[1]))}</span>`;
  $('coKc').textContent=fmt(D.t[3]);$('coSub').textContent=`kcal · P ${D.t[0]} · C ${D.t[1]} · G ${nb(D.t[2],'g')}`;
  /* reloj de la ventana */
  const W=587,H=360,cx=294,cy=250,r=170,m0=hm2m(W0),m1=hm2m(D.win[1]),a0=Math.PI*1.08,a1=Math.PI*1.92;
  const A=m=>a0+(m-m0)/(m1-m0)*(a1-a0),P=(m,rr=r)=>[cx+Math.cos(A(m))*rr,cy+Math.sin(A(m))*rr];
- const now=new Date(),nm=now.getHours()*60+now.getMinutes(),isToday=coStage===fase.k&&coDt===dtFor(st,dHoyD.getDay(),dHoy[2]),cl=Math.max(m0,Math.min(m1,nm));
+ const now=new Date(),nm=now.getHours()*60+now.getMinutes(),isToday=coStage===fase.k&&coDt===tdk&&(!st.post||!!st.map[PHOY]),cl=Math.max(m0,Math.min(m1,nm));
  const arc=(f,t,rr=r)=>{const p=P(f,rr),q=P(t,rr);return `M${p[0]},${p[1]} A${rr},${rr} 0 0 1 ${q[0]},${q[1]}`};
  let o=`<path d="${arc(m0,m1)}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14" stroke-linecap="round"/>`;
  for(let m=Math.ceil(m0/30)*30;m<=m1;m+=30){const p=P(m,r+18),q=P(m,r+11);o+=`<line x1="${p[0]}" y1="${p[1]}" x2="${q[0]}" y2="${q[1]}" stroke="rgba(255,255,255,${m%60?'.12':'.3'})"/>`}
@@ -1072,7 +1101,7 @@ function vComida(){
   <text x="${cx}" y="${cy+52}" text-anchor="middle" font-size="13" fill="${isToday&&EX.hoy.comidas.includes('late')?'#ffd59a':'rgba(226,232,240,.6)'}">${isToday?(()=>{const L=meals.filter((m,i)=>EX.hoy.comidas[i]==='late');return L.length?'⚠ '+L.map(m=>m[0].toUpperCase()+' a las '+pad(m[1])).join(' · ')+' pendiente':EX.hoy.comidaOk?'✓ comidas del día completas':(()=>{const nw=new Date().getHours()*60+new Date().getMinutes(),P=meals.filter((m,i)=>EX.hoy.comidas[i]!=='done'&&nw>hm2m(m[1])+30);return P.length?P.map(m=>m[0].toUpperCase()).join(' · ')+' pendiente · era a las '+pad(P[0][1]):'sin pendientes atrasados'})()})():meals.length+' comidas'+(/comidas/.test(D.win[2]||'')?'':' · '+esc(D.win[2]||''))}</text>`;
  $('clock').innerHTML=o;
  /* menú completo */
- $('menuEye').innerHTML=`Menú del día <span>· ${esc(DTN[coDt]||coDt)} · ${sl.some(s=>s[3].length>1)?'elige una opción por comida':'menú fijo'}</span>`;
+ $('menuEye').innerHTML=`Menú del día <span>· ${esc((D0.lab||DTN[coDt]||coDt))} · ${sl.some(s=>s[3].length>1)?'elige una opción por comida':st.post?'el de la app · ya escalado a tu meta':'menú fijo'}</span>`;
  $('menu').innerHTML=sl.map((s,i)=>{const key=coStage+coDt+coMode+s[0];const opts=s[3];const appSel=isToday?((EX.menuSel||{})[s[0]]||(EX.menuSel||{})[String(s[0]).toUpperCase()]):null,sel=opts.find(x=>x[0]===(coSel[key]||appSel))||opts[0];const mc=sel[3]||[0,0,0,0];const tot=(mc[0]*4+mc[1]*4+mc[2]*9)||1;const a1=Math.round(mc[0]*4/tot*100),a2=a1+Math.round(mc[1]*4/tot*100);
   const emo=(s[2].match(/^\S+/)||['🍽️'])[0];
   return `<div class="meal vrise" style="animation-delay:${i*.06}s"><div class="ring" style="--a1:${a1}%;--a2:${a2}%">${emo}</div><div><h5><time>${esc(s[1]||'')}</time>${esc(clean(s[2].replace(/^\S+\s/,'')))}${opts.length>1?`<span class="opt">${opts.map(x=>`<button class="${x===sel?'on':''}" data-slot="${key}" data-opt="${x[0]}" data-t="${esc(clean(x[1]))}">${x[0]}</button>`).join('')}</span>`:''}</h5>
@@ -1100,7 +1129,7 @@ function vComida(){
 
 /* ---------- CUERPO ---------- */
 let cuFig=null;
-let msTab='plan',vjTab='viaje',gaTab='ruta';
+let msTab='plan',vjTab=PHOY>'2027-08-09'?'full':'viaje',gaTab='ruta';
 const PIL4=[['e','🏋️','Entreno'],['c','🍽️','Comida'],['a','💧','Agua'],['y','⏳','Ayuno']];
 function pctRange(a,b,k){let n=0,ok=0;for(let d=a;d<=b&&d<=HOY;d=addDays(d,1)){const s=EX.pil[d];if(!s||s.j)continue;if(d===HOY&&!s[k])continue;n++;if(s[k])ok++}return n>=3?Math.round(ok/n*100):null}
 function bullets(X,Y,W,rows,gap){let o='';rows.forEach(([e,n,v],i)=>{const y=Y+i*gap,ok=v!=null&&v>=90;o+=`<text x="${X}" y="${y+16}" font-size="13" fill="#eef2f6">${e} ${n}</text><rect x="${X+110}" y="${y+2}" width="${W}" height="20" rx="10" fill="rgba(255,255,255,.05)"/>${v==null?'':`<rect class="${red?'':'vgrowx'}" x="${X+110}" y="${y+2}" width="${Math.max(4,W*v/100)}" height="20" rx="10" fill="${ok?fase.c:'rgba(232,176,74,.75)'}" style="transform-origin:${X+110}px 0;animation-delay:${i*.08}s"/>`}<line x1="${X+110+W*.9}" x2="${X+110+W*.9}" y1="${y-3}" y2="${y+27}" stroke="#fff" stroke-width="2"/><text x="${X+122+W}" y="${y+17}" font-size="13" font-weight="600" fill="${v==null?'rgba(226,232,240,.45)':ok?'#eef2f6':'#ffd59a'}">${v==null?'aparece con 3 días':(ok?'✓ ':'⚠ ')+v+' %'}</text>`});return o}
@@ -1121,9 +1150,9 @@ function vMesCum(){const on=msTab==='cum';$('mes').style.display=on?'none':'';$(
 function vViajeFull(){const on=vjTab==='full',el=$('viajeFull');el.style.display=on?'':'none';if(!on)return;
  const W=1259,H=330,XE=W-160,t0=+DT(DAYS[0][0]),t1=+DT(DAYS[DAYS.length-1][0]),x=t=>50+(t-t0)/(t1-t0)*(XE-50),y=g=>18+(28-g)/(28-3)*(H-80);
  const runs=[];DAYS.forEach(d=>{const r=runs[runs.length-1];if(r&&r.n===d[1])r.b=d[0];else runs.push({n:d[1],a:d[0],b:d[0]})});
- const POST={PUENTE:6.8,'CORTE FINAL':6,PEAK2:5.8,REVERSA:7,VOLUMEN:9.5,'MINI-CORTE':6.6,'MINI PEAK':6.2},pk=+DT(addDays('2027-08-09',DOFF));
+ const POST=POSTG,pk=+DT(addDays('2027-08-09',DOFF));
  let prev=null,o='',all='';
- o+=`<rect x="${x(pk)}" y="${y(7)}" width="${W-20-x(pk)}" height="${y(5)-y(7)}" fill="#e9dca8" opacity=".12">${red?'':'<animate attributeName="opacity" values=".08;.17;.08" dur="4s" repeatCount="indefinite"/>'}</rect><text x="${x(pk)+70}" y="${y(5)+16}" font-size="11" font-weight="700" letter-spacing="1" fill="#e9dca8" opacity=".85">ZONA PARA SIEMPRE · 5–7 %</text>`;
+ o+=`<rect x="${x(pk)}" y="${y(7)}" width="${W-20-x(pk)}" height="${y(5)-y(7)}" fill="#e9dca8" opacity=".12">${red?'':'<animate attributeName="opacity" values=".08;.17;.08" dur="4s" repeatCount="indefinite"/>'}</rect><text x="${x(+dHoyD)<(x(pk)+W)/2?W-30:x(pk)+10}" text-anchor="${x(+dHoyD)<(x(pk)+W)/2?'end':'start'}" y="${y(5)+16}" font-size="11" font-weight="700" letter-spacing="1" fill="#e9dca8" opacity=".85">META 5–7 % · SE TOCA EN CADA PEAK</text>`;
  [5,10,15,20,25].forEach(g=>o+=`<line x1="50" x2="${W-20}" y1="${y(g)}" y2="${y(g)}" stroke="rgba(255,255,255,.05)"/><text x="40" y="${y(g)+4}" text-anchor="end" class="ax">${g} %</text>`);
  let lastLabX=-99,row=0;
  runs.forEach((r,i)=>{const p=phOf(r.n),ta=+DT(r.a),tb=+DT(r.b)+864e5,isMain=+DT(r.a)<=pk;const g0=prev!=null?prev:grasaAt(ta),g1=isMain?grasaAt(Math.min(tb,pk)):(POST[r.n]!=null?POST[r.n]:g0);prev=g1;
@@ -1137,12 +1166,12 @@ function vViajeFull(){const on=vjTab==='full',el=$('viajeFull');el.style.display
  o+=`<path d="${w}" fill="none" stroke="#e9dca8" stroke-width="3" stroke-linecap="round" class="${red?'':'vflow'}" style="${red?'stroke-dasharray:3 5':''}"/><text x="${xs+60}" y="${H-38}" text-anchor="middle" font-size="11" font-weight="700" fill="#e9dca8">∞ CICLOS</text><text x="${xs+60}" y="${H-24}" text-anchor="middle" class="ax">volumen ↔ mini-corte</text>`;
  [['2027','2027-01-01'],['2028','2028-01-01']].forEach(([t,s])=>{const xx=x(+DT(s));o+=`<line x1="${xx}" x2="${xx}" y1="${H-60}" y2="${H-54}" stroke="rgba(255,255,255,.2)"/><text x="${xx}" y="${H-4}" text-anchor="middle" class="ax">${t}</text>`});
  o+=`<line x1="${x(pk)}" x2="${x(pk)}" y1="12" y2="${H-56}" stroke="#e9dca8" stroke-opacity=".45" stroke-dasharray="3 4"/><text x="${x(pk)+6}" y="22" font-size="11.5" fill="#e9dca8">Peak · ${lab(addDays('2027-08-09',DOFF))} ${addDays('2027-08-09',DOFF).slice(0,4)}</text>`;
- const hx=x(+dHoyD),hy=y(grasaAt(+dHoyD));o+=`<line x1="${hx}" x2="${hx}" y1="${hy}" y2="${H-56}" stroke="#fff" stroke-opacity=".5"/><circle cx="${hx}" cy="${hy}" r="9" fill="${fase.c}" class="${red?'':'vring'}"/><circle cx="${hx}" cy="${hy}" r="9" fill="${fase.c}" stroke="#0d1117" stroke-width="3"/><text x="${hx+14}" y="${hy-12}" font-size="12.5" font-weight="700" fill="#eef2f6">HOY</text>`;
+ const hx=x(+dHoyD),hy=y(grasaPlan(+dHoyD));o+=`<line x1="${hx}" x2="${hx}" y1="${hy}" y2="${H-56}" stroke="#fff" stroke-opacity=".5"/><circle cx="${hx}" cy="${hy}" r="9" fill="${fase.c}" class="${red?'':'vring'}"/><circle cx="${hx}" cy="${hy}" r="9" fill="${fase.c}" stroke="#0d1117" stroke-width="3"/><text x="${hx+14}" y="${hy-12}" font-size="12.5" font-weight="700" fill="#eef2f6">HOY</text>`;
  (EX.ms||[]).forEach(r=>{const t=+DT(r.d);if(t>=t0&&t<=t1)o+=`<circle cx="${x(t)}" cy="${y(r.g)}" r="5" fill="#fff" stroke="${fase.c}" stroke-width="2.5"><title>${lab(r.d)} · real ${fmt(r.g)} %</title></circle>`});
  el.innerHTML=o}
 function vFaseCur(){const on=vjTab==='fase';$('viaje').style.display=vjTab==='viaje'?'':'none';$('faseCur').style.display=on?'':'none';vViajeFull();document.querySelectorAll('#vjTab button').forEach(b=>b.classList.toggle('on',b.dataset.vj===vjTab));
  $('vjEye').innerHTML=on?`Fase en curso <span>· ${esc(fase.n)} · cómo va esta fase</span>`:vjTab==='full'?'Viaje completo <span>· línea = plan · punteado = ciclos para siempre</span>':'Viaje <span>· grasa estimada por fase, del inicio al Peak</span>';if(!on)return;
- const tot=fase.sem*7,ini=addDays(fase.ini,DOFF),fin=addDays(fase.fin,DOFF),left=Math.max(0,dd(HOY,fin)),f=Math.min(1,diaN/tot),cx=160,cy=165,r=110,L=2*Math.PI*r;
+ const tot=dd(fase.ini,fase.fin)+1,ini=addDays(fase.ini,DOFF),fin=addDays(fase.fin,DOFF),left=Math.max(0,dd(HOY,fin)),f=Math.min(1,diaN/tot),cx=160,cy=165,r=110,L=2*Math.PI*r;
  let o=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="18"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${fase.c}" stroke-width="18" stroke-linecap="round" stroke-dasharray="${L*f} ${L}" transform="rotate(-90 ${cx} ${cy})"/><text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="46" font-weight="300" fill="#eef2f6">${diaN}<tspan font-size="20" fill="rgba(226,232,240,.6)">/${tot}</tspan></text><text x="${cx}" y="${cy+22}" text-anchor="middle" font-size="12.5" fill="rgba(226,232,240,.75)">días de ${esc(fase.n)}</text><text x="${cx}" y="${cy+40}" text-anchor="middle" font-size="11.5" fill="rgba(226,232,240,.5)">cierra ${lab(fin)} · faltan ${left}</text>`;
  o+=`<text x="340" y="40" class="ax">CUMPLIMIENTO DE LA FASE · META 90 %</text>`+bullets(340,60,320,PIL4.map(([k,e,n])=>[e,n,pctRange(ini<(EX.first||HOY)?(EX.first||HOY):ini,HOY,k)]),52);
  const X3=900;o+=`<text x="${X3}" y="40" class="ax">INICIO DE FASE → HOY → META DE FASE</text>`;
@@ -1242,7 +1271,7 @@ function vCuerpo(){
 
 /* ---------- CAMINO ---------- */
 function vCamino(){
- const left=dd(HOY,'2027-08-09');$('caEye').innerHTML=`Camino <span>· ${esc(fase.n)}</span>`;$('caT').textContent='Semana '+WEEK;$('caSub').textContent=left<0?'de 38 · el Peak ya pasó':`de 38 · ${Math.ceil(left/7)} semanas al Peak · lun 9 ago 2027`;
+ const left=dd(HOY,'2027-08-09');$('caEye').innerHTML=`Camino <span>· ${esc(fase.n)}</span>`;$('caT').textContent='Semana '+WEEK;$('caSub').textContent=left<0?(()=>{const nx=RUNS.find(r=>/PEAK/.test(r.n)&&r.fin>=PHOY);return `de ${TOTW} · ${fase.n} · sem ${Math.min(fase.sem,Math.ceil(diaN/7))} de ${fase.sem} · `+(nx?(nx.ini<=PHOY?'semana de Peak':`${(n=>n+(n>1?' semanas':' semana'))(Math.ceil(dd(PHOY,nx.ini)/7))} al ${phOf(nx.n).n} · ${lab(nx.ini)}`):'fin del plan '+lab(PLAN_END))})():(left<=7?`de 38 · semana del Peak · ${left?'faltan '+left+(left>1?' días':' día'):'hoy es el día'} · lun 9 ago 2027`:`de 38 · ${Math.ceil(left/7)} semanas al Peak · lun 9 ago 2027`);
  const W=1259,H=330,t0=+DT('2026-11-16'),t1=+DT('2027-08-09'),x=t=>40+(t-t0)/(t1-t0)*(W-80),y=g=>20+(28-g)/(28-3)*(H-90);
  let o='';[5,10,15,20,25].forEach(g=>o+=`<line x1="40" x2="${W-40}" y1="${y(g)}" y2="${y(g)}" stroke="rgba(255,255,255,.05)"/><text x="30" y="${y(g)+4}" text-anchor="end" class="ax">${g} %</text>`);
  o+=`<rect x="40" y="${y(7)}" width="${W-80}" height="${y(5)-y(7)}" fill="${fase.c}" opacity=".08"/>`;
@@ -1261,16 +1290,16 @@ function vCamino(){
   o+=`<g transform="translate(${W-330},14)"><rect width="270" height="44" rx="12" fill="rgba(13,17,23,.85)" stroke="rgba(255,255,255,.14)"/><text x="14" y="18" font-size="12" fill="#eef2f6">⚪ Real ${fmt(L.g)} % · plan ${fmt(Math.round(pl*10)/10)} %</text><text x="14" y="34" font-size="11.5" fill="${Math.abs(df)<0.5?'rgba(226,232,240,.7)':df<0?fase.c:'#ffd59a'}">${Math.abs(df)<0.5?'= vas justo en el plan':df<0?'▲ vas '+fmt(-df)+' pts adelante del plan':'⚠ vas '+fmt(df)+' pts atrás del plan'}</text></g>`}}
  $('viaje').innerHTML=o;vFaseCur();
  /* tarjetas por fase con su plan real */
- $('phCards').innerHTML=PLAN.stages.map((s,i)=>{const p=Object.values(PH).find(q=>q.k===s.id),cur=p===fase;return `<a href="#entreno" data-enph="${s.id}" class="vpop" style="animation-delay:${i*.06}s;text-decoration:none;color:inherit;padding:12px 14px;border-radius:20px;background:var(--card);border:${cur?'2px solid '+p.c:'1px solid var(--bd)'}"><div class="eye" style="font-size:10px;color:${p.c}">${p.e} ${esc(p.n)} <span>· ${s.weeks} sem</span></div><div style="margin-top:6px"><span class="big num" style="font-size:26px">${fmt(s.t[3])}</span><span class="u" style="font-size:12px">kcal</span></div><div class="mut num" style="font-size:11.5px">P ${s.t[0]} · C ${s.t[1]} · G ${s.t[2]}</div></a>`}).join('');
- const wNow=Math.floor(dd('2026-11-16',PHOY)/7);let w='';let k=0;
- MAIN.forEach(kk=>{const p=PH[kk];for(let i=0;i<p.sem&&k<38;i++,k++){const c=k%19,r=Math.floor(k/19),X=c*31.5,Y=r*52,s=k<wNow?'done':k===wNow?'cur':'fut';
-  w+=`<g class="vpop" style="animation-delay:${k*.02}s;transform-origin:${X+13}px ${Y+20}px" data-t="Semana ${k+1} · ${p.n}${s==='done'?' · vivida':s==='cur'?' · ahora':''}"><rect x="${X}" y="${Y}" width="27" height="40" rx="8" fill="${s==='fut'?'rgba(255,255,255,.03)':p.c}" fill-opacity="${s==='done'?.8:s==='cur'?.35:1}" stroke="${s==='cur'?'#fff':p.c}" stroke-opacity="${s==='fut'?.45:1}" stroke-width="${s==='cur'?2.5:1}">${s==='cur'&&!red?'<animate attributeName="fill-opacity" values=".35;.8;.35" dur="1.6s" repeatCount="indefinite"/>':''}</rect><text x="${X+13.5}" y="${Y+25}" text-anchor="middle" font-size="11" font-weight="600" fill="${s==='done'?'#0b0f14':'rgba(238,242,246,.75)'}">${s==='done'?'✓':k+1}</text></g>`}});
- w+=`<text x="0" y="140" font-size="13" fill="#eef2f6"><tspan font-size="20" font-weight="300">${wNow}</tspan> ${wNow===1?'vivida':'vividas'} · <tspan fill="rgba(226,232,240,.6)">${38-wNow} por delante. Cada semana cuenta una sola vez.</tspan></text>`;
+ vPhCards();
+ const wNow=Math.floor(dd(DAYS[0][0],PHOY)/7),PKW=RUNS.filter(r=>/PEAK/.test(r.n)).map(r=>Math.floor(dd(DAYS[0][0],r.ini)/7));let w='';
+ for(let k=0;k<TOTW;k++){const d0=DAYS[Math.min(DAYS.length-1,k*7)],p=phOf(d0[1]),c=k%30,r=Math.floor(k/30),X=c*20,Y=r*38,s=k<wNow?'done':k===wNow?'cur':'fut',pk=PKW.includes(k);
+  w+=`<g class="vpop" style="animation-delay:${k*.008}s;transform-origin:${X+9}px ${Y+15}px" data-t="Semana ${k+1} · ${p.n} · ${lab(d0[0])}${pk?' · 🏆 Peak':''}${s==='done'?' · vivida':s==='cur'?' · ahora':''}"><rect x="${X}" y="${Y}" width="17" height="30" rx="6" fill="${s==='fut'?'rgba(255,255,255,.03)':p.c}" fill-opacity="${s==='done'?.8:s==='cur'?.35:1}" stroke="${s==='cur'?'#fff':pk?'#e9dca8':p.c}" stroke-opacity="${s==='fut'&&!pk?.45:1}" stroke-width="${s==='cur'?2.5:pk?1.6:1}">${s==='cur'&&!red?'<animate attributeName="fill-opacity" values=".35;.8;.35" dur="1.6s" repeatCount="indefinite"/>':''}</rect>${pk?`<text x="${X+8.5}" y="${Y+19}" text-anchor="middle" font-size="10">🏆</text>`:s==='done'?`<text x="${X+8.5}" y="${Y+19.5}" text-anchor="middle" font-size="10" font-weight="700" fill="#0b0f14">✓</text>`:''}</g>`}
+ w+=`<text x="0" y="140" font-size="13" fill="#eef2f6"><tspan font-size="20" font-weight="300">${wNow}</tspan> ${wNow===1?'vivida':'vividas'} · <tspan fill="rgba(226,232,240,.6)">${TOTW-wNow} por delante. Cada semana cuenta una sola vez.</tspan></text>`;
  $('weeks').innerHTML=w;
  const g0=+DT('2026-11-16'),g1=+DT('2028-08-06'),gx=t=>(t-g0)/(g1-g0)*603;
- let g='';['2027-01-01','2028-01-01'].forEach(t=>g+=`<line x1="${gx(+DT(t))}" x2="${gx(+DT(t))}" y1="0" y2="156" stroke="rgba(255,255,255,.08)"/><text x="${gx(+DT(t))+4}" y="166" class="ax">${t.slice(0,4)}</text>`);
- ROUTE.forEach(([n,a,b,c],i)=>{const X=gx(+DT(a)),Wd=Math.max(5,gx(+DT(b))-X),Y=2+i*11.8,right=X+Wd+6<520,show=true;g+=`<g data-t="${esc(n)} · ${lab(a)} – ${lab(b)}"><rect x="${X}" y="${Y}" width="${Wd}" height="8" rx="4" fill="${c}" opacity="${n===fase.n?1:.7}" class="vgrowx" style="animation-delay:${i*.06}s"/>${show?`<text x="${right?X+Wd+6:X-6}" y="${Y+7.5}" font-size="9.5" font-weight="600" fill="${n===fase.n?c:'rgba(238,242,246,.78)'}" ${right?'':'text-anchor="end"'}>${esc(n)}</text>`:''}</g>`});
- const hxx=gx(+dHoyD);g+=`<line x1="${hxx}" x2="${hxx}" y1="0" y2="156" stroke="#fff" stroke-width="2"/>`;
+ let g='';['2027-01-01','2028-01-01'].forEach(t=>g+=`<line x1="${gx(+DT(t))}" x2="${gx(+DT(t))}" y1="0" y2="166" stroke="rgba(255,255,255,.08)" data-t="${t.slice(0,4)}"/>`);
+ ROUTE.forEach(([n,a,b,c],i)=>{const X=gx(+DT(a)),Wd=Math.max(5,gx(+DT(b))-X),Y=4+i*Math.min(11.8,160/ROUTE.length),right=X+Wd+6<520,show=true;g+=`<g data-t="${esc(n)} · ${lab(a)} – ${lab(b)}"><rect x="${X}" y="${Y}" width="${Wd}" height="${Math.min(8,160/ROUTE.length-3)}" rx="4" fill="${c}" opacity="${n===fase.n?1:.7}" class="vgrowx" style="animation-delay:${i*.06}s"/>${show?`<text x="${right?X+Wd+6:X-6}" y="${Y+7}" font-size="9" font-weight="600" fill="${n===fase.n?c:'rgba(238,242,246,.78)'}" ${right?'':'text-anchor="end"'}>${esc(n)}</text>`:''}</g>`});
+ const hxx=gx(+dHoyD);g+=`<line x1="${hxx}" x2="${hxx}" y1="0" y2="166" stroke="#fff" stroke-width="2"/>`;
  $('gantt').innerHTML=g;vPorFase();
 }
 
@@ -1334,7 +1363,7 @@ function scale(){const de=document.documentElement,vv=window.visualViewport;cons
  fit.style.transform=`translate(${l}px,${t}px) scale(${k})`;document.body.classList.toggle('scroll',narrow||h>vh+1);document.body.style.height=narrow?h+'px':'';}
 addEventListener('resize',scale);if(window.visualViewport)visualViewport.addEventListener('resize',scale);document.addEventListener('fullscreenchange',()=>setTimeout(scale,60));
 try{new ResizeObserver(scale).observe(document.documentElement)}catch(e){}scale();setTimeout(scale,300);
-fetch('fitness/dash/plan.json',{cache:'no-cache'}).then(r=>r.json()).then(j=>{PLAN=j;(j.hyd.slots||[]).concat(j.hyd.slots_lv_fasted||[]).forEach(x=>{if(!(x.k in WML))WML[x.k]=x.ml});if(!PLAN.stages.some(x=>x.id===enStage))enStage='basics';if(!PLAN.stages.some(x=>x.id===coStage))coStage='basics';route();if(getCfg())pull(true);else{LIVE.st='off';syncTxt();openCfg()}}).catch(()=>{fit.insertAdjacentHTML('beforeend','<div class="abs" style="left:121px;top:300px;font-size:16px">No se pudo cargar el plan. Recarga la página.</div>')});
+fetch('fitness/dash/plan.json',{cache:'no-cache'}).then(r=>r.json()).then(j=>{PLAN=j;postInit();(j.hyd.slots||[]).concat(j.hyd.slots_lv_fasted||[]).forEach(x=>{if(!(x.k in WML))WML[x.k]=x.ml});if(!PLAN.all.some(x=>x.id===enStage))enStage='basics';if(!PLAN.all.some(x=>x.id===coStage))coStage='basics';route();if(getCfg())pull(true);else{LIVE.st='off';syncTxt();openCfg()}}).catch(()=>{fit.insertAdjacentHTML('beforeend','<div class="abs" style="left:121px;top:300px;font-size:16px">No se pudo cargar el plan. Recarga la página.</div>')});
 }
 </script>
 </body>
