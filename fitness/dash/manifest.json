@@ -1,0 +1,33 @@
+{
+ "id": "/sistema-maverick/fitness-dash.html",
+ "name": "Fitness MV · Dashboard",
+ "short_name": "FMV Dash",
+ "description": "Seguimiento de Fitness MV en la compu",
+ "start_url": "/sistema-maverick/fitness-dash.html",
+ "scope": "/sistema-maverick/fitness-dash",
+ "display": "standalone",
+ "display_override": [
+  "window-controls-overlay",
+  "standalone"
+ ],
+ "background_color": "#06080b",
+ "theme_color": "#06080b",
+ "icons": [
+  {
+   "src": "/sistema-maverick/fitness/iconos/basics/icon_192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/sistema-maverick/fitness/iconos/basics/icon_512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/sistema-maverick/fitness/iconos/basics/maskable_512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
